@@ -1,0 +1,260 @@
+<!-- 页面的页脚模块（用于显示版权信息） -->
+<template>
+  <div class="footer">
+    <!-- <div class="footerContain">
+      <div class="footeright">
+        <span v-for="(list, index) in lists" :key="index">{{ list }}</span>
+        <p>&copy;2022 京ICP备55555号-7&nbsp;&nbsp;京公网备777777777号</p>
+      </div>
+    </div> -->
+    <div class="footerContent">
+      <div class="top-part">
+        <el-row>
+          <el-col :span="6">
+            <div class="links">
+              <div class="link-title">联系我们</div>
+              <div class="link">希望工场</div>
+              <div class="link">公司地址:江苏省苏州市吴中区经济开发区城南街道东吴南路79号B-901室</div>
+              <div class="link">邮箱:hopeworkshop@126.com</div>
+            </div>
+          </el-col>
+          <el-col :span="4">
+            <div class="links">
+              <div class="link-title">产品与服务</div>
+              <div class="link">职位搜索</div>
+              <div class="link">人才招聘</div>
+              <div class="link">企业招聘</div>
+            </div>
+          </el-col>
+          <el-col :span="4">
+            <div class="links">
+              <div class="link-title">使用与帮助</div>
+              <div class="link">使用帮助</div>
+              <div class="link2">
+                <a
+                  href="https://hope-service.oss-cn-beijing.aliyuncs.com/uploads/adf366c1-f574-4515-8e39-d1c61ea5b79a.docx"
+                  >防骗指南</a
+                >
+              </div>
+              <div class="link">协议与规则</div>
+              <div class="link">政策隐私</div>
+            </div>
+          </el-col>
+          <el-col :span="4">
+            <el-divider direction="vertical"></el-divider>
+          </el-col>
+          <el-col :span="5">
+            <div class="right-part">
+              <img src="@/assets/image/home/bottom-logo-white.png" />
+              <div class="qrcode">
+                <img src="@/assets/image/about/wechatcode.jpg" />
+                <div class="link">服务号</div>
+              </div>
+            </div>
+          </el-col>
+        </el-row>
+      </div>
+      <div class="bottom-part">
+        <div class="filings">
+          <!-- <div class="single">ICP经营许可证编号</div>
+          <div class="single">苏ICP备2023022582号</div> -->
+          <!-- <div class="single">京公网安备xxxxxxxxxx号</div>
+          <div class="single">京公网安备xxxxxxxxxx号</div>
+          <div class="single">京公网安备xxxxxxxxxx号</div>
+          <div class="single">
+            <img src="@/assets/image/home/business-license.png" />
+            电子营业执照
+          </div>
+          <div class="single">
+            <img src="@/assets/image/home/national-emblem.png" />
+            京公网安备xxxxxxxxxxxx
+          </div> -->
+        </div>
+        <div class="copy-right">
+          Copyright©2023-2023希望工场版权所有
+          <div class="single">苏ICP备2023022582号</div>
+          <div class="licence" @click="toLicence">人力资源服务许可证</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</template>
+
+<script>
+export default {
+  data() {
+    return {
+      lists: [
+        '招聘APP',
+        '企业员工招聘系统',
+        '招聘微信',
+        '招聘小程序',
+        '帮助中心',
+        '联系我们',
+        '招聘解决方案',
+        '服务热线：00544-44944',
+      ],
+    }
+  },
+  methods: {
+    toLicence() {
+      this.$router.push({ name: 'licence' })
+    },
+    toGuide() {
+      this.$router.push({ name: 'guide' })
+    },
+  },
+}
+</script>
+
+<style lang="scss">
+$nx-color3: #62b7f3;
+$nx-color4: #0f46a0;
+.footer {
+  width: 100%;
+  height: 409px;
+  border-top: 1px solid #ddd;
+  background-color: #202329;
+  overflow: hidden;
+
+  .footerContent {
+    position: relative;
+
+    &::after {
+      content: '';
+      height: 1px;
+      width: 100vw;
+      background-color: #d5dff0;
+      position: absolute;
+      top: 275px;
+      left: 0;
+    }
+
+    .top-part {
+      max-width: 1200px;
+      height: 275px;
+      margin: auto auto 10px;
+      padding-top: 64px;
+      color: #ffffff;
+      font-size: 12px;
+      box-sizing: border-box;
+
+      .links {
+        text-align: left;
+        .link-title {
+          font-size: 14px;
+          font-weight: 500;
+          color: #ffffff;
+          height: 30px;
+          line-height: 30px;
+          margin-bottom: 10px;
+        }
+
+        .link {
+          //height: 24px;
+          line-height: 24px;
+        }
+        .link2 {
+          line-height: 24px;
+          cursor: pointer;
+        }
+      }
+
+      img {
+        height: 29px;
+        width: 99px;
+      }
+
+      .qrcode {
+        padding-left: 12px;
+        img {
+          margin-top: 24px;
+          width: 80px;
+          height: 80px;
+        }
+        .link {
+          //text-align: center;
+          width: 80px;
+          margin-top: 10px;
+        }
+      }
+    }
+
+    .bottom-part {
+      max-width: 1200px;
+      margin: auto;
+      padding-top: 32px;
+      .filings {
+        font-size: 12px;
+        color: #ffffff;
+        display: flex;
+        justify-content: center;
+
+        .single {
+          display: flex;
+          align-items: center;
+          margin-right: 24px;
+
+          img {
+            width: 24px;
+            height: 24px;
+            margin-right: 8px;
+          }
+        }
+      }
+      .copy-right {
+        margin-top: 16px;
+        // text-align: center;
+        font-size: 12px;
+        color: #ffffff;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        .single {
+          margin-left: 24px;
+        }
+        .licence {
+          margin-left: 24px;
+          cursor: pointer;
+          &:hover {
+            color: rgb(166, 166, 202);
+          }
+        }
+      }
+    }
+  }
+
+  .footerContain {
+    position: relative;
+    width: 76.25rem;
+    margin: 2rem auto;
+    .footeright {
+      position: absolute;
+      top: 0;
+      left: 13rem;
+      padding-left: 2rem;
+      span {
+        display: inline-block;
+        padding: 0.6rem 1rem 1rem 0;
+        color: #666666;
+        cursor: pointer;
+        &:hover {
+          color: $nx-color4;
+          text-decoration: underline;
+        }
+      }
+      p {
+        padding-bottom: 0.6rem;
+        color: #222222;
+      }
+    }
+  }
+}
+</style>
+<style lang="scss" scoped>
+/deep/ .el-divider--vertical {
+  height: 153px;
+  background-color: #d5dff0;
+}
+</style>

@@ -33,7 +33,11 @@
               v-for="(item, index) in vList"
               :key="index"
             >
-              <img v-if="nowVIndex == index" src="@/assets/image/job/playing.png" alt="" />
+              <img
+                v-if="nowVIndex == index"
+                src="@/assets/image/job/playing.png"
+                alt=""
+              />
               <h2>P{{ index + 1 }}</h2>
               <p class="name one-text">{{ item.title }}</p>
               <!-- <p class="time">{{ item.createTime }}</p> -->
@@ -48,7 +52,11 @@
         <el-carousel indicator-position="none" :autoplay="false" arrow="always">
           <el-carousel-item v-for="(item, index) in aboutList" :key="index">
             <div class="aboutBox">
-              <div class="aboutItem" v-for="(item1, index1) in item" :key="index1">
+              <div
+                class="aboutItem"
+                v-for="(item1, index1) in item"
+                :key="index1"
+              >
                 <img :src="item1.imageUrl" alt="" />
                 <div class="aboutInfo">
                   <h2>{{ item1.title }}</h2>
@@ -68,7 +76,7 @@
 </template>
 
 <script>
-import Video from '@/api/video'
+import Video from "@/api/video";
 
 export default {
   components: {},
@@ -81,94 +89,98 @@ export default {
       vList: [],
       aboutList: [],
       allAboutList: [],
-      id: '',
-    }
+      id: "",
+    };
   },
   mounted() {
-    this.id = this.$route.query.id || '1'
-    this.getVideoList()
-    this.getVideoInfo()
+    this.id = this.$route.query.id || "1";
+    this.getVideoList();
+    this.getVideoInfo();
   },
   methods: {
     async getVideoList() {
-      let params = {}
-      let res = await Video.videoList(params)
+      let params = {};
+      let res = await Video.videoList(params);
       if (res.code == 200) {
-        this.allAboutList = res.data
-        this.formatAbout()
+        this.allAboutList = res.data;
+        this.formatAbout();
       }
     },
     async getVideoInfo() {
       let params = {
         listId: this.id,
-      }
-      let res = await Video.videoInfo(params)
+      };
+      let res = await Video.videoInfo(params);
       if (res.code == 200) {
-        this.tInfo = res.data
-        this.vList = res.data.videoList
-        this.nowVIndex = 0
-        let vInfo = { ...res.data.videoList[this.nowVIndex] }
-        vInfo.timeStr = this.formatTime(vInfo.createTime, 2)
-        this.vInfo = vInfo
+        this.tInfo = res.data;
+        this.vList = res.data.videoList;
+        this.nowVIndex = 0;
+        let vInfo = { ...res.data.videoList[this.nowVIndex] };
+        vInfo.timeStr = this.formatTime(vInfo.createTime, 2);
+        this.vInfo = vInfo;
       }
     },
     formatAbout() {
       let arr = [],
-        cArr = []
+        cArr = [];
       this.allAboutList.forEach((item, index) => {
-        item.timeStr = this.formatTime(item.createTime)
+        item.timeStr = this.formatTime(item.createTime);
         if (index == this.allAboutList.length - 1) {
-          cArr.push(item)
-          arr.push(cArr)
-          cArr = []
+          cArr.push(item);
+          arr.push(cArr);
+          cArr = [];
         } else {
           if (index % 4 == 3) {
-            cArr.push(item)
-            arr.push(cArr)
-            cArr = []
+            cArr.push(item);
+            arr.push(cArr);
+            cArr = [];
           } else {
-            cArr.push(item)
+            cArr.push(item);
           }
         }
-      })
-      this.aboutList = arr
+      });
+      this.aboutList = arr;
     },
     chooseVideo(item, index) {
       if (this.nowVIndex == index) {
-        return
+        return;
       }
-      this.nowVIndex = index
-      let vInfo = { ...item }
-      vInfo.timeStr = this.formatTime(vInfo.createTime, 2)
-      this.vInfo = vInfo
+      this.nowVIndex = index;
+      let vInfo = { ...item };
+      vInfo.timeStr = this.formatTime(vInfo.createTime, 2);
+      this.vInfo = vInfo;
     },
     formatTime(dateString, type) {
-      let time = new Date(dateString)
-      let year = time.getFullYear()
-      let month = time.getMonth() + 1
-      month = month > 9 ? month : '0' + month
-      let day = time.getDate()
-      day = day > 9 ? day : '0' + day
-      let hour = time.getHours()
-      hour = hour > 9 ? hour : '0' + hour
-      let minutes = time.getMinutes()
-      minutes = minutes > 9 ? minutes : '0' + minutes
-      let seconds = time.getSeconds()
-      seconds = seconds > 9 ? seconds : '0' + seconds
+      let time = new Date(dateString);
+      let year = time.getFullYear();
+      let month = time.getMonth() + 1;
+      month = month > 9 ? month : "0" + month;
+      let day = time.getDate();
+      day = day > 9 ? day : "0" + day;
+      let hour = time.getHours();
+      hour = hour > 9 ? hour : "0" + hour;
+      let minutes = time.getMinutes();
+      minutes = minutes > 9 ? minutes : "0" + minutes;
+      let seconds = time.getSeconds();
+      seconds = seconds > 9 ? seconds : "0" + seconds;
 
-      let str = year + '-' + month + '-' + day
+      let str = year + "-" + month + "-" + day;
       if (type == 2) {
-        str = str + ' ' + hour + ':' + minutes + ':' + seconds
+        str = str + " " + hour + ":" + minutes + ":" + seconds;
       }
-      return str
+      return str;
     },
   },
-}
+};
 </script>
 
 <style lang="scss" scoped>
 .main {
-  background: linear-gradient(180deg, rgba(36, 70, 168, 0.25) 0%, rgba(36, 70, 168, 0) 100%);
+  background: linear-gradient(
+    180deg,
+    rgba(36, 70, 168, 0.25) 0%,
+    rgba(36, 70, 168, 0) 100%
+  );
   padding: 20px 0;
   box-sizing: border-box;
   position: relative;
@@ -381,7 +393,7 @@ export default {
               width: 1px;
               height: 12px;
               background: #dadde2;
-              content: '';
+              content: "";
               display: block;
               position: absolute;
               right: 0;
@@ -397,20 +409,20 @@ export default {
     }
   }
 }
-.vBannerBox /deep/ .el-carousel__arrow {
+.vBannerBox ::v-deep .el-carousel__arrow {
   width: 32px;
   height: 104px;
   background: rgba(0, 0, 0, 0.1);
   border-radius: 0;
   font-size: 20px;
 }
-.vBannerBox /deep/ .el-carousel__arrow--left {
+.vBannerBox ::v-deep .el-carousel__arrow--left {
   left: -50px;
 }
-.vBannerBox /deep/ .el-carousel__arrow--right {
+.vBannerBox ::v-deep .el-carousel__arrow--right {
   right: -50px;
 }
-.vBannerBox /deep/ .el-carousel__container {
+.vBannerBox ::v-deep .el-carousel__container {
   width: 1200px;
   height: 235px;
   margin: 0 auto;

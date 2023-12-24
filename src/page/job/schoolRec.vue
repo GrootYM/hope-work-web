@@ -47,12 +47,20 @@
             :key="index"
           >
             <span>{{ item.pname }}</span>
-            <img v-if="specialityIndex == index" src="@/assets/image/job/right.png" alt="" />
+            <img
+              v-if="specialityIndex == index"
+              src="@/assets/image/job/right.png"
+              alt=""
+            />
           </div>
         </div>
         <div class="screenInfoBox" v-if="specialityIndex > -1">
           <div class="screenInfoCon">
-            <div class="screenInfoItem" v-for="(item, index) in specialityInfo" :key="index">
+            <div
+              class="screenInfoItem"
+              v-for="(item, index) in specialityInfo"
+              :key="index"
+            >
               <h2>{{ item.typeName }}</h2>
               <div class="subInfoBox">
                 <p
@@ -77,7 +85,11 @@
         </div>
       </div>
       <div class="screenAd screenRight">
-        <div v-for="(item, index) in ad3Arr" :key="index" @click="bannerJump(item)">
+        <div
+          v-for="(item, index) in ad3Arr"
+          :key="index"
+          @click="bannerJump(item)"
+        >
           <img :src="item.imgUrl" alt="" />
         </div>
       </div>
@@ -120,17 +132,28 @@
         <h2>热门校招</h2>
         <div class="hopeJobTab">
           <!-- <p class="active">全职</p> -->
-          <p :class="[recruitType == 2 ? 'active' : '']" @click="toQie(2)">校招</p>
-          <p :class="[recruitType == 4 ? 'active' : '']" @click="toQie(4)">兼职</p>
+          <p :class="[recruitType == 2 ? 'active' : '']" @click="toQie(2)">
+            校招
+          </p>
+          <p :class="[recruitType == 4 ? 'active' : '']" @click="toQie(4)">
+            兼职
+          </p>
         </div>
       </div>
       <div class="hopeJobCards">
-        <div class="hopeJobItem" @click.stop="toInfo(item.id)" v-for="(item, index) in jobsArr" :key="index">
+        <div
+          class="hopeJobItem"
+          @click.stop="toInfo(item.id)"
+          v-for="(item, index) in jobsArr"
+          :key="index"
+        >
           <img class="bjW" src="@/assets/image/job/hopeBj2.png" alt="" />
           <div class="hopeSJob">
             <div class="hopeSJobInfo">
               <h2>{{ item.positionName }}</h2>
-              <p v-if="item.lowSalary && item.topSalary">{{ item.lowSalary }}-{{ item.topSalary }}k</p>
+              <p v-if="item.lowSalary && item.topSalary">
+                {{ item.lowSalary }}-{{ item.topSalary }}k
+              </p>
             </div>
             <div class="cardLabel">
               <p>{{ item.cityName }}</p>
@@ -145,7 +168,9 @@
             <div class="hopeJobCompany">
               <h2>{{ item.companyName }}</h2>
               <div class="cardLabel">
-                <p v-if="item.companyIndustryName">{{ item.companyIndustryName }}</p>
+                <p v-if="item.companyIndustryName">
+                  {{ item.companyIndustryName }}
+                </p>
                 <p v-if="item.companyScale">{{ item.companyScale }}</p>
                 <p v-if="item.finance">{{ item.finance }}</p>
                 <!-- <p v-for="(item1, index1) in item.tabs" :key="index1">{{ item1 }}</p> -->
@@ -162,10 +187,10 @@
 </template>
 
 <script>
-import { mapActions, mapMutations, mapGetters } from 'vuex'
-import School from '@/api/school'
-import Job from '@/api/job'
-import JobSearch from '@/component/Job/jobSearch'
+import { mapActions, mapMutations, mapGetters } from "vuex";
+import School from "@/api/school";
+import Job from "@/api/job";
+import JobSearch from "@/component/Job/jobSearch";
 
 export default {
   components: {
@@ -173,11 +198,11 @@ export default {
   },
   props: {},
   computed: {
-    ...mapGetters(['cityName']),
+    ...mapGetters(["cityName"]),
   },
   data() {
     return {
-      searchStr: '',
+      searchStr: "",
       adImg: {},
       specialityIndex: -1,
       specialityArr: [],
@@ -185,65 +210,65 @@ export default {
       ad1: {},
       ad2: {},
       ad3Arr: [],
-      location: '',
+      location: "",
       locationArr: [
         {
-          name: '南京',
+          name: "南京",
         },
         {
-          name: '北京',
+          name: "北京",
         },
       ],
       jobTabs: [
         {
-          name: '南京',
+          name: "南京",
         },
         {
-          name: '北京',
+          name: "北京",
         },
         {
-          name: '上海',
+          name: "上海",
         },
         {
-          name: '广州',
+          name: "广州",
         },
       ],
-      nowTab: '南京',
+      nowTab: "南京",
       jobArr: [],
       jobsArr: [],
       currentPage: 1,
       pageSize: 9,
       recruitType: 2, //2校招，4兼职
       csArr: [],
-    }
+    };
   },
   mounted() {
     setTimeout(() => {
-      this.$bus.$emit('EVENT_SCROLL', 0)
-    }, 500)
-    this.queryHotPosition()
-    this.bannerList()
-    this.bannerList1()
-    this.positionType()
-    this.queryHotCityList()
-    this.location = this.cityName
+      this.$bus.$emit("EVENT_SCROLL", 0);
+    }, 500);
+    this.queryHotPosition();
+    this.bannerList();
+    this.bannerList1();
+    this.positionType();
+    this.queryHotCityList();
+    this.location = this.cityName;
   },
   methods: {
     toMore() {
-      this.$router.push({ path: '/index/job' })
+      this.$router.push({ path: "/index/job" });
     },
     changeLocation(value) {
-      this.location = value
+      this.location = value;
       // this.$store.commit('SET_NOW_CITY', value)
     },
     changeVal(value) {
-      this.searchStr = value
+      this.searchStr = value;
     },
     async queryHotCityList() {
-      let params = {}
-      let res = await Job.queryHotCityList(params)
+      let params = {};
+      let res = await Job.queryHotCityList(params);
       if (res.code == 200) {
-        this.csArr = res.data
+        this.csArr = res.data;
       }
     },
     async queryHotPosition() {
@@ -251,88 +276,103 @@ export default {
         currentPage: this.currentPage,
         pageSize: this.pageSize,
         recruitType: this.recruitType, //2校招，4兼职
-      }
-      let res = await School.queryHotPosition(params)
+      };
+      let res = await School.queryHotPosition(params);
       if (res.code == 200) {
-        this.jobsArr = res.data.list
+        this.jobsArr = res.data.list;
       }
     },
     async bannerList() {
       let params = {
-        bannerCode: 'school_banner',
-      }
-      let res = await School.bannerList(params)
+        bannerCode: "school_banner",
+      };
+      let res = await School.bannerList(params);
       if (res.code == 200) {
-        this.adImg = res.data[0] || {}
+        this.adImg = res.data[0] || {};
       }
     },
     async bannerList1() {
       let params = {
-        bannerCode: 'school',
-      }
-      let res = await School.bannerList(params)
+        bannerCode: "school",
+      };
+      let res = await School.bannerList(params);
       if (res.code == 200) {
         // this.adImg = res.data[0] || {}
-        this.ad1 = res.data[0] || {}
-        this.ad2 = res.data[1] || {}
-        res.data[2] && this.ad3Arr.push(res.data[2])
-        res.data[3] && this.ad3Arr.push(res.data[3])
-        res.data[4] && this.ad3Arr.push(res.data[4])
+        this.ad1 = res.data[0] || {};
+        this.ad2 = res.data[1] || {};
+        res.data[2] && this.ad3Arr.push(res.data[2]);
+        res.data[3] && this.ad3Arr.push(res.data[3]);
+        res.data[4] && this.ad3Arr.push(res.data[4]);
       }
     },
     bannerJump(banner) {
-      this.$util.jumpLink(banner.type, banner.jumpUrl)
+      this.$util.jumpLink(banner.type, banner.jumpUrl);
     },
     async positionType() {
-      let params = {}
-      let res = await School.positionType(params)
+      let params = {};
+      let res = await School.positionType(params);
       if (res.code == 200) {
-        this.specialityArr = res.data
-        this.specialityIndex = -1
+        this.specialityArr = res.data;
+        this.specialityIndex = -1;
         // this.specialityInfo=this.specialityArr[0].childLists;
       }
     },
     clickMain() {
-      this.specialityIndex = -1
+      this.specialityIndex = -1;
     },
     toChooseZl(index) {
-      this.specialityIndex = index
-      this.specialityInfo = this.specialityArr[index].childLists
+      this.specialityIndex = index;
+      this.specialityInfo = this.specialityArr[index].childLists;
     },
     toInfo(id) {
       const { href } = this.$router.resolve({
-        path: '/index/info',
+        path: "/index/info",
         query: { id: id },
-      })
-      window.open(href, '_blank')
+      });
+      window.open(href, "_blank");
       // this.$router.push({ path: '/index/info', query: { id: id } })
     },
     toCompay(id) {
       const { href } = this.$router.resolve({
-        path: '/index/company',
+        path: "/index/company",
         query: { id: id },
-      })
-      window.open(href, '_blank')
+      });
+      window.open(href, "_blank");
       // this.$router.push({ path: '/index/company', query: { id: id } })
     },
     toJob(type, item) {
       if (type == 1) {
-        this.$router.push({ path: '/index/job', query: { cityName: this.location, keyWords: this.searchStr } })
+        this.$router.push({
+          path: "/index/job",
+          query: { cityName: this.location, keyWords: this.searchStr },
+        });
       } else {
-        this.$router.push({ path: '/index/job', query: { jobTypeId: item.subId } })
+        this.$router.push({
+          path: "/index/job",
+          query: { jobTypeId: item.subId },
+        });
       }
     },
     toQie(type) {
-      this.recruitType = type
-      this.queryHotPosition()
+      this.recruitType = type;
+      this.queryHotPosition();
     },
   },
-}
+  metaInfo() {
+    return {
+      meta: [{ name: "viewport", content: this.$route.meta.keywords }],
+    };
+  },
+};
 </script>
 
 <style lang="scss" scoped>
 .main {
-  background: linear-gradient(180deg, rgba(36, 70, 168, 0.25) 0%, rgba(36, 70, 168, 0) 100%);
+  background: linear-gradient(
+    180deg,
+    rgba(36, 70, 168, 0.25) 0%,
+    rgba(36, 70, 168, 0) 100%
+  );
   box-sizing: border-box;
   position: relative;
 }
@@ -361,7 +401,7 @@ export default {
       }
     }
     .selBox::after {
-      content: '';
+      content: "";
       width: 1px;
       height: 22px;
       background: #bec4d4;

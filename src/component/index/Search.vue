@@ -2,17 +2,36 @@
 <template>
   <div>
     <div style="margin-left: 20%; text-align: center">
-      <position-detail v-if="showDetail" @detailClose="detailClose" :detailPositionID="detailPositionID" :temp="1">
+      <position-detail
+        v-if="showDetail"
+        @detailClose="detailClose"
+        :detailPositionID="detailPositionID"
+        :temp="1"
+      >
       </position-detail>
     </div>
     <div class="searchIndex" v-if="!showDetail">
       <div class="contains" :width="nxw">
         <div class="search">
           <div style="position: relative">
-            <el-input v-model="searchKeyword" placeholder="搜索职位/公司/关键词" class="input-with-select" clearable>
+            <el-input
+              v-model="searchKeyword"
+              placeholder="搜索职位/公司/关键词"
+              class="input-with-select"
+              clearable
+            >
               <template slot="prepend">
-                <el-select value="职位类型" placeholder="职位类型" size="medium" @visible-change="onSelect">
-                  <el-option v-for="(item, index) in jobOptions" :key="item.pid" :value="item.pid">
+                <el-select
+                  value="职位类型"
+                  placeholder="职位类型"
+                  size="medium"
+                  @visible-change="onSelect"
+                >
+                  <el-option
+                    v-for="(item, index) in jobOptions"
+                    :key="item.pid"
+                    :value="item.pid"
+                  >
                     <div class="opt" @mouseover="showSide(index)">
                       {{ item.pname }}
                       <img src="@/assets/image/home/cat-arrow.png" />
@@ -20,14 +39,27 @@
                   </el-option>
                 </el-select>
               </template>
-              <el-button @click="onQueryChange" slot="append" icon="el-icon-search">搜索</el-button>
+              <el-button
+                @click="onQueryChange"
+                slot="append"
+                icon="el-icon-search"
+                >搜索</el-button
+              >
             </el-input>
             <div class="dropdown-child" v-if="sideVisible">
               <div class="title">{{ nowPosition.pname }}</div>
-              <div class="child-item" v-for="(item, index) in nowPosition.childLists" :key="index">
+              <div
+                class="child-item"
+                v-for="(item, index) in nowPosition.childLists"
+                :key="index"
+              >
                 <div class="type-name">{{ item.typeName }}</div>
                 <div class="children">
-                  <div v-for="(child, i) in item.subChildLists" @click="gotoJob(child.subTypeName)" :key="child.subId">
+                  <div
+                    v-for="(child, i) in item.subChildLists"
+                    @click="gotoJob(child.subTypeName)"
+                    :key="child.subId"
+                  >
                     {{ child.subTypeName }}
                   </div>
                 </div>
@@ -36,7 +68,12 @@
           </div>
           <div class="s_hot">
             热门职位：&nbsp;
-            <span v-for="(item, index) in tags" :key="index" class="s_hot_like" @click="gotoJob(item.typeName)">
+            <span
+              v-for="(item, index) in tags"
+              :key="index"
+              class="s_hot_like"
+              @click="gotoJob(item.typeName)"
+            >
               {{ item.typeName }}
             </span>
           </div>
@@ -44,12 +81,18 @@
         <template v-if="!showDetail">
           <div class="workList">
             <ul class="work_list">
-              <li v-for="(work, index) in tableData" :key="index" class="cardWork">
+              <li
+                v-for="(work, index) in tableData"
+                :key="index"
+                class="cardWork"
+              >
                 <div @click.prevent="handleDetail(work)">
                   <div class="cardWork_Up">
                     <div>
                       <strong class="card_workNT"
-                        ><span class="card_workName" :title="work.title">{{ work.title }}</span></strong
+                        ><span class="card_workName" :title="work.title">{{
+                          work.title
+                        }}</span></strong
                       >
                     </div>
                     <div style="margin-top: 8px">
@@ -60,7 +103,13 @@
                       <span>工作地点：</span>
                       <span>{{ work.city }}</span>
                     </div>
-                    <div style="color: #fa606b; margin-left: 75px; margin-top: 10px">
+                    <div
+                      style="
+                        color: #fa606b;
+                        margin-left: 75px;
+                        margin-top: 10px;
+                      "
+                    >
                       <span style="float: left">薪资：</span>
                       <span style="float: left">{{ work.salary_down }}</span>
                       <span style="float: left">~</span>
@@ -85,12 +134,12 @@
 </template>
 
 <script>
-import WorkListVue from './WorkList.vue'
-import { Position } from '@/model/position'
-import Button from '../../plugin/lin-cms-ui/view/basic/button/button.vue'
-import LinSearch from '@/component/base/search/lin-search'
-import PositionDetail from '@/view/position/position-detail'
-import Home from '@/api/home'
+import WorkListVue from "./WorkList.vue";
+import { Position } from "@/model/position";
+import Button from "../../plugin/lin-cms-ui/view/basic/button/button.vue";
+import LinSearch from "@/component/base/search/lin-search";
+import PositionDetail from "@/view/position/position-detail";
+import Home from "@/api/home";
 
 export default {
   components: {
@@ -112,7 +161,7 @@ export default {
       pageCount: 12, // 每页的数据量
       refreshPagination: true, // 页数增加的时候，因为缓存的缘故，需要刷新 Pagination 组件
       detailPositionID: 0, // 职位id
-      searchKeyword: '', // 搜索时输入的关键字
+      searchKeyword: "", // 搜索时输入的关键字
       keyword: null, // 查询关键字,用于显示搜索提示
       form: {}, //投递简历时传入的列表数据
       list: {}, //收藏职位时传入的列表数据
@@ -123,64 +172,64 @@ export default {
       positions: [
         {
           id: 208,
-          typeName: '后端开发',
+          typeName: "后端开发",
           subChildLists: [
-            { subId: 209, subTypeName: 'Java' },
-            { subId: 210, subTypeName: 'Java' },
-            { subId: 211, subTypeName: 'Java' },
-            { subId: 212, subTypeName: 'Java' },
-            { subId: 213, subTypeName: 'Java' },
-            { subId: 214, subTypeName: 'Java' },
-            { subId: 209, subTypeName: 'Java' },
-            { subId: 210, subTypeName: 'Java' },
-            { subId: 211, subTypeName: 'Java' },
-            { subId: 212, subTypeName: 'Java' },
-            { subId: 213, subTypeName: 'Java' },
-            { subId: 214, subTypeName: 'Java' },
-            { subId: 209, subTypeName: 'Java' },
-            { subId: 210, subTypeName: 'Java' },
-            { subId: 211, subTypeName: 'Java' },
-            { subId: 212, subTypeName: 'Java' },
-            { subId: 213, subTypeName: 'Java' },
-            { subId: 214, subTypeName: 'Java' },
+            { subId: 209, subTypeName: "Java" },
+            { subId: 210, subTypeName: "Java" },
+            { subId: 211, subTypeName: "Java" },
+            { subId: 212, subTypeName: "Java" },
+            { subId: 213, subTypeName: "Java" },
+            { subId: 214, subTypeName: "Java" },
+            { subId: 209, subTypeName: "Java" },
+            { subId: 210, subTypeName: "Java" },
+            { subId: 211, subTypeName: "Java" },
+            { subId: 212, subTypeName: "Java" },
+            { subId: 213, subTypeName: "Java" },
+            { subId: 214, subTypeName: "Java" },
+            { subId: 209, subTypeName: "Java" },
+            { subId: 210, subTypeName: "Java" },
+            { subId: 211, subTypeName: "Java" },
+            { subId: 212, subTypeName: "Java" },
+            { subId: 213, subTypeName: "Java" },
+            { subId: 214, subTypeName: "Java" },
           ],
         },
         {
           id: 215,
-          typeName: '前端/移动开发',
+          typeName: "前端/移动开发",
           subChildLists: [
-            { subId: 216, subTypeName: 'Java' },
-            { subId: 217, subTypeName: 'Java' },
-            { subId: 218, subTypeName: 'Java' },
-            { subId: 219, subTypeName: 'Java' },
-            { subId: 220, subTypeName: 'Java' },
-            { subId: 221, subTypeName: 'Java' },
-            { subId: 216, subTypeName: 'Java' },
-            { subId: 217, subTypeName: 'Java' },
-            { subId: 218, subTypeName: 'Java' },
-            { subId: 219, subTypeName: 'Java' },
-            { subId: 220, subTypeName: 'Java' },
-            { subId: 221, subTypeName: 'Java' },
-            { subId: 216, subTypeName: 'Java' },
-            { subId: 217, subTypeName: 'Java' },
-            { subId: 218, subTypeName: 'Java' },
-            { subId: 219, subTypeName: 'Java' },
-            { subId: 220, subTypeName: 'Java' },
-            { subId: 221, subTypeName: 'Java' },
+            { subId: 216, subTypeName: "Java" },
+            { subId: 217, subTypeName: "Java" },
+            { subId: 218, subTypeName: "Java" },
+            { subId: 219, subTypeName: "Java" },
+            { subId: 220, subTypeName: "Java" },
+            { subId: 221, subTypeName: "Java" },
+            { subId: 216, subTypeName: "Java" },
+            { subId: 217, subTypeName: "Java" },
+            { subId: 218, subTypeName: "Java" },
+            { subId: 219, subTypeName: "Java" },
+            { subId: 220, subTypeName: "Java" },
+            { subId: 221, subTypeName: "Java" },
+            { subId: 216, subTypeName: "Java" },
+            { subId: 217, subTypeName: "Java" },
+            { subId: 218, subTypeName: "Java" },
+            { subId: 219, subTypeName: "Java" },
+            { subId: 220, subTypeName: "Java" },
+            { subId: 221, subTypeName: "Java" },
           ],
         },
       ],
       sideVisible: false,
-    }
+    };
   },
-  props: ['nxw', 'slist', 'searchValue'],
+  props: ["nxw", "slist", "searchValue"],
   mounted() {
     if (this.keywordValue) {
-      this.keyword = this.keywordValue
+      this.keyword = this.keywordValue;
     }
     // this.searchPositionList(this.keyword)
-    this.getTags()
-    this.getPositionType()
+    this.getTags();
+    this.getPositionType();
   },
   // watch: {
   // 	/**
@@ -207,123 +256,129 @@ export default {
     onSelect(e) {
       if (!e) {
         setTimeout(() => {
-          this.hideSide()
-        }, 500)
+          this.hideSide();
+        }, 500);
       }
     },
     showSide(index) {
-      this.nowPosition = this.jobOptions[index]
-      this.sideVisible = true
+      this.nowPosition = this.jobOptions[index];
+      this.sideVisible = true;
     },
     hideSide(e) {
-      this.sideVisible = false
-      this.nowPosition = {}
+      this.sideVisible = false;
+      this.nowPosition = {};
     },
     async getPositionType() {
-      let res = await Home.positionType({})
-      this.jobOptions = res.data
+      let res = await Home.positionType({});
+      this.jobOptions = res.data;
     },
     async getTags() {
-      let res = await Home.queryHotPositionType({})
-      this.tags = res.data
+      let res = await Home.queryHotPositionType({});
+      this.tags = res.data;
     },
     async getByState() {
-      const page = this.currentPage - 1
-      const count = this.pageCount
+      const page = this.currentPage - 1;
+      const count = this.pageCount;
       // 首页展示所有审核通过的职位
-      const positions = await Position.getByState(1, page, count)
-      this.tableData = positions.items
-      this.totalNums = positions.total
+      const positions = await Position.getByState(1, page, count);
+      this.tableData = positions.items;
+      this.totalNums = positions.total;
     },
     // 通过查询关键字分页搜索职位列表
     async searchPositionList() {
-      this.$router.push({ path: '/index/job', query: { keyWords: this.searchKeyword } })
+      this.$router.push({
+        path: "/index/job",
+        query: { keyWords: this.searchKeyword },
+      });
     },
     gotoJob(kw) {
-      this.$router.push({ path: '/index/job', query: { keyWords: kw } })
+      this.$router.push({ path: "/index/job", query: { keyWords: kw } });
       // this.sideVisible = false
     },
     // 清空检索
     async backInit() {
-      this.searchKeyword = ''
-      this.keyword = ''
-      this.tableData = []
-      this.loading = true
-      this.searchPositionList()
-      this.loading = false
+      this.searchKeyword = "";
+      this.keyword = "";
+      this.tableData = [];
+      this.loading = true;
+      this.searchPositionList();
+      this.loading = false;
     },
     /**
      * 监听输入查询关键字
      */
     async onQueryChange() {
-      this.searchKeyword = this.searchKeyword.trim()
-      this.searchPositionList()
+      this.searchKeyword = this.searchKeyword.trim();
+      this.searchPositionList();
     },
     // 切换table页
     async handleCurrentChange(val) {
-      this.currentPage = val
-      this.loading = true
-      this.searchPositionList()
-      this.loading = false
+      this.currentPage = val;
+      this.loading = true;
+      this.searchPositionList();
+      this.loading = false;
     },
     handleDetail(val) {
-      this.showDetail = true
-      this.detailPositionID = val.id
+      this.showDetail = true;
+      this.detailPositionID = val.id;
     },
     handleHot() {
-      this.showHot = true
+      this.showHot = true;
     },
     rowClick() {},
     detailClose() {
-      this.showDetail = false
-      this.searchPositionList()
+      this.showDetail = false;
+      this.searchPositionList();
     },
     hotClose() {
-      this.showHot = false
-      this.showDetail = false
-      this.searchPositionList()
+      this.showHot = false;
+      this.showDetail = false;
+      this.searchPositionList();
     },
     // 投递简历
     async handleDelivery(val) {
       // 根据用户id和职位id判断用户是否已经投递过该职位，避免重复投递
-      const flag = await Application.getByPositionIdAndUserId(val.id, this.$store.getters.user.id)
+      const flag = await Application.getByPositionIdAndUserId(
+        val.id,
+        this.$store.getters.user.id
+      );
       if (flag === false) {
         // 不能重复投递
-        this.$message.error('你已投递过该职位，不可重复投递')
+        this.$message.error("你已投递过该职位，不可重复投递");
       } else {
         // 获取当前登录求职者的用户id
-        this.form.user_id = this.$store.getters.user.id
+        this.form.user_id = this.$store.getters.user.id;
         // 获取当前投递简历的职位id
-        this.form.position_id = val.id
+        this.form.position_id = val.id;
         // 根据用户id查询绑定的简历id
-        const temp = await Resume.getByUserId(this.$store.getters.user.id)
-        this.form.resume_id = temp.resume_id
-        console.log(temp)
+        const temp = await Resume.getByUserId(this.$store.getters.user.id);
+        this.form.resume_id = temp.resume_id;
+        console.log(temp);
         // 根据职位id查询该职位所对应的hr_id
-        const result = await Position.getById(val.id)
-        this.form.hr_id = result.hr_id
-        this.form.company_id = val.company_id
+        const result = await Position.getById(val.id);
+        this.form.hr_id = result.hr_id;
+        this.form.company_id = val.company_id;
         // 调用创建申请的方法
-        const res = await Application.create(this.form)
+        const res = await Application.create(this.form);
         if (res.code < window.MAX_SUCCESS_CODE) {
-          this.$message.success(`${res.message}`)
+          this.$message.success(`${res.message}`);
         }
       }
     },
     // 收藏职位
     async handleCollect(val) {
       // 获取当前登录求职者的用户id
-      this.list.user_id = this.$store.getters.user.id
+      this.list.user_id = this.$store.getters.user.id;
       // 获取当前收藏的职位id
-      this.list.position_id = val.id
+      this.list.position_id = val.id;
       // 调用添加收藏的方法
-      const res = await Favor.create(this.list)
+      const res = await Favor.create(this.list);
       if (res.code < window.MAX_SUCCESS_CODE) {
-        this.$message.success(`${res.message}`)
+        this.$message.success(`${res.message}`);
       }
     },
   },
-}
+};
 </script>
 
 <style lang="scss">
@@ -511,7 +566,7 @@ $nx-width: 76rem;
 
     &:after {
       display: block;
-      content: '.';
+      content: ".";
       clear: both;
       line-height: 0;
       visibility: hidden;
@@ -681,14 +736,14 @@ $nx-width: 76rem;
     }
   }
 }
-/deep/ .el-input {
+::v-deep .el-input {
   .el-input--suffix {
     background: transparent;
     font-size: 16px;
   }
 }
 
-/deep/ .el-input-group__prepend {
+::v-deep .el-input-group__prepend {
   width: 124px;
   background: #ffffff;
   border: 1px solid rgba(36, 70, 168, 0.3);
@@ -705,7 +760,7 @@ $nx-width: 76rem;
   }
 }
 
-/deep/ .el-select {
+::v-deep .el-select {
   .el-input {
     .el-select__caret {
       color: rgba(36, 70, 168, 0.3);

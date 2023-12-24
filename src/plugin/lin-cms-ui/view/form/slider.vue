@@ -2,7 +2,7 @@
   <div class="lin-container">
     <div class="lin-title">Slider 滑块</div>
     <div class="lin-wrap-ui">
-      <el-card class="box-card base-box-card" style="margin-bottom:50px;">
+      <el-card class="box-card base-box-card" style="margin-bottom: 50px">
         <div slot="header"><span>基础用法</span></div>
         <el-row>
           <template>
@@ -20,7 +20,10 @@
             </div>
             <div class="block demo-block">
               <span class="demonstration">格式化 Tooltip</span>
-              <el-slider v-model="value4" :format-tooltip="formatTooltip"></el-slider>
+              <el-slider
+                v-model="value4"
+                :format-tooltip="formatTooltip"
+              ></el-slider>
             </div>
             <div class="block demo-block">
               <span class="demonstration">禁用</span>
@@ -30,12 +33,12 @@
         </el-row>
         <el-collapse>
           <el-collapse-item title="查看代码" name="2">
-            <div style="white-space: pre-wrap;">{{ base }}</div>
+            <div style="white-space: pre-wrap">{{ base }}</div>
           </el-collapse-item>
         </el-collapse>
       </el-card>
 
-      <el-card class="box-card" style="margin-bottom:50px;">
+      <el-card class="box-card" style="margin-bottom: 50px">
         <div slot="header"><span>离散值</span></div>
         <el-row>
           <template>
@@ -51,63 +54,72 @@
         </el-row>
         <el-collapse>
           <el-collapse-item title="查看代码" name="2">
-            <div style="white-space: pre-wrap;">{{ showStops }}</div>
+            <div style="white-space: pre-wrap">{{ showStops }}</div>
           </el-collapse-item>
         </el-collapse>
       </el-card>
 
-      <el-card class="box-card" style="margin-bottom:50px;">
+      <el-card class="box-card" style="margin-bottom: 50px">
         <div slot="header"><span>带有输入框</span></div>
         <el-row>
           <template>
-            <div class="block"><el-slider v-model="value8" show-input> </el-slider></div>
+            <div class="block">
+              <el-slider v-model="value8" show-input> </el-slider>
+            </div>
           </template>
         </el-row>
         <el-collapse>
           <el-collapse-item title="查看代码" name="2">
-            <div style="white-space: pre-wrap;">{{ showInput }}</div>
+            <div style="white-space: pre-wrap">{{ showInput }}</div>
           </el-collapse-item>
         </el-collapse>
       </el-card>
 
-      <el-card class="box-card" style="margin-bottom:50px;">
+      <el-card class="box-card" style="margin-bottom: 50px">
         <div slot="header"><span>范围选择</span></div>
         <el-row>
           <template>
-            <div class="block"><el-slider v-model="value9" range show-stops :max="10"> </el-slider></div>
+            <div class="block">
+              <el-slider v-model="value9" range show-stops :max="10">
+              </el-slider>
+            </div>
           </template>
         </el-row>
         <el-collapse>
           <el-collapse-item title="查看代码" name="2">
-            <div style="white-space: pre-wrap;">{{ range }}</div>
+            <div style="white-space: pre-wrap">{{ range }}</div>
           </el-collapse-item>
         </el-collapse>
       </el-card>
 
-      <el-card class="box-card" style="margin-bottom:50px;">
+      <el-card class="box-card" style="margin-bottom: 50px">
         <div slot="header"><span>竖向模式</span></div>
         <el-row>
           <template>
-            <div class="block"><el-slider v-model="value10" vertical height="200px"> </el-slider></div>
+            <div class="block">
+              <el-slider v-model="value10" vertical height="200px"> </el-slider>
+            </div>
           </template>
         </el-row>
         <el-collapse>
           <el-collapse-item title="查看代码" name="2">
-            <div style="white-space: pre-wrap;">{{ vertical }}</div>
+            <div style="white-space: pre-wrap">{{ vertical }}</div>
           </el-collapse-item>
         </el-collapse>
       </el-card>
 
-      <el-card class="box-card" style="margin-bottom:50px;">
+      <el-card class="box-card" style="margin-bottom: 50px">
         <div slot="header"><span>展示标记</span></div>
         <el-row>
           <template>
-            <div class="block"><el-slider v-model="value11" range :marks="marks"> </el-slider></div>
+            <div class="block">
+              <el-slider v-model="value11" range :marks="marks"> </el-slider>
+            </div>
           </template>
         </el-row>
         <el-collapse>
           <el-collapse-item title="查看代码" name="2">
-            <div style="white-space: pre-wrap;">{{ marksCode }}</div>
+            <div style="white-space: pre-wrap">{{ marksCode }}</div>
           </el-collapse-item>
         </el-collapse>
       </el-card>
@@ -118,7 +130,7 @@
 <script>
 /* eslint-disable */
 export default {
-  name: '',
+  name: "",
   components: {},
   data() {
     return {
@@ -297,24 +309,24 @@ export default {
       value10: 0,
       value11: [30, 60],
       marks: {
-        0: '0°C',
-        8: '8°C',
-        37: '37°C',
+        0: "0°C",
+        8: "8°C",
+        37: "37°C",
         50: {
           style: {
-            color: '#1989FA',
+            color: "#1989FA",
           },
-          label: this.$createElement('strong', '50%'),
+          label: this.$createElement("strong", "50%"),
         },
       },
-    }
+    };
   },
   // 计算属性设置
   computed: {},
   // 数据变更监听
   watch: {},
   mounted() {
-    this.init()
+    this.init();
   },
   // 当页面使用路由参数时, 参数部分变化触发的动作在本函数中操作
   // https://router.vuejs.org/zh/guide/advanced/navigation-guards.htmll#组件内的守卫
@@ -327,16 +339,16 @@ export default {
     // 执行获取数据等初始化动作
     init() {},
     formatTooltip(val) {
-      return val / 100
+      return val / 100;
     },
   },
-}
+};
 </script>
 
 <style lang="scss" scoped>
-@import '../../assets/style/container.scss';
+@import "../../assets/style/container.scss";
 
-.base-box-card /deep/ .el-card__body {
+.base-box-card ::v-deep .el-card__body {
   padding-top: 0px;
   padding-bottom: 0px;
 }

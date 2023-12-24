@@ -38,12 +38,21 @@
             </div>
           </div>
         </div> -->
-        <div class="ads" v-if="midBanners.length" @click="goLink(midBanners[0])">
+        <div
+          class="ads"
+          v-if="midBanners.length"
+          @click="goLink(midBanners[0])"
+        >
           <img :src="midBanners[0].imgUrl" />
           <div class="tag">广告</div>
         </div>
         <div class="ads-area" v-if="banners.length">
-          <div class="ad-item" v-for="(ad, index) in banners" :key="ad.id" @click="goLink(ad)">
+          <div
+            class="ad-item"
+            v-for="(ad, index) in banners"
+            :key="ad.id"
+            @click="goLink(ad)"
+          >
             <img :src="ad.imgUrl" />
           </div>
           <!-- <div class="main-ad" @click="goLink(banners[0])">
@@ -73,16 +82,26 @@
       <div class="block">
         <BlockTitle title="热门职位" />
         <el-radio-group v-model="jobIndex" class="tabs">
-          <el-radio-button v-for="(item, index) in jobCat" :key="index" :label="item.id">
+          <el-radio-button
+            v-for="(item, index) in jobCat"
+            :key="index"
+            :label="item.id"
+          >
             {{ item.industryName }}
           </el-radio-button>
         </el-radio-group>
         <div class="block-content">
           <div class="job-cards">
-            <div class="card" v-for="(item, index) in hotPositionsByIndustryType" @click="gotoPosition(item.id)">
+            <div
+              class="card"
+              v-for="(item, index) in hotPositionsByIndustryType"
+              @click="gotoPosition(item.id)"
+            >
               <div class="job-title">
                 <div class="job-name">{{ item.positionName }}</div>
-                <div class="salary">{{ item.lowSalary }}-{{ item.topSalary }}k</div>
+                <div class="salary">
+                  {{ item.lowSalary }}-{{ item.topSalary }}k
+                </div>
               </div>
               <div class="job-base">
                 <div class="city">{{ item.cityName }}</div>
@@ -123,17 +142,43 @@
                 <img src="@/assets/image/home/all-cat.png" />
               </div>
               <div class="cat-list">
-                <div class="type-item" v-for="(item, index) in jobOptions" :key="item.pid" @mouseover="showSide(index)">
+                <div
+                  class="type-item"
+                  v-for="(item, index) in jobOptions"
+                  :key="item.pid"
+                  @mouseover="showSide(index)"
+                >
                   <div class="type-name">{{ item.pname }}</div>
-                  <a v-if="item.childLists.length && item.childLists.length > 0">{{ item.childLists[0].typeName }}</a>
-                  <a v-if="item.childLists.length && item.childLists.length > 1">{{ item.childLists[1].typeName }}</a>
-                  <a v-if="item.childLists.length && item.childLists.length > 2">{{ item.childLists[2].typeName }}</a>
-                  <img src="@/assets/image/home/cat-arrow.png" class="type-arrow" />
+                  <a
+                    v-if="item.childLists.length && item.childLists.length > 0"
+                    >{{ item.childLists[0].typeName }}</a
+                  >
+                  <a
+                    v-if="item.childLists.length && item.childLists.length > 1"
+                    >{{ item.childLists[1].typeName }}</a
+                  >
+                  <a
+                    v-if="item.childLists.length && item.childLists.length > 2"
+                    >{{ item.childLists[2].typeName }}</a
+                  >
+                  <img
+                    src="@/assets/image/home/cat-arrow.png"
+                    class="type-arrow"
+                  />
                 </div>
               </div>
-              <div class="dropdown-child" v-show="sideVisible" @mouseenter="sideVisible = true" @mouseleave="hideSide">
+              <div
+                class="dropdown-child"
+                v-show="sideVisible"
+                @mouseenter="sideVisible = true"
+                @mouseleave="hideSide"
+              >
                 <div class="title">{{ nowPosition.pname }}</div>
-                <div class="child-item" v-for="(item, index) in nowPosition.childLists" :key="index">
+                <div
+                  class="child-item"
+                  v-for="(item, index) in nowPosition.childLists"
+                  :key="index"
+                >
                   <div class="type-name">{{ item.typeName }}</div>
                   <div class="children">
                     <a
@@ -148,7 +193,11 @@
               </div>
             </div>
             <div class="company-cards">
-              <div class="card" v-for="(item, index) in hotCompanies" @click="gotoCompany(item.id)">
+              <div
+                class="card"
+                v-for="(item, index) in hotCompanies"
+                @click="gotoCompany(item.id)"
+              >
                 <img :src="item.headUrl" alt="公司logo" class="logo" />
                 <div class="company-name">{{ item.companyName }}</div>
                 <div class="company-info">
@@ -224,10 +273,19 @@
         <div class="see-more" @click="toMore('info')">查看更多</div>
       </div> -->
     </div>
-    <el-dialog :visible.sync="notifyVisible" :show-close="false" :close-on-click-modal="false" fullscreen>
+    <el-dialog
+      :visible.sync="notifyVisible"
+      :show-close="false"
+      :close-on-click-modal="false"
+      fullscreen
+    >
       <div slot="title" class="dialog-header">
         <div></div>
-        <img src="@/assets/image/login/close.png" class="close-btn" @click="closeDialog" />
+        <img
+          src="@/assets/image/login/close.png"
+          class="close-btn"
+          @click="closeDialog"
+        />
       </div>
       <div class="dialog-content" v-html="notifyContent"></div>
     </el-dialog>
@@ -235,12 +293,12 @@
 </template>
 
 <script>
-import Search from '@/component/index/Search'
-import BlockTitle from '@/page/common/blockTitle'
-import Home from '@/api/home'
+import Search from "@/component/index/Search";
+import BlockTitle from "@/page/common/blockTitle";
+import Home from "@/api/home";
 
 export default {
-  inject: ['eventBus'],
+  inject: ["eventBus"],
   components: {
     Search,
     BlockTitle,
@@ -249,7 +307,7 @@ export default {
     return {
       jobIndex: null,
       jobCat: [],
-      activeName: 'first',
+      activeName: "first",
       jobOptions: [],
       nowPosition: {},
       sideVisible: false,
@@ -258,140 +316,146 @@ export default {
       hotCompanyPositions: [],
       banners: [],
       notifyVisible: false,
-      notifyContent: '',
+      notifyContent: "",
       midBanners: [],
-    }
+    };
   },
   created() {
-    this.getBannerList()
-    this.getBannerList2()
-    this.getPositionType()
-    this.getHotIndustryType()
-    this.getHotCompanyList()
-    this.getHotCompanyPositionList()
+    this.getBannerList();
+    this.getBannerList2();
+    this.getPositionType();
+    this.getHotIndustryType();
+    this.getHotCompanyList();
+    this.getHotCompanyPositionList();
   },
   watch: {
     jobIndex(val) {
-      this.getHotPositonByIndustry()
+      this.getHotPositonByIndustry();
     },
   },
   methods: {
     gotoCompany(id) {
       const { href } = this.$router.resolve({
-        path: '/index/company',
+        path: "/index/company",
         query: { id: id },
-      })
-      window.open(href, '_blank')
+      });
+      window.open(href, "_blank");
       // this.$router.push({ path: '/index/company', query: { id } })
     },
     gotoPosition(id) {
       const { href } = this.$router.resolve({
-        path: '/index/info',
+        path: "/index/info",
         query: { id: id },
-      })
-      window.open(href, '_blank')
+      });
+      window.open(href, "_blank");
       // this.$router.push({ path: '/index/info', query: { id } })
     },
     gotoJob(kw) {
-      this.$router.push({ path: '/index/job', query: { keyWords: kw } })
+      this.$router.push({ path: "/index/job", query: { keyWords: kw } });
     },
     goLink(banner) {
       if (banner.type != 2) {
-        this.$util.jumpLink(banner.type, banner.jumpUrl)
+        this.$util.jumpLink(banner.type, banner.jumpUrl);
       } else {
-        this.showNotify(banner)
+        this.showNotify(banner);
       }
     },
     showNotify(banner) {
-      this.notifyContent = banner.bannerDesc
-      this.notifyVisible = true
+      this.notifyContent = banner.bannerDesc;
+      this.notifyVisible = true;
     },
     closeDialog() {
-      this.notifyVisible = false
-      this.notifyContent = ''
+      this.notifyVisible = false;
+      this.notifyContent = "";
     },
     changeType(index) {
-      this.jobIndex = this.jobCat[index].id
+      this.jobIndex = this.jobCat[index].id;
     },
     showSide(index) {
-      this.nowPosition = this.jobOptions[index]
-      this.sideVisible = true
+      this.nowPosition = this.jobOptions[index];
+      this.sideVisible = true;
     },
     hideSide() {
-      this.sideVisible = false
-      this.nowPosition = {}
+      this.sideVisible = false;
+      this.nowPosition = {};
     },
     async getHotCompanyPositionList() {
       let res = await Home.queryHotCompanyPositionList({
         currentPage: 1,
         pageSize: 9,
-      })
-      this.hotCompanyPositions = res.data.list
+      });
+      this.hotCompanyPositions = res.data.list;
     },
     async getHotCompanyList() {
       let res = await Home.queryHotCompanyList({
         currentPage: 1,
         pageSize: 6,
-      })
-      this.hotCompanies = res.data.list
+      });
+      this.hotCompanies = res.data.list;
     },
     async getHotPositonByIndustry() {
       let res = await Home.queryHotPositonByIndustry({
         currentPage: 1,
         pageSize: 9,
         companyIndustryId: this.jobIndex,
-      })
-      this.hotPositionsByIndustryType = res.data.list
+      });
+      this.hotPositionsByIndustryType = res.data.list;
     },
     async getHotIndustryType() {
-      let res = await Home.queryHotIndustryType({})
-      this.jobCat = res.data
+      let res = await Home.queryHotIndustryType({});
+      this.jobCat = res.data;
       if (this.jobIndex === null) {
-        this.changeType(0)
+        this.changeType(0);
       }
     },
     async getBannerList() {
-      let res = await Home.getBannerList({ bannerCode: 'index' })
-      this.banners = res.data
+      let res = await Home.getBannerList({ bannerCode: "index" });
+      this.banners = res.data;
     },
     async getBannerList2() {
-      let res = await Home.getBannerList({ bannerCode: 'index_middle' })
-      this.midBanners = res.data
+      let res = await Home.getBannerList({ bannerCode: "index_middle" });
+      this.midBanners = res.data;
     },
     async getPositionType() {
-      let res = await Home.positionType({})
-      this.jobOptions = res.data
+      let res = await Home.positionType({});
+      this.jobOptions = res.data;
     },
     toMore(flag) {
       switch (flag) {
-        case 'job':
+        case "job":
           this.$router.push({
-            path: '/index/job',
-          })
-          this.eventBus.$emit('changeTab', '2')
-          break
-        case 'company':
+            path: "/index/job",
+          });
+          this.eventBus.$emit("changeTab", "2");
+          break;
+        case "company":
           this.$router.push({
-            path: '/index/job',
-          })
-          this.eventBus.$emit('changeTab', '2')
-          break
-        case 'info':
+            path: "/index/job",
+          });
+          this.eventBus.$emit("changeTab", "2");
+          break;
+        case "info":
           this.$router.push({
-            path: '/index/job',
-          })
-          this.eventBus.$emit('changeTab', '2')
-          break
+            path: "/index/job",
+          });
+          this.eventBus.$emit("changeTab", "2");
+          break;
         default:
-          break
+          break;
       }
     },
   },
-}
+  metaInfo() {
+    console.log(this.$route.meta, "1231");
+    return {
+      meta: [{ name: "viewport", content: this.$route.meta.keywords }],
+    };
+  },
+};
 </script>
 
 <style lang="scss">
-@import url('//at.alicdn.com/t/font_631781_4v61w1yz6y74x6r.css');
+@import url("//at.alicdn.com/t/font_631781_4v61w1yz6y74x6r.css");
 $nx-color: #0470b8;
 $all-padding: 0;
 $nx-width: 76.25rem;
@@ -890,7 +954,7 @@ $nx-width: 76.25rem;
       cursor: pointer;
     }
 
-    /deep/ .el-radio-button {
+    ::v-deep .el-radio-button {
       margin-right: 22px;
 
       .el-radio-button__inner {
@@ -903,7 +967,7 @@ $nx-width: 76.25rem;
       }
     }
 
-    /deep/ .is-active {
+    ::v-deep .is-active {
       .el-radio-button__orig-radio:checked + .el-radio-button__inner {
         border-radius: 4px;
         font-weight: 600;

@@ -12,7 +12,12 @@
           <img src="@/assets/image/oxman/Coxman/icon-search.png" alt="" />
         </div> -->
         <div class="screenJob">
-          <el-select v-model="select" slot="prepend" placeholder="招聘类型" @change="changeJob($event)">
+          <el-select
+            v-model="select"
+            slot="prepend"
+            placeholder="招聘类型"
+            @change="changeJob($event)"
+          >
             <el-option label="全部" value=""></el-option>
             <el-option label="社招" value="1"></el-option>
             <el-option label="校招" value="2"></el-option>
@@ -69,10 +74,30 @@
               <p>{{ item.status }}</p>
             </div>
             <div class="jobOperation">
-              <div @click="changeStatus(item.id, item.status)" v-if="item.status == '待发布'">发布</div>
-              <div @click="editJob(item.id, item.status)" v-if="item.status != '招聘中'">编辑</div>
-              <div @click="closeJob(item.id, item.status)" v-if="item.status == '招聘中'">关闭</div>
-              <div @click="deleteJob(item.id, item.status)" v-if="item.status != '招聘中'">删除</div>
+              <div
+                @click="changeStatus(item.id, item.status)"
+                v-if="item.status == '待发布'"
+              >
+                发布
+              </div>
+              <div
+                @click="editJob(item.id, item.status)"
+                v-if="item.status != '招聘中'"
+              >
+                编辑
+              </div>
+              <div
+                @click="closeJob(item.id, item.status)"
+                v-if="item.status == '招聘中'"
+              >
+                关闭
+              </div>
+              <div
+                @click="deleteJob(item.id, item.status)"
+                v-if="item.status != '招聘中'"
+              >
+                删除
+              </div>
               <!-- <img src="@/assets/image/oxman/Coxman/more.png" alt="" /> -->
             </div>
           </div>
@@ -109,14 +134,31 @@
           <h3>职位基本信息</h3>
           <p>职位发布成功后，招聘类型、职位名称、职位类型，将无法更改</p>
           <div class="companyBox">
-            <el-form ref="addJob" v-model="editForm" label-width="110px" label-position="right">
+            <el-form
+              ref="addJob"
+              v-model="editForm"
+              label-width="110px"
+              label-position="right"
+            >
               <el-form-item label="公司:">
-                <label slot="label">公&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;司:</label>
+                <label slot="label"
+                  >公&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;司:</label
+                >
                 <p class="gsName">{{ companyName }}</p>
               </el-form-item>
               <el-form-item label="招聘类型:">
-                <el-select v-model="recruitType" placeholder="请选择" style="width: 473px; height: 40px" disabled>
-                  <el-option v-for="item in zhaopinType" :key="item.id" :label="item.label" :value="item.id">
+                <el-select
+                  v-model="recruitType"
+                  placeholder="请选择"
+                  style="width: 473px; height: 40px"
+                  disabled
+                >
+                  <el-option
+                    v-for="item in zhaopinType"
+                    :key="item.id"
+                    :label="item.label"
+                    :value="item.id"
+                  >
                   </el-option>
                 </el-select>
               </el-form-item>
@@ -153,18 +195,38 @@
               </el-form-item>
               <!-- 下面表单 -->
               <h3 class="yaoQiu">职位要求</h3>
-              <p class="p4">我们将通过以下条件，为你精确推荐合适的牛人。请尽量详细填写</p>
+              <p class="p4">
+                我们将通过以下条件，为你精确推荐合适的牛人。请尽量详细填写
+              </p>
               <el-form-item label="经验和学历:" required class="formButtom">
                 <div class="JyAndXl">
                   <el-form-item>
-                    <el-select v-model="experience" placeholder="请选择经验" style="width: 154px; height: 40px">
-                      <el-option v-for="item in jingyanArr" :key="item.id" :label="item.label" :value="item.id">
+                    <el-select
+                      v-model="experience"
+                      placeholder="请选择经验"
+                      style="width: 154px; height: 40px"
+                    >
+                      <el-option
+                        v-for="item in jingyanArr"
+                        :key="item.id"
+                        :label="item.label"
+                        :value="item.id"
+                      >
                       </el-option>
                     </el-select>
                   </el-form-item>
                   <el-form-item>
-                    <el-select v-model="education" placeholder="请选择学历" style="width: 154px; height: 40px">
-                      <el-option v-for="item in xueliArr" :key="item.id" :label="item.label" :value="item.id">
+                    <el-select
+                      v-model="education"
+                      placeholder="请选择学历"
+                      style="width: 154px; height: 40px"
+                    >
+                      <el-option
+                        v-for="item in xueliArr"
+                        :key="item.id"
+                        :label="item.label"
+                        :value="item.id"
+                      >
                       </el-option>
                     </el-select>
                   </el-form-item>
@@ -172,16 +234,43 @@
               </el-form-item>
               <el-form-item class="XinZi" label="薪资范围:">
                 <div class="Xz">
-                  <el-select v-model="editForm.lowSalary" placeholder="请选择底薪" style="width: 154px; height: 40px">
-                    <el-option v-for="item in XzLowArr" :key="item.id" :label="item.label" :value="item.id">
+                  <el-select
+                    v-model="editForm.lowSalary"
+                    placeholder="请选择底薪"
+                    style="width: 154px; height: 40px"
+                  >
+                    <el-option
+                      v-for="item in XzLowArr"
+                      :key="item.id"
+                      :label="item.label"
+                      :value="item.id"
+                    >
                     </el-option>
                   </el-select>
-                  <el-select v-model="editForm.topSalary" placeholder="请选择高薪" style="width: 154px; height: 40px">
-                    <el-option v-for="item in XzTopArr" :key="item.id" :label="item.label" :value="item.id">
+                  <el-select
+                    v-model="editForm.topSalary"
+                    placeholder="请选择高薪"
+                    style="width: 154px; height: 40px"
+                  >
+                    <el-option
+                      v-for="item in XzTopArr"
+                      :key="item.id"
+                      :label="item.label"
+                      :value="item.id"
+                    >
                     </el-option>
                   </el-select>
-                  <el-select v-model="editForm.yearSalary" placeholder="请选择几薪" style="width: 154px; height: 40px">
-                    <el-option v-for="item in XzYearArr" :key="item.id" :label="item.label" :value="item.id">
+                  <el-select
+                    v-model="editForm.yearSalary"
+                    placeholder="请选择几薪"
+                    style="width: 154px; height: 40px"
+                  >
+                    <el-option
+                      v-for="item in XzYearArr"
+                      :key="item.id"
+                      :label="item.label"
+                      :value="item.id"
+                    >
                     </el-option>
                   </el-select>
                 </div>
@@ -193,7 +282,12 @@
               </el-form-item> -->
               <el-form-item class="chengshi" label="城市选择:">
                 <div class="cityBox">
-                  <el-input type="text" readonly placeholder="请输入内容" v-model="cityString"></el-input>
+                  <el-input
+                    type="text"
+                    readonly
+                    placeholder="请输入内容"
+                    v-model="cityString"
+                  ></el-input>
                   <p @click="toChooseCity">修改</p>
                 </div>
               </el-form-item>
@@ -222,38 +316,73 @@
               </el-form-item>
             </el-form>
             <p class="jieShao" v-if="email">
-              简历将发送到 {{ email }}，如需更改邮箱，请在【个人中心】中修改已阅读并遵守《希望工厂职位信息发布规则》
+              简历将发送到
+              {{
+                email
+              }}，如需更改邮箱，请在【个人中心】中修改已阅读并遵守《希望工厂职位信息发布规则》
             </p>
           </div>
         </div>
       </div>
     </el-dialog>
-    <el-dialog :visible.sync="showCity" :show-close="false" :close-on-click-modal="false">
+    <el-dialog
+      :visible.sync="showCity"
+      :show-close="false"
+      :close-on-click-modal="false"
+    >
       <div class="dialog-content">
         <img class="bjW" src="@/assets/image/job/hopeBj2.png" alt="" />
         <div class="title">
           <h2>公司信息填写须知</h2>
-          <img src="@/assets/image/login/close.png" class="close-btn" @click="cancelChoose" />
+          <img
+            src="@/assets/image/login/close.png"
+            class="close-btn"
+            @click="cancelChoose"
+          />
         </div>
         <div class="cityMask">
           <div class="hot-city-list">当前城市</div>
-          <h2 v-if="this.cityInfo.name">{{ this.cityInfo.name }}-{{ this.areaInfo.name || '全区域' }}</h2>
+          <h2 v-if="this.cityInfo.name">
+            {{ this.cityInfo.name }}-{{ this.areaInfo.name || "全区域" }}
+          </h2>
           <h2 v-else>暂未选择</h2>
           <div class="hot-city-list">选择省份</div>
           <div class="city-list">
-            <el-select v-model="province" placeholder="请选择" @change="changeProvince">
-              <el-option v-for="item in provinceArr" :key="item.id" :label="item.name" :value="item.id"> </el-option>
+            <el-select
+              v-model="province"
+              placeholder="请选择"
+              @change="changeProvince"
+            >
+              <el-option
+                v-for="item in provinceArr"
+                :key="item.id"
+                :label="item.name"
+                :value="item.id"
+              >
+              </el-option>
             </el-select>
           </div>
           <div class="hot-city-list">选择城市</div>
           <div class="city-list">
             <el-select v-model="city" placeholder="请选择" @change="changeCity">
-              <el-option v-for="item in cityArr" :key="item.id" :label="item.name" :value="item.id"> </el-option>
+              <el-option
+                v-for="item in cityArr"
+                :key="item.id"
+                :label="item.name"
+                :value="item.id"
+              >
+              </el-option>
             </el-select>
           </div>
           <div class="hot-city-list">选择区</div>
           <div class="city-list">
-            <a class="city-btn" href="javascript:void(0)" @click="changeArea({})"> 全区域 </a>
+            <a
+              class="city-btn"
+              href="javascript:void(0)"
+              @click="changeArea({})"
+            >
+              全区域
+            </a>
             <a
               v-for="area in areas"
               :key="area.id"
@@ -285,53 +414,55 @@
   </div>
 </template>
 <script>
-import { mapActions, mapMutations, mapGetters } from 'vuex'
+import { mapActions, mapMutations, mapGetters } from "vuex";
 
-import jobManagement from '../../api/jobManagement/index'
-import Home from '@/api/home'
-import Oxman from '@/api/oxman'
-import Job from '@/api/job'
+import jobManagement from "../../api/jobManagement/index";
+import Home from "@/api/home";
+import Oxman from "@/api/oxman";
+import Job from "@/api/job";
 export default {
   computed: {
-    ...mapGetters(['userId', 'userInfo']),
+    ...mapGetters(["userId", "userInfo"]),
     cityString() {
       if (this.cityInfo.name) {
-        return this.cityInfo.name + '-' + (this.areaInfo.name || '全区域')
+        return this.cityInfo.name + "-" + (this.areaInfo.name || "全区域");
       }
-      return this.editForm.cityName + '-' + (this.editForm.areaName || '全区域')
+      return (
+        this.editForm.cityName + "-" + (this.editForm.areaName || "全区域")
+      );
     },
   },
   props: {
     title: String,
   },
   beforeRouteEnter: (to, from, next) => {
-    next(vm => {
-      vm.getQueryPositonList()
-      vm.queryCompanyAddrList()
-    })
+    next((vm) => {
+      vm.getQueryPositonList();
+      vm.queryCompanyAddrList();
+    });
   },
   data() {
-    let self = this
+    let self = this;
     return {
-      name: '发布职位',
+      name: "发布职位",
       i1: null,
-      select: '',
+      select: "",
       status: [
-        { name: '全部职位', id: null },
-        { name: '已发布', id: 1 },
-        { name: '待发布', id: 0 },
-        { name: '停止招聘', id: 2 },
+        { name: "全部职位", id: null },
+        { name: "已发布", id: 1 },
+        { name: "待发布", id: 0 },
+        { name: "停止招聘", id: 2 },
       ],
-      searchStr: '',
+      searchStr: "",
       jobCard: [],
       currentPage: 1,
       pageSize: 10,
       total: 100,
       editForm: {},
-      recruitType: '',
-      experience: '',
-      education: '',
-      workAddress: '',
+      recruitType: "",
+      experience: "",
+      education: "",
+      workAddress: "",
       loading: false,
       rules: {},
       showEdit: false,
@@ -339,375 +470,375 @@ export default {
       jobOptions: [],
       nowPosition: {},
       sideVisible: false,
-      companyName: '',
+      companyName: "",
       // companyId: '30',
       saveId: 0,
-      value: '',
+      value: "",
       zhaopinType: [
         {
-          label: '社招',
+          label: "社招",
           id: 1,
         },
         {
-          label: '校招',
+          label: "校招",
           id: 2,
         },
         {
-          label: '海归',
+          label: "海归",
           id: 3,
         },
         {
-          label: '兼职',
+          label: "兼职",
           id: 4,
         },
         {
-          label: '灵活就业',
+          label: "灵活就业",
           id: 5,
         },
       ],
       jingyanArr: [
         {
-          label: '不限',
+          label: "不限",
           id: 0,
         },
         {
-          label: '在校/应届',
+          label: "在校/应届",
           id: 1,
         },
         {
-          label: '一年以内',
+          label: "一年以内",
           id: 2,
         },
         {
-          label: '1-3年',
+          label: "1-3年",
           id: 3,
         },
         {
-          label: '3-5年',
+          label: "3-5年",
           id: 4,
         },
         {
-          label: '5-10年',
+          label: "5-10年",
           id: 5,
         },
         {
-          label: '10年以上',
+          label: "10年以上",
           id: 6,
         },
       ],
       xueliArr: [
         {
-          label: '不限',
+          label: "不限",
           id: 0,
         },
         {
-          label: '小学',
+          label: "小学",
           id: 1,
         },
         {
-          label: '初中',
+          label: "初中",
           id: 2,
         },
         {
-          label: '高中',
+          label: "高中",
           id: 3,
         },
         {
-          label: '大专',
+          label: "大专",
           id: 4,
         },
         {
-          label: '本科',
+          label: "本科",
           id: 5,
         },
         {
-          label: '硕士',
+          label: "硕士",
           id: 6,
         },
         {
-          label: '博士',
+          label: "博士",
           id: 7,
         },
       ],
       XzLowArr: [
         {
-          label: '1K',
+          label: "1K",
           id: 1,
         },
         {
-          label: '2K',
+          label: "2K",
           id: 2,
         },
         {
-          label: '3K',
+          label: "3K",
           id: 3,
         },
         {
-          label: '4K',
+          label: "4K",
           id: 4,
         },
         {
-          label: '5K',
+          label: "5K",
           id: 5,
         },
         {
-          label: '6K',
+          label: "6K",
           id: 6,
         },
         {
-          label: '7K',
+          label: "7K",
           id: 7,
         },
         {
-          label: '8K',
+          label: "8K",
           id: 8,
         },
         {
-          label: '9K',
+          label: "9K",
           id: 9,
         },
         {
-          label: '10K',
+          label: "10K",
           id: 10,
         },
         {
-          label: '11K',
+          label: "11K",
           id: 11,
         },
         {
-          label: '12K',
+          label: "12K",
           id: 12,
         },
         {
-          label: '13K',
+          label: "13K",
           id: 13,
         },
         {
-          label: '14K',
+          label: "14K",
           id: 14,
         },
         {
-          label: '15K',
+          label: "15K",
           id: 15,
         },
         {
-          label: '16K',
+          label: "16K",
           id: 16,
         },
         {
-          label: '17K',
+          label: "17K",
           id: 17,
         },
         {
-          label: '18K',
+          label: "18K",
           id: 18,
         },
         {
-          label: '19K',
+          label: "19K",
           id: 19,
         },
         {
-          label: '20K',
+          label: "20K",
           id: 20,
         },
         {
-          label: '21K',
+          label: "21K",
           id: 21,
         },
         {
-          label: '22K',
+          label: "22K",
           id: 22,
         },
         {
-          label: '23K',
+          label: "23K",
           id: 23,
         },
         {
-          label: '24K',
+          label: "24K",
           id: 24,
         },
         {
-          label: '25K',
+          label: "25K",
           id: 25,
         },
         {
-          label: '26K',
+          label: "26K",
           id: 26,
         },
         {
-          label: '27K',
+          label: "27K",
           id: 27,
         },
         {
-          label: '28K',
+          label: "28K",
           id: 28,
         },
         {
-          label: '29K',
+          label: "29K",
           id: 29,
         },
         {
-          label: '30K',
+          label: "30K",
           id: 30,
         },
       ],
       XzTopArr: [
         {
-          label: '1K',
+          label: "1K",
           id: 1,
         },
         {
-          label: '2K',
+          label: "2K",
           id: 2,
         },
         {
-          label: '3K',
+          label: "3K",
           id: 3,
         },
         {
-          label: '4K',
+          label: "4K",
           id: 4,
         },
         {
-          label: '5K',
+          label: "5K",
           id: 5,
         },
         {
-          label: '6K',
+          label: "6K",
           id: 6,
         },
         {
-          label: '7K',
+          label: "7K",
           id: 7,
         },
         {
-          label: '8K',
+          label: "8K",
           id: 8,
         },
         {
-          label: '9K',
+          label: "9K",
           id: 9,
         },
         {
-          label: '10K',
+          label: "10K",
           id: 10,
         },
         {
-          label: '11K',
+          label: "11K",
           id: 11,
         },
         {
-          label: '12K',
+          label: "12K",
           id: 12,
         },
         {
-          label: '13K',
+          label: "13K",
           id: 13,
         },
         {
-          label: '14K',
+          label: "14K",
           id: 14,
         },
         {
-          label: '15K',
+          label: "15K",
           id: 15,
         },
         {
-          label: '16K',
+          label: "16K",
           id: 16,
         },
         {
-          label: '17K',
+          label: "17K",
           id: 17,
         },
         {
-          label: '18K',
+          label: "18K",
           id: 18,
         },
         {
-          label: '19K',
+          label: "19K",
           id: 19,
         },
         {
-          label: '20K',
+          label: "20K",
           id: 20,
         },
         {
-          label: '21K',
+          label: "21K",
           id: 21,
         },
         {
-          label: '22K',
+          label: "22K",
           id: 22,
         },
         {
-          label: '23K',
+          label: "23K",
           id: 23,
         },
         {
-          label: '24K',
+          label: "24K",
           id: 24,
         },
         {
-          label: '25K',
+          label: "25K",
           id: 25,
         },
         {
-          label: '26K',
+          label: "26K",
           id: 26,
         },
         {
-          label: '27K',
+          label: "27K",
           id: 27,
         },
         {
-          label: '28K',
+          label: "28K",
           id: 28,
         },
         {
-          label: '29K',
+          label: "29K",
           id: 29,
         },
         {
-          label: '30K',
+          label: "30K",
           id: 30,
         },
         {
-          label: '31K',
+          label: "31K",
           id: 31,
         },
         {
-          label: '32K',
+          label: "32K",
           id: 32,
         },
         {
-          label: '33K',
+          label: "33K",
           id: 33,
         },
         {
-          label: '34K',
+          label: "34K",
           id: 34,
         },
         {
-          label: '35K',
+          label: "35K",
           id: 35,
         },
       ],
       XzYearArr: [
-        { label: '12', id: 1 },
-        { label: '13', id: 2 },
-        { label: '14', id: 3 },
-        { label: '15', id: 4 },
-        { label: '16', id: 5 },
+        { label: "12", id: 1 },
+        { label: "13", id: 2 },
+        { label: "14", id: 3 },
+        { label: "15", id: 4 },
+        { label: "16", id: 5 },
       ],
       DdArr: [],
-      email: '',
+      email: "",
       radio: 0,
       positionTypeId: 0,
-      province: '',
+      province: "",
       provinceInfo: {},
       provinceArr: [],
-      city: '',
+      city: "",
       cityInfo: {},
       cityArr: [],
       areaInfo: {},
@@ -720,26 +851,26 @@ export default {
       },
       plugin: [
         {
-          pName: 'PlaceSearch',
+          pName: "PlaceSearch",
           events: {
             init(instance) {
               // 实例化高德地图的PlaceSearch插件
-              self.searchPlugin = instance
+              self.searchPlugin = instance;
             },
           },
         },
       ],
-    }
+    };
   },
   created() {
-    this.queryCompanyAddrList()
-    console.log(this.userInfo, '我是信息')
-    this.queryCompanyInfo()
+    this.queryCompanyAddrList();
+    console.log(this.userInfo, "我是信息");
+    this.queryCompanyInfo();
     setTimeout(() => {
-      this.getQueryPositonList()
-    }, 500)
-    this.getQueryPersonInfo()
-    this.queryCityList(1, '')
+      this.getQueryPositonList();
+    }, 500);
+    this.getQueryPersonInfo();
+    this.queryCityList(1, "");
   },
   mounted() {},
   methods: {
@@ -747,166 +878,166 @@ export default {
       let params = {
         regionLevel: level,
         id: id,
-      }
-      let res = await Job.queryCityList(params)
+      };
+      let res = await Job.queryCityList(params);
       if (res.code == 200) {
         if (level == 1) {
-          this.provinceArr = res.data
-          console.log(this.provinceArr)
+          this.provinceArr = res.data;
+          console.log(this.provinceArr);
         }
         if (level == 2) {
-          let cityArr = res.data
-          cityArr.forEach(item => {
-            if (item.name == '市辖区') {
-              item.name = this.provinceInfo.name
+          let cityArr = res.data;
+          cityArr.forEach((item) => {
+            if (item.name == "市辖区") {
+              item.name = this.provinceInfo.name;
             }
-          })
-          this.cityArr = cityArr
+          });
+          this.cityArr = cityArr;
         }
         if (level == 3) {
-          let areas = res.data
-          areas.forEach(item => {
-            if (item.name == '市辖区') {
-              item.name = this.cityInfo.name
+          let areas = res.data;
+          areas.forEach((item) => {
+            if (item.name == "市辖区") {
+              item.name = this.cityInfo.name;
             }
-          })
-          this.areas = areas
+          });
+          this.areas = areas;
         }
       }
     },
     changeProvince(val) {
-      this.province = val
-      this.queryCityList(2, this.province)
-      this.city = ''
-      this.areas = []
-      this.provinceArr.forEach(item => {
+      this.province = val;
+      this.queryCityList(2, this.province);
+      this.city = "";
+      this.areas = [];
+      this.provinceArr.forEach((item) => {
         if (item.id == val) {
-          this.provinceInfo = item
+          this.provinceInfo = item;
         }
-      })
+      });
     },
     changeCity(val) {
-      this.city = val
-      this.cityArr.forEach(item => {
+      this.city = val;
+      this.cityArr.forEach((item) => {
         if (item.id == val) {
-          this.cityInfo = item
+          this.cityInfo = item;
         }
-      })
-      this.queryCityList(3, this.city)
+      });
+      this.queryCityList(3, this.city);
     },
     changeArea(area) {
-      this.areaInfo = area
+      this.areaInfo = area;
     },
     //选择枚举
     returnIndex(val, arr) {
-      let index = -1
+      let index = -1;
       arr.forEach((item, i) => {
         if (item.id == val) {
-          index = i
+          index = i;
         }
-      })
-      return index
+      });
+      return index;
     },
     // 跳转新增职位页面
     toAddJob() {
-      this.$store.dispatch('setOxTitle', this.name)
-      this.$router.push({ name: 'addJob' })
+      this.$store.dispatch("setOxTitle", this.name);
+      this.$router.push({ name: "addJob" });
     },
     //选择职位类型
     async changeJob(value) {
-      this.select = value
-      console.log(this.select, '职位类型')
+      this.select = value;
+      console.log(this.select, "职位类型");
       let data = {
         companyId: this.userInfo.companyId,
         status: this.i1,
         recruitType: value,
         pageSize: this.pageSize,
         currentPage: this.currentPage,
-      }
-      let res = await jobManagement.getQueryPositonList(data)
-      console.log(res, '根据职位类型切换')
-      this.jobCard = res.data.list
-      this.total = res.data.total
+      };
+      let res = await jobManagement.getQueryPositonList(data);
+      console.log(res, "根据职位类型切换");
+      this.jobCard = res.data.list;
+      this.total = res.data.total;
     },
     //切换颜色 横向tab 筛选 全部 待发布 招聘中
     async changeColor(id) {
-      this.i1 = id
+      this.i1 = id;
       let data = {
         companyId: this.userInfo.companyId,
         status: id,
         recruitType: this.select,
         pageSize: this.pageSize,
         currentPage: this.currentPage,
-      }
-      let res = await jobManagement.getQueryPositonList(data)
-      console.log('根据状态切换', res, this.i1, id)
-      this.jobCard = res.data.list
-      this.total = res.data.total
+      };
+      let res = await jobManagement.getQueryPositonList(data);
+      console.log("根据状态切换", res, this.i1, id);
+      this.jobCard = res.data.list;
+      this.total = res.data.total;
     },
 
     //发布职位 修改状态
     async changeStatus(id, status) {
-      console.log(id, '我是id')
+      console.log(id, "我是id");
       let data = {
         companyId: this.userInfo.companyId,
         id: id,
-      }
-      console.log(status, '我是状态')
-      if (status == '待发布') {
+      };
+      console.log(status, "我是状态");
+      if (status == "待发布") {
         try {
-          let res = await jobManagement.releasePositonInfo(data)
-          console.log(res.code, '我是修改后')
+          let res = await jobManagement.releasePositonInfo(data);
+          console.log(res.code, "我是修改后");
           if (res.code == 200) {
-            this.$message('发布成功')
+            this.$message("发布成功");
           } else {
-            this.$message(res.data)
+            this.$message(res.data);
           }
         } catch (error) {
-          console.log(res.data)
-          this.$message('发布失败')
+          console.log(res.data);
+          this.$message("发布失败");
         }
       } else {
-        this.$message('该职位已发布或已停止招聘')
+        this.$message("该职位已发布或已停止招聘");
       }
-      this.changeColor(this.i1)
+      this.changeColor(this.i1);
     },
 
     // 关闭职位
     async closeJob(id, status) {
       let data = {
         id: id,
-      }
-      if (status == '招聘中') {
+      };
+      if (status == "招聘中") {
         try {
-          let res = await jobManagement.stopPositonInfo(data)
-          console.log(res.code)
+          let res = await jobManagement.stopPositonInfo(data);
+          console.log(res.code);
           if (res.code == 200) {
-            this.$message('关闭成功')
+            this.$message("关闭成功");
           }
         } catch (error) {
-          this.$message('关闭失败')
+          this.$message("关闭失败");
         }
       } else {
-        this.$message('非招聘中职位不能关闭')
+        this.$message("非招聘中职位不能关闭");
       }
-      this.changeColor(this.i1)
+      this.changeColor(this.i1);
     },
     //删除职位
     async deleteJob(id, status) {
       let data = {
         id: id,
-      }
+      };
       try {
-        await jobManagement.deletePositonInfo(data)
+        await jobManagement.deletePositonInfo(data);
         this.$message({
-          message: '删除成功',
-          type: 'success',
-        })
+          message: "删除成功",
+          type: "success",
+        });
       } catch (error) {
         this.$message({
-          message: '删除失败',
-          type: 'error',
-        })
+          message: "删除失败",
+          type: "error",
+        });
       }
       let params = {
         companyId: this.userInfo.companyId,
@@ -914,132 +1045,149 @@ export default {
         recruitType: null,
         currentPage: this.currentPage,
         pageSize: this.pageSize,
-      }
-      let res = await jobManagement.getQueryPositonList(params)
-      console.log(res, '全部职位')
-      this.jobCard = res.data.list
-      this.total = res.data.total
+      };
+      let res = await jobManagement.getQueryPositonList(params);
+      console.log(res, "全部职位");
+      this.jobCard = res.data.list;
+      this.total = res.data.total;
     },
 
     //编辑职位
     async editJob(id, status) {
-      if (status !== '招聘中') {
-        this.showEdit = true
+      if (status !== "招聘中") {
+        this.showEdit = true;
         let data = {
           id: id,
-        }
-        let res = await jobManagement.queryPositonInfo(data)
-        console.log(res.data, '这是职位详情')
+        };
+        let res = await jobManagement.queryPositonInfo(data);
+        console.log(res.data, "这是职位详情");
         // this.companyName = this.companyName
-        this.editForm = res.data
-        this.saveId = id
-        this.education = res.data.educationCode
-        this.experience = res.data.experienceCode
-        this.recruitType = res.data.recruitTypeCode
+        this.editForm = res.data;
+        this.saveId = id;
+        this.education = res.data.educationCode;
+        this.experience = res.data.experienceCode;
+        this.recruitType = res.data.recruitTypeCode;
 
         this.recruitType =
           this.returnIndex(this.recruitType, this.zhaopinType) > -1
-            ? this.zhaopinType[this.returnIndex(this.recruitType, this.zhaopinType)].id
-            : ''
+            ? this.zhaopinType[
+                this.returnIndex(this.recruitType, this.zhaopinType)
+              ].id
+            : "";
         this.experience =
           this.returnIndex(this.experience, this.jingyanArr) > -1
-            ? this.jingyanArr[this.returnIndex(this.experience, this.jingyanArr)].id
-            : ''
+            ? this.jingyanArr[
+                this.returnIndex(this.experience, this.jingyanArr)
+              ].id
+            : "";
         this.education =
           this.returnIndex(this.education, this.xueliArr) > -1
             ? this.xueliArr[this.returnIndex(this.education, this.xueliArr)].id
-            : ''
-        console.log(this.recruitType, this.experience, this.education, '我是测试回填数据的')
+            : "";
+        console.log(
+          this.recruitType,
+          this.experience,
+          this.education,
+          "我是测试回填数据的"
+        );
       } else {
-        this.$message('该职位在招聘中或已停止招聘,无法编辑')
+        this.$message("该职位在招聘中或已停止招聘,无法编辑");
       }
     },
     //模态框
     // 展示职位选择数据
     showSide(index) {
-      this.nowPosition = this.jobOptions[index]
-      this.sideVisible = true
+      this.nowPosition = this.jobOptions[index];
+      this.sideVisible = true;
     },
     // 隐藏职位选择
     hideSide() {
-      this.sideVisible = false
-      this.nowPosition = {}
+      this.sideVisible = false;
+      this.nowPosition = {};
     },
     // 选择职业类型方法
     selectJob(value, id) {
-      console.log(value, '1111111111111111111')
-      this.editForm.positionTypeName = value
-      this.showbigCard = false
-      this.positionTypeId = id
+      console.log(value, "1111111111111111111");
+      this.editForm.positionTypeName = value;
+      this.showbigCard = false;
+      this.positionTypeId = id;
     },
     //地址获取
     async queryCompanyAddrList() {
       let data = {
         companyId: this.userInfo.companyId,
-      }
-      let res = await jobManagement.queryCompanyAddrList(data)
-      this.DdArr = res.data.list
-      console.log(this.DdArr, '这是地址')
+      };
+      let res = await jobManagement.queryCompanyAddrList(data);
+      this.DdArr = res.data.list;
+      console.log(this.DdArr, "这是地址");
     },
     //地址选择事件
     changeAd(val) {
-      const _this = this
+      const _this = this;
       this.searchPlugin.search(val, (status, result) => {
-        if (status === 'complete' && result.info === 'OK') {
+        if (status === "complete" && result.info === "OK") {
           if (!result.poiList.pois.length) {
-            _this.$message.error('未查询到该地址，请重新选择')
+            _this.$message.error("未查询到该地址，请重新选择");
           } else {
-            let lng = result.poiList.pois[0].location.lng
-            let lat = result.poiList.pois[0].location.lat
-            _this.editForm.longitude = lng
-            _this.editForm.latitude = lat
-            console.log('经纬度：')
-            console.log(lng, lat)
+            let lng = result.poiList.pois[0].location.lng;
+            let lat = result.poiList.pois[0].location.lat;
+            _this.editForm.longitude = lng;
+            _this.editForm.latitude = lat;
+            console.log("经纬度：");
+            console.log(lng, lat);
           }
         } else {
-          _this.$message.error('未查询到该地址，请重新选择')
+          _this.$message.error("未查询到该地址，请重新选择");
         }
-      })
+      });
     },
     beforeSave() {
-      console.log('cityInfo', this.cityInfo)
-      let workCityCode = this.cityInfo.zipcode ? this.cityInfo.zipcode : this.editForm.cityCode
-      let workAreaCode = this.areaInfo.zipcode ? this.areaInfo.zipcode : this.editForm.areaCode
-      this.DdArr.forEach(item => {
+      console.log("cityInfo", this.cityInfo);
+      let workCityCode = this.cityInfo.zipcode
+        ? this.cityInfo.zipcode
+        : this.editForm.cityCode;
+      let workAreaCode = this.areaInfo.zipcode
+        ? this.areaInfo.zipcode
+        : this.editForm.areaCode;
+      this.DdArr.forEach((item) => {
         if (item.completeAddress == this.editForm.workAddress) {
           if (workCityCode == item.cityCode && workAreaCode == item.areaCode) {
-            this.editForm.el = item
+            this.editForm.el = item;
           }
         }
-      })
-      console.log(111, this.editForm.el)
+      });
+      console.log(111, this.editForm.el);
       if (!this.editForm.el || !this.editForm.el.workAddress) {
-        this.editForm.el = {}
-        this.$confirm('您当前职位地址与公司地址不一致，是否需要新增公司地址？', '提示', {
-          distinguishCancelAndClose: true,
-          confirmButtonText: '新增地址',
-          cancelButtonText: '继续提交',
-        })
+        this.editForm.el = {};
+        this.$confirm(
+          "您当前职位地址与公司地址不一致，是否需要新增公司地址？",
+          "提示",
+          {
+            distinguishCancelAndClose: true,
+            confirmButtonText: "新增地址",
+            cancelButtonText: "继续提交",
+          }
+        )
           .then(() => {
-            this.showEdit = false
-            this.$router.push({ path: '/oxHome/userCenter/address' })
+            this.showEdit = false;
+            this.$router.push({ path: "/oxHome/userCenter/address" });
           })
-          .catch(action => {
-            console.log(this.editForm.el)
-            if (action == 'cancel') {
-              this.saveForm()
+          .catch((action) => {
+            console.log(this.editForm.el);
+            if (action == "cancel") {
+              this.saveForm();
             }
-          })
+          });
       } else {
-        console.log(this.editForm.el)
-        this.saveForm()
+        console.log(this.editForm.el);
+        this.saveForm();
       }
     },
     //保存
     async saveForm() {
       let data1 = {
         companyId: this.userInfo.companyId,
-      }
+      };
       // let res = await jobManagement.queryCompanyAddrList(data1)
       // this.DdArr = res.data.list
       // for (let i = 0; i < this.DdArr.length; i++) {
@@ -1047,50 +1195,53 @@ export default {
       //   this.editForm.el = el
       // }
       let data = {
-        id: this.saveId || '',
+        id: this.saveId || "",
         companyId: this.userInfo.companyId,
         companyName: this.companyName,
-        positionName: this.editForm.positionName || '',
-        recruitType: this.recruitType + '' || '',
-        responsibility: this.editForm.responsibility || '',
-        skillRequire: '',
-        topSalary: parseInt(this.editForm.topSalary) || '',
-        lowSalary: parseInt(this.editForm.lowSalary) || '',
-        yearSalary: this.editForm.yearSalary || '',
-        education: this.education + '' || '',
-        experience: this.experience + '' || '',
+        positionName: this.editForm.positionName || "",
+        recruitType: this.recruitType + "" || "",
+        responsibility: this.editForm.responsibility || "",
+        skillRequire: "",
+        topSalary: parseInt(this.editForm.topSalary) || "",
+        lowSalary: parseInt(this.editForm.lowSalary) || "",
+        yearSalary: this.editForm.yearSalary || "",
+        education: this.education + "" || "",
+        experience: this.experience + "" || "",
         workAddress: this.editForm.workAddress,
         longitude: this.editForm.longitude,
         latitude: this.editForm.latitude,
-        welfare: '',
-        positionTypeId: this.editForm.positionTypeId || '',
-        cityCode: this.cityInfo.zipcode || this.editForm.el.cityCode || this.editForm.cityCode,
+        welfare: "",
+        positionTypeId: this.editForm.positionTypeId || "",
+        cityCode:
+          this.cityInfo.zipcode ||
+          this.editForm.el.cityCode ||
+          this.editForm.cityCode,
         cityName: this.cityInfo.name || this.editForm.cityName,
         areaCode: this.cityInfo.zipcode
-          ? this.areaInfo.zipcode || ''
+          ? this.areaInfo.zipcode || ""
           : this.editForm.el.areaCode || this.editForm.areaCode,
         areaName: this.cityInfo.zipcode
-          ? this.areaInfo.name || ''
+          ? this.areaInfo.name || ""
           : this.editForm.el.areaName || this.editForm.areaName,
         pageSize: this.pageSize,
         currentPage: this.currentPage,
-      }
-      console.log(data, '我是编辑的data')
+      };
+      console.log(data, "我是编辑的data");
       try {
-        const res = await jobManagement.updatePositonInfo(data)
-        console.log(res.code, res.data, '我是测试')
-        this.$message.success('编辑成功')
+        const res = await jobManagement.updatePositonInfo(data);
+        console.log(res.code, res.data, "我是测试");
+        this.$message.success("编辑成功");
       } catch (error) {
-        this.$message.error('编辑失败')
+        this.$message.error("编辑失败");
       }
-      console.log(data, '我是编辑')
-      this.showEdit = false
-      this.changeColor(this.i1)
+      console.log(data, "我是编辑");
+      this.showEdit = false;
+      this.changeColor(this.i1);
     },
     //取消
     cancelForm() {
-      this.showEdit = false
-      this.editForm = {}
+      this.showEdit = false;
+      this.editForm = {};
     },
 
     //获取职位列表
@@ -1101,80 +1252,89 @@ export default {
         recruitType: null,
         currentPage: this.currentPage,
         pageSize: this.pageSize,
-      }
-      let res = await jobManagement.getQueryPositonList(params)
-      console.log(res, '全部职位')
-      this.jobCard = res.data.list
-      this.total = res.data.total
+      };
+      let res = await jobManagement.getQueryPositonList(params);
+      console.log(res, "全部职位");
+      this.jobCard = res.data.list;
+      this.total = res.data.total;
     },
 
     //获取公司信息
     async queryCompanyInfo() {
       let params = {
         // id: 24,
-        id: this.userInfo.companyId || '24',
-      }
-      let res = await Oxman.queryCompanyInfo(params)
-      console.log(this.userInfo.companyId, '我是公司Id')
+        id: this.userInfo.companyId || "24",
+      };
+      let res = await Oxman.queryCompanyInfo(params);
+      console.log(this.userInfo.companyId, "我是公司Id");
       // console.log(res.data, '我是公司信息')
-      this.companyName = res.data.companyName
+      this.companyName = res.data.companyName;
     },
 
     //获取公司个人信息
     async getQueryPersonInfo() {
-      let data = { userId: this.userId }
-      let res = await Oxman.queryPersonInfo(data)
-      this.email = res.data.email
-      console.log(res, '我是公司用户信息')
+      let data = { userId: this.userId };
+      let res = await Oxman.queryPersonInfo(data);
+      this.email = res.data.email;
+      console.log(res, "我是公司用户信息");
     },
 
     // 分页跳转
     currentChange(val) {
       if (val == this.currentPage) {
-        return
+        return;
       }
-      this.currentPage = val
-      this.getQueryPositonList()
+      this.currentPage = val;
+      this.getQueryPositonList();
     },
     toChooseCity() {
-      this.showCity = true
+      this.showCity = true;
       this.cityInfo = {
         name: this.editForm.cityName,
-      }
+      };
       this.areaInfo = {
         name: this.editForm.areaName,
-      }
+      };
     },
     cancelChoose() {
-      this.cityInfo = {}
-      this.areaInfo = {}
-      this.province = ''
-      this.provinceInfo = {}
-      this.city = ''
-      this.cityArr = []
-      this.areas = []
-      this.showCity = false
+      this.cityInfo = {};
+      this.areaInfo = {};
+      this.province = "";
+      this.provinceInfo = {};
+      this.city = "";
+      this.cityArr = [];
+      this.areas = [];
+      this.showCity = false;
     },
     sureChoose() {
-      this.province = ''
-      this.city = ''
-      this.cityArr = []
-      this.areas = []
-      this.showCity = false
+      this.province = "";
+      this.city = "";
+      this.cityArr = [];
+      this.areas = [];
+      this.showCity = false;
     },
   },
-}
+  metaInfo() {
+    return {
+      meta: [{ name: "viewport", content: this.$route.meta.keywords }],
+    };
+  },
+};
 </script>
 
 <style lang="scss" scoped>
-@import url('//at.alicdn.com/t/font_631781_4v61w1yz6y74x6r.css');
+@import url("//at.alicdn.com/t/font_631781_4v61w1yz6y74x6r.css");
 $nx-color: #0470b8;
 $all-padding: 0;
 $nx-width: 76.25rem;
 .main {
   // width: 100%;
   // height: auto;
-  background: linear-gradient(180deg, rgba(36, 70, 168, 0.25) 0%, rgba(36, 70, 168, 0) 100%);
+  background: linear-gradient(
+    180deg,
+    rgba(36, 70, 168, 0.25) 0%,
+    rgba(36, 70, 168, 0) 100%
+  );
   padding: 32px 0;
   box-sizing: border-box;
   display: flex;
@@ -1282,7 +1442,7 @@ $nx-width: 76.25rem;
         .jobCard {
           width: 996px;
           height: 90px;
-          background: url('~@/assets/image/oxman/Coxman/Bg32@2x.png');
+          background: url("~@/assets/image/oxman/Coxman/Bg32@2x.png");
           display: flex;
           .jobName {
             min-width: 232px;

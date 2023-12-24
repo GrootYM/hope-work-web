@@ -34,7 +34,12 @@
       <div class="hotJobBox">
         <p class="label">热门职位：</p>
         <div class="hotJob">
-          <div class="hotJobItem" @click="clickHotHob(item)" v-for="(item, index) in hotJobs" :key="index">
+          <div
+            class="hotJobItem"
+            @click="clickHotHob(item)"
+            v-for="(item, index) in hotJobs"
+            :key="index"
+          >
             <p>{{ item.typeName }}</p>
           </div>
         </div>
@@ -79,19 +84,51 @@
                 </div>
                 <div class="line"></div>
                 <div class="detail">
-                  <div class="type-item" v-for="(item, index) in jobClass" :key="item.pid" @mouseover="showSide(index)">
+                  <div
+                    class="type-item"
+                    v-for="(item, index) in jobClass"
+                    :key="item.pid"
+                    @mouseover="showSide(index)"
+                  >
                     <div class="type-name">{{ item.pname }}</div>
-                    <a v-if="item.childLists.length && item.childLists.length > 0">{{ item.childLists[0].typeName }}</a>
-                    <a v-if="item.childLists.length && item.childLists.length > 1">{{ item.childLists[1].typeName }}</a>
-                    <a v-if="item.childLists.length && item.childLists.length > 2">{{ item.childLists[2].typeName }}</a>
-                    <img src="@/assets/image/home/cat-arrow.png" class="type-arrow" />
+                    <a
+                      v-if="
+                        item.childLists.length && item.childLists.length > 0
+                      "
+                      >{{ item.childLists[0].typeName }}</a
+                    >
+                    <a
+                      v-if="
+                        item.childLists.length && item.childLists.length > 1
+                      "
+                      >{{ item.childLists[1].typeName }}</a
+                    >
+                    <a
+                      v-if="
+                        item.childLists.length && item.childLists.length > 2
+                      "
+                      >{{ item.childLists[2].typeName }}</a
+                    >
+                    <img
+                      src="@/assets/image/home/cat-arrow.png"
+                      class="type-arrow"
+                    />
                   </div>
                 </div>
               </div>
             </div>
-            <div class="dropdown-child" v-show="sideVisible" @mouseenter="sideVisible = true" @mouseleave="hideSide">
+            <div
+              class="dropdown-child"
+              v-show="sideVisible"
+              @mouseenter="sideVisible = true"
+              @mouseleave="hideSide"
+            >
               <div class="title">{{ nowPosition.pname }}</div>
-              <div class="child-item" v-for="(item, index) in nowPosition.childLists" :key="index">
+              <div
+                class="child-item"
+                v-for="(item, index) in nowPosition.childLists"
+                :key="index"
+              >
                 <div class="type-name">{{ item.typeName }}</div>
                 <div class="children">
                   <a
@@ -130,12 +167,18 @@
             </div>
             <!-- 热门职位详情 -->
             <div class="workAccommodation">
-              <div class="wAccommodation" v-for="(item, index) in jopInfo" :key="index">
+              <div
+                class="wAccommodation"
+                v-for="(item, index) in jopInfo"
+                :key="index"
+              >
                 <div class="accommodation_a" @click.stop="toInfo(item)">
                   <div class="company">
                     <div class="top">
                       <div class="position">{{ item.positionName }}</div>
-                      <div class="pay" v-if="item.lowSalary">{{ item.lowSalary }}-{{ item.topSalary }}K</div>
+                      <div class="pay" v-if="item.lowSalary">
+                        {{ item.lowSalary }}-{{ item.topSalary }}K
+                      </div>
                     </div>
                     <div class="bottom">
                       <div class="cardItems">
@@ -160,15 +203,23 @@
                   </div>
                   <div class="line"></div>
                   <div class="companyIntroduction">
-                    <div class="companyPic"><img :src="item.headUrl" alt="" /></div>
+                    <div class="companyPic">
+                      <img :src="item.headUrl" alt="" />
+                    </div>
                     <div class="companyRight">
                       <div class="companyName">{{ item.companyName }}</div>
                       <div class="companySituation">
-                        <div class="L_companySituation" v-if="item.companyIndustryName">
+                        <div
+                          class="L_companySituation"
+                          v-if="item.companyIndustryName"
+                        >
                           {{ item.companyIndustryName }}
                           <p>|</p>
                         </div>
-                        <div class="L_companySituation" v-if="item.companyScale">
+                        <div
+                          class="L_companySituation"
+                          v-if="item.companyScale"
+                        >
                           {{ item.companyScale }}
                           <p>|</p>
                         </div>
@@ -184,7 +235,9 @@
             </div>
           </div>
           <div class="morebox">
-            <el-button class="more" @click="toMore('info')"><p>查看更多</p></el-button>
+            <el-button class="more" @click="toMore('info')"
+              ><p>查看更多</p></el-button
+            >
           </div>
 
           <!-- 热门企业标题 -->
@@ -193,7 +246,11 @@
           </div>
           <div class="hotCity">
             <div class="cityAccommodation">
-              <div class="cAccommodation" v-for="(item, index) in cAccommodation" :key="index">
+              <div
+                class="cAccommodation"
+                v-for="(item, index) in cAccommodation"
+                :key="index"
+              >
                 <div class="cAccommodation_a" @click.stop="toCompay(item)">
                   <div class="cityWork">
                     <div class="wImg"><img :src="item.headUrl" alt="" /></div>
@@ -219,7 +276,9 @@
               </div>
             </div>
             <div class="morebox">
-              <el-button class="more" @click="toMore('info')"><p>查看更多</p></el-button>
+              <el-button class="more" @click="toMore('info')"
+                ><p>查看更多</p></el-button
+              >
             </div>
           </div>
           <!-- 短期实习标题 -->
@@ -244,14 +303,20 @@
             </div>
             <!-- 短期实习详情 -->
             <div class="workAccommodation">
-              <div class="wAccommodation" v-for="(item, index) in practiceJop" :key="index">
+              <div
+                class="wAccommodation"
+                v-for="(item, index) in practiceJop"
+                :key="index"
+              >
                 <div class="accommodation_a" @click.stop="toInfo(item)">
                   <div class="company">
                     <div class="top">
                       <div class="position">{{ item.positionName }}</div>
                       <div class="pay" v-if="item.lowSalary">
                         {{ item.lowSalary }}-{{ item.topSalary }}K
-                        <p v-if="item.yearSalary"><span>.</span>{{ item.yearSalary }}薪</p>
+                        <p v-if="item.yearSalary">
+                          <span>.</span>{{ item.yearSalary }}薪
+                        </p>
                       </div>
                     </div>
                     <div class="bottom">
@@ -277,19 +342,30 @@
                   </div>
                   <div class="line"></div>
                   <div class="companyIntroduction">
-                    <div class="companyPic"><img :src="item.headUrl" alt="" /></div>
+                    <div class="companyPic">
+                      <img :src="item.headUrl" alt="" />
+                    </div>
                     <div class="companyRight">
                       <div class="companyName">{{ item.companyName }}</div>
                       <div class="companySituation">
-                        <div class="L_companySituation" v-if="item.companyIndustryName !== null">
+                        <div
+                          class="L_companySituation"
+                          v-if="item.companyIndustryName !== null"
+                        >
                           {{ item.companyIndustryName }}
                           <p>|</p>
                         </div>
-                        <div class="L_companySituation" v-if="item.companyScale !== null">
+                        <div
+                          class="L_companySituation"
+                          v-if="item.companyScale !== null"
+                        >
                           {{ item.companyScale }}
                           <p>|</p>
                         </div>
-                        <div class="L_companySituation" v-if="item.finance !== null">
+                        <div
+                          class="L_companySituation"
+                          v-if="item.finance !== null"
+                        >
                           {{ item.finance }}
                           <p>|</p>
                         </div>
@@ -301,7 +377,9 @@
             </div>
           </div>
           <div class="morebox">
-            <el-button class="more" id="more" @click="toMore('info')"><p>查看更多</p></el-button>
+            <el-button class="more" id="more" @click="toMore('info')"
+              ><p>查看更多</p></el-button
+            >
           </div>
         </div>
       </div>
@@ -309,16 +387,16 @@
   </div>
 </template>
 <script>
-import { mapActions, mapMutations, mapGetters } from 'vuex'
+import { mapActions, mapMutations, mapGetters } from "vuex";
 
-import Search from '@/component/index/Search.vue'
-import Work from '@/component/index/Work.vue'
-import Company from '@/component/index/Company.vue'
-import JobSearch from '@/component/returnee/jobSearch'
-import returnees from '@/api/returnees'
-import Home from '@/api/home'
-import Job from '@/api/job'
-import Util from '@/util/index'
+import Search from "@/component/index/Search.vue";
+import Work from "@/component/index/Work.vue";
+import Company from "@/component/index/Company.vue";
+import JobSearch from "@/component/returnee/jobSearch";
+import returnees from "@/api/returnees";
+import Home from "@/api/home";
+import Job from "@/api/job";
+import Util from "@/util/index";
 export default {
   components: {
     Search,
@@ -328,8 +406,8 @@ export default {
   },
   data() {
     return {
-      searchStr: '',
-      location: '',
+      searchStr: "",
+      location: "",
       csArr: [],
       hotJobs: [],
       poster: {},
@@ -343,148 +421,162 @@ export default {
       practiceJop: [],
       i1: 0,
       i2: 0,
-    }
+    };
   },
   computed: {
-    ...mapGetters(['cityName']),
+    ...mapGetters(["cityName"]),
   },
   created() {
-    this.queryHotCityList()
-    this.getQueryHotCompanyList()
-    this.getBannerList()
-    this.getPositionType()
-    this.getQueryHotPositionFirstType()
-    this.getQueryHotPositionFirstTypeB()
-    this.getQueryHotPositionByTypeList()
-    this.getHotPositionType()
-    this.getQueryPracticePositionList()
-    this.location = this.cityName
+    this.queryHotCityList();
+    this.getQueryHotCompanyList();
+    this.getBannerList();
+    this.getPositionType();
+    this.getQueryHotPositionFirstType();
+    this.getQueryHotPositionFirstTypeB();
+    this.getQueryHotPositionByTypeList();
+    this.getHotPositionType();
+    this.getQueryPracticePositionList();
+    this.location = this.cityName;
   },
   methods: {
     // 跳转视频列表
     toVideo() {
       if (this.poster.type == 3) {
-        console.log('打开全部网站', this.poster)
-        if (this.poster.jumpUrl.indexOf('http') === -1) {
-          window.open(`http://${this.poster.jumpUrl}`, '_blank')
-          console.log('打开外部网站')
-          return
+        console.log("打开全部网站", this.poster);
+        if (this.poster.jumpUrl.indexOf("http") === -1) {
+          window.open(`http://${this.poster.jumpUrl}`, "_blank");
+          console.log("打开外部网站");
+          return;
         } else {
-          window.open(this.poster.jumpUrl, '_blank')
-          return
+          window.open(this.poster.jumpUrl, "_blank");
+          return;
         }
       } else if (this.poster.type == 1) {
-        window.App.$router.push({ path: this.poster.jumpUrl })
-        console.log('打开内部网站', this.poster)
-        return
+        window.App.$router.push({ path: this.poster.jumpUrl });
+        console.log("打开内部网站", this.poster);
+        return;
       }
     },
     // 跳转职位信息
     toInfo(item) {
       const { href } = this.$router.resolve({
-        path: '/index/info',
+        path: "/index/info",
         query: { id: item.id },
-      })
-      window.open(href, '_blank')
+      });
+      window.open(href, "_blank");
       // this.$router.push({ path: '/index/info', query: { id: item.id } })
     },
     // 跳转公司信息
     toCompay(item) {
       const { href } = this.$router.resolve({
-        path: '/index/company',
+        path: "/index/company",
         query: { id: item.id },
-      })
-      window.open(href, '_blank')
+      });
+      window.open(href, "_blank");
       // this.$router.push({ path: '/index/company', query: { id: item.id } })
     },
     // 点击改变颜色
     async changeColor(index, id) {
-      this.i1 = index
-      this.jopInfo = []
-      let params = { positionFirstTypeId: id, recruitType: 3, currentPage: 1, pageSize: 9 }
-      let res = await returnees.getQueryHotPositionByTypeList(params)
-      this.jopInfo = res.data.list
+      this.i1 = index;
+      this.jopInfo = [];
+      let params = {
+        positionFirstTypeId: id,
+        recruitType: 3,
+        currentPage: 1,
+        pageSize: 9,
+      };
+      let res = await returnees.getQueryHotPositionByTypeList(params);
+      this.jopInfo = res.data.list;
     },
     // 实习切换Tab
     async changeColorB(index, id) {
-      this.i1 = index
-      this.practiceJop = []
-      let params = { positionFirstTypeId: id, currentPage: 1, pageSize: 9 }
-      let res = await returnees.getQueryPracticePositionList(params)
-      this.practiceJop = res.data.list
+      this.i1 = index;
+      this.practiceJop = [];
+      let params = { positionFirstTypeId: id, currentPage: 1, pageSize: 9 };
+      let res = await returnees.getQueryPracticePositionList(params);
+      this.practiceJop = res.data.list;
     },
     // 热门职位跳转
     clickHotHob(item) {
-      this.searchStr = item.typeName
-      this.$router.push({ path: '/index/job', query: { cityName: this.location, keyWords: item.typeName } })
+      this.searchStr = item.typeName;
+      this.$router.push({
+        path: "/index/job",
+        query: { cityName: this.location, keyWords: item.typeName },
+      });
     },
     //分类菜单跳转
     gotoJob(kw) {
-      this.$router.push({ path: '/index/job', query: { keyWords: kw } })
+      this.$router.push({ path: "/index/job", query: { keyWords: kw } });
     },
     //搜索栏方法
     changeLocation(value) {
-      this.location = value
+      this.location = value;
     },
     changeVal(value) {
-      this.searchStr = value
+      this.searchStr = value;
     },
     toJob(type, item) {
       if (type == 1) {
-        this.$router.push({ path: '/index/job', query: { cityName: this.location, keyWords: this.searchStr } })
+        this.$router.push({
+          path: "/index/job",
+          query: { cityName: this.location, keyWords: this.searchStr },
+        });
       } else {
-        this.$router.push({ path: '/index/job', query: { jobTypeId: item.subId } })
+        this.$router.push({
+          path: "/index/job",
+          query: { jobTypeId: item.subId },
+        });
       }
     },
     showSide(index) {
-      this.nowPosition = this.jobClass[index]
-      this.sideVisible = true
+      this.nowPosition = this.jobClass[index];
+      this.sideVisible = true;
     },
     hideSide() {
-      this.sideVisible = false
-      this.nowPosition = {}
+      this.sideVisible = false;
+      this.nowPosition = {};
     },
     //查看更多按钮点击
     toMore(flag) {
       switch (flag) {
-        case 'job':
+        case "job":
           this.$router.push({
-            path: '/index/job',
-          })
-          this.eventBus.$emit('changeTab', '2')
-          break
-        case 'company':
+            path: "/index/job",
+          });
+          this.eventBus.$emit("changeTab", "2");
+          break;
+        case "company":
           this.$router.push({
-            path: '/index/job',
-          })
-          this.eventBus.$emit('changeTab', '2')
-          break
-        case 'info':
+            path: "/index/job",
+          });
+          this.eventBus.$emit("changeTab", "2");
+          break;
+        case "info":
           this.$router.push({
-            path: '/index/job',
-          })
-          this.eventBus.$emit('changeTab', '2')
-          break
+            path: "/index/job",
+          });
+          this.eventBus.$emit("changeTab", "2");
+          break;
         default:
-          break
+          break;
       }
     },
 
     //海归搜索框城市
     async queryHotCityList() {
-      let params = {}
-      let res = await Job.queryHotCityList(params)
+      let params = {};
+      let res = await Job.queryHotCityList(params);
       if (res.code == 200) {
-        this.csArr = res.data
+        this.csArr = res.data;
       }
     },
 
     //海归职位搜索下拉列表
     async getPositionType() {
-      let params = {}
-      let res = await returnees.getPositionType(params)
+      let params = {};
+      let res = await returnees.getPositionType(params);
       if (res.code == 200) {
-        this.jobClass = res.data
+        this.jobClass = res.data;
       }
     },
     //海报方法
@@ -496,57 +588,62 @@ export default {
     //   }
     // },
     async getBannerList() {
-      let params = { bannerCode: 'returnees' }
-      let res = await Home.getBannerList(params)
+      let params = { bannerCode: "returnees" };
+      let res = await Home.getBannerList(params);
       if (res.code == 200) {
-        this.poster = res.data[0]
-        console.log(this.poster, '11111111111111111111111')
+        this.poster = res.data[0];
+        console.log(this.poster, "11111111111111111111111");
       }
     },
     // 海归热门职位标签列表方法
     async getHotPositionType() {
-      let params = {}
-      let res = await returnees.getHotPositionType(params)
+      let params = {};
+      let res = await returnees.getHotPositionType(params);
       if (res.code == 200) {
-        this.hotJobs = res.data
+        this.hotJobs = res.data;
       }
     },
     //海归职位搜索/岗位类型点击搜索接口
     async getPositonSearch() {
-      let params = {}
-      let res = await returnees.getPositonSearch(params)
+      let params = {};
+      let res = await returnees.getPositonSearch(params);
       if (res.code == 200) {
         // this.h_work = res.data
       }
     },
     // 海归-热门职位一级标签
     async getQueryHotPositionFirstType() {
-      let params = {}
-      let res = await returnees.getQueryHotPositionFirstType(params)
+      let params = {};
+      let res = await returnees.getQueryHotPositionFirstType(params);
       if (res.code == 200) {
-        let obj = { id: null, typeName: '不限' }
-        this.hWork = res.data
-        this.hWork.unshift(obj)
+        let obj = { id: null, typeName: "不限" };
+        this.hWork = res.data;
+        this.hWork.unshift(obj);
       }
-      console.log(res.data, '我是热门职位一级标签')
+      console.log(res.data, "我是热门职位一级标签");
     },
     // 海归-实习职位一级标签
     async getQueryHotPositionFirstTypeB() {
-      let params = {}
-      let res = await returnees.getQueryHotPositionFirstType(params)
+      let params = {};
+      let res = await returnees.getQueryHotPositionFirstType(params);
       if (res.code == 200) {
-        let obj = { id: null, typeName: '不限' }
-        this.hWorks = res.data
-        this.hWorks.unshift(obj)
+        let obj = { id: null, typeName: "不限" };
+        this.hWorks = res.data;
+        this.hWorks.unshift(obj);
       }
-      console.log(res.data, '我是实习职位一级标签')
+      console.log(res.data, "我是实习职位一级标签");
     },
     // 获取热门职位方法
     async getQueryHotPositionByTypeList() {
-      let params = { positionFirstTypeId: null, recruitType: 3, currentPage: 1, pageSize: 9 }
-      let res = await returnees.getQueryHotPositionByTypeList(params)
+      let params = {
+        positionFirstTypeId: null,
+        recruitType: 3,
+        currentPage: 1,
+        pageSize: 9,
+      };
+      let res = await returnees.getQueryHotPositionByTypeList(params);
       if (res.code == 200) {
-        this.jopInfo = res.data.list
+        this.jopInfo = res.data.list;
       }
     },
     // 获取热门公司方法
@@ -554,26 +651,31 @@ export default {
       let params = {
         currentPage: 1,
         pageSize: 12,
-      }
-      let res = await returnees.getQueryHotCompanyList(params)
+      };
+      let res = await returnees.getQueryHotCompanyList(params);
       if (res.code == 200) {
-        console.log(res.data)
-        this.cAccommodation = res.data.list
+        console.log(res.data);
+        this.cAccommodation = res.data.list;
       }
     },
     // 获取短期实习职位方法
     async getQueryPracticePositionList() {
-      let params = {}
-      let res = await returnees.getQueryPracticePositionList(params)
+      let params = {};
+      let res = await returnees.getQueryPracticePositionList(params);
       if (res.code == 200) {
-        this.practiceJop = res.data.list
+        this.practiceJop = res.data.list;
       }
     },
   },
-}
+  metaInfo() {
+    return {
+      meta: [{ name: "viewport", content: this.$route.meta.keywords }],
+    };
+  },
+};
 </script>
 <style lang="scss" scoped>
-@import url('//at.alicdn.com/t/font_631781_4v61w1yz6y74x6r.css');
+@import url("//at.alicdn.com/t/font_631781_4v61w1yz6y74x6r.css");
 $nx-color: #0470b8;
 $all-padding: 0;
 $nx-width: 76.25rem;
@@ -726,7 +828,7 @@ $nx-width: 76.25rem;
     // }
   }
   .main {
-    background: url('~@/assets/image/returnee/bg.png');
+    background: url("~@/assets/image/returnee/bg.png");
     .isBackground {
       width: 100%;
       // height: 100%;
@@ -752,7 +854,11 @@ $nx-width: 76.25rem;
             .everyLook_a {
               width: 580px;
               height: 204px;
-              background: linear-gradient(180deg, rgba(36, 70, 168, 0.1) 0%, rgba(36, 70, 168, 0) 60%);
+              background: linear-gradient(
+                180deg,
+                rgba(36, 70, 168, 0.1) 0%,
+                rgba(36, 70, 168, 0) 60%
+              );
               border-radius: 2px;
               .eyes {
                 width: 544px;
@@ -924,7 +1030,7 @@ $nx-width: 76.25rem;
                 .company {
                   width: 380px;
                   height: 84px;
-                  background: url('~@/assets/image/returnee/bg32.png') 50%;
+                  background: url("~@/assets/image/returnee/bg32.png") 50%;
                   .top {
                     width: 344px;
                     height: 42px;
@@ -1174,7 +1280,7 @@ $nx-width: 76.25rem;
                 display: flex;
                 padding: 22px 0 16px 18px;
                 box-sizing: border-box;
-                background: url('~@/assets/image/returnee/bg132.png') 50%;
+                background: url("~@/assets/image/returnee/bg132.png") 50%;
                 .wImg {
                   width: 64px;
                   height: 64px;

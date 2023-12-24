@@ -17,7 +17,9 @@
             </div>
           </template>
         </el-input>
-        <div class="el-form-item__error" v-if="errorPhone">请填写正确的手机号</div>
+        <div class="el-form-item__error" v-if="errorPhone">
+          请填写正确的手机号
+        </div>
       </div>
       <div class="submit" @click="onSubmit">绑定</div>
     </div>
@@ -25,75 +27,77 @@
 </template>
 
 <script>
-import Auth from '@/api/auth'
-import CompanyAuth from '@/api/enterprise/auth'
-import { mapGetters } from 'vuex'
+import Auth from "@/api/auth";
+import CompanyAuth from "@/api/enterprise/auth";
+import { mapGetters } from "vuex";
 
 export default {
   data() {
     return {
-      role: 'employer',
+      role: "employer",
       form: {
         openId: null,
-        phone: '',
+        phone: "",
         userType: null,
       },
       errorPhone: false,
-    }
+    };
   },
   computed: {},
   mounted() {
-    const { openId, userType } = this.$route.query
-    this.form.openId = openId
-    this.form.userType = parseInt(userType)
+    const { openId, userType } = this.$route.query;
+    this.form.openId = openId;
+    this.form.userType = parseInt(userType);
   },
   methods: {
     async onSubmit() {
       if (!/^1[3456789]\d{9}$/.test(this.form.phone)) {
-        this.errorPhone = true
-        return false
+        this.errorPhone = true;
+        return false;
       }
-      const res = await Auth.bindPhone(this.form)
+      const res = await Auth.bindPhone(this.form);
       if (res.code != 200) {
-        this.$message.error(res.data)
-        return
+        this.$message.error(res.data);
+        return;
       }
       // sessionStorage.setItem('userInfo', JSON.stringify(res.data))
-      this.$store.dispatch('setToken', res.data.token)
-      this.$store.dispatch('setUserId', res.data.userId)
+      this.$store.dispatch("setToken", res.data.token);
+      this.$store.dispatch("setUserId", res.data.userId);
       if (res.data.userType == 2) {
-        this.$store.dispatch('setUserMobile', this.form.phone)
-        this.companyUser(res.data)
-        return
+        this.$store.dispatch("setUserMobile", this.form.phone);
+        this.companyUser(res.data);
+        return;
       }
-      this.getUserInfo(res.data.userId, res.data)
+      this.getUserInfo(res.data.userId, res.data);
     },
     async companyUser(info) {
       if (!info.companyId) {
-        this.$router.push({ path: '/login/companyUserCheck' })
+        this.$router.push({ path: "/login/companyUserCheck" });
       } else {
-        let res = await CompanyAuth.getCompanyUserInfo({ mobile: this.form.phone })
-        this.$store.dispatch('setUserInfo', res.data)
+        let res = await CompanyAuth.getCompanyUserInfo({
+          mobile: this.form.phone,
+        });
+        this.$store.dispatch("setUserInfo", res.data);
         if (res.data.companyStatus != 2) {
-          this.$router.push({ path: '/login/companyUserCheck' })
+          this.$router.push({ path: "/login/companyUserCheck" });
         } else {
-          this.$router.replace({ path: '/oxHome' })
+          this.$router.replace({ path: "/oxHome" });
         }
       }
     },
     async getUserInfo(userId, obj) {
-      let res = await Auth.queryUserInfo({ userId })
-      this.$store.dispatch('setUserInfo', res.data)
-      console.log(obj)
+      let res = await Auth.queryUserInfo({ userId });
+      this.$store.dispatch("setUserInfo", res.data);
+      console.log(obj);
       if (obj && obj.newUser) {
-        this.$router.push({ path: '/register' })
+        this.$router.push({ path: "/register" });
       } else {
-        this.$router.push({ path: '/index' })
+        this.$router.push({ path: "/index" });
       }
     },
   },
   beforeDestroy() {},
-}
+};
 </script>
 
 <style lang="scss" scoped>
@@ -185,7 +189,7 @@ export default {
         border-radius: 4px;
       }
 
-      /deep/ .el-input__inner {
+      ::v-deep .el-input__inner {
         border-left: none;
         &:hover,
         &:focus {
@@ -193,7 +197,7 @@ export default {
         }
       }
 
-      /deep/ .el-input-group__prepend {
+      ::v-deep .el-input-group__prepend {
         background: transparent;
         border-top: 1px solid #dadde2;
         border-left: 1px solid #dadde2;
@@ -203,13 +207,13 @@ export default {
         font-weight: 500;
         color: #333333;
       }
-      /deep/ .el-input-group--append {
+      ::v-deep .el-input-group--append {
         .el-input__inner {
           border-left: 1px solid #dadde2;
           border-right: none;
         }
       }
-      /deep/ .el-input-group__append {
+      ::v-deep .el-input-group__append {
         background: transparent;
         border-color: #dadde2;
         border-left: none;

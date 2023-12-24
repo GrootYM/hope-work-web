@@ -14,7 +14,9 @@
             <div class="links">
               <div class="link-title">联系我们</div>
               <div class="link">希望工场</div>
-              <div class="link">公司地址:江苏省苏州市吴中区经济开发区城南街道东吴南路79号B-901室</div>
+              <div class="link">
+                公司地址:江苏省苏州市吴中区经济开发区城南街道东吴南路79号B-901室
+              </div>
               <div class="link">邮箱:hopeworkshop@126.com</div>
             </div>
           </el-col>
@@ -85,26 +87,26 @@ export default {
   data() {
     return {
       lists: [
-        '招聘APP',
-        '企业员工招聘系统',
-        '招聘微信',
-        '招聘小程序',
-        '帮助中心',
-        '联系我们',
-        '招聘解决方案',
-        '服务热线：00544-44944',
+        "招聘APP",
+        "企业员工招聘系统",
+        "招聘微信",
+        "招聘小程序",
+        "帮助中心",
+        "联系我们",
+        "招聘解决方案",
+        "服务热线：00544-44944",
       ],
-    }
+    };
   },
   methods: {
     toLicence() {
-      this.$router.push({ name: 'licence' })
+      this.$router.push({ name: "licence" });
     },
     toGuide() {
-      this.$router.push({ name: 'guide' })
+      this.$router.push({ name: "guide" });
     },
   },
-}
+};
 </script>
 
 <style lang="scss">
@@ -121,7 +123,7 @@ $nx-color4: #0f46a0;
     position: relative;
 
     &::after {
-      content: '';
+      content: "";
       height: 1px;
       width: 100vw;
       background-color: #d5dff0;
@@ -253,7 +255,7 @@ $nx-color4: #0f46a0;
 }
 </style>
 <style lang="scss" scoped>
-/deep/ .el-divider--vertical {
+::v-deep .el-divider--vertical {
   height: 153px;
   background-color: #d5dff0;
 }

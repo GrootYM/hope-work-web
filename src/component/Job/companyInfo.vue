@@ -10,7 +10,12 @@
           </div>
         </div>
         <div class="hotCon mt20">
-          <div class="hotItem" @click.stop="toInfo(item)" v-for="(item, index) in hotJobs" :key="index">
+          <div
+            class="hotItem"
+            @click.stop="toInfo(item)"
+            v-for="(item, index) in hotJobs"
+            :key="index"
+          >
             <div class="hotTop">
               <p>{{ item.positionName }}</p>
               <p class="red">{{ item.lowSalary }}-{{ item.topSalary }}k</p>
@@ -92,7 +97,7 @@
                   </div>
                   <div>
                     <h2>曾用名</h2>
-                    <p>{{ company.formerName ? company.formerName : '-' }}</p>
+                    <p>{{ company.formerName ? company.formerName : "-" }}</p>
                   </div>
                   <div>
                     <h2>登记机关</h2>
@@ -125,9 +130,13 @@
                 </div>
               </div>
               <div class="moreBox" @click.stop="showMore">
-                <p>{{ isMore ? '收起' : '查看更多' }}</p>
+                <p>{{ isMore ? "收起" : "查看更多" }}</p>
                 <img v-if="isMore" src="@/assets/image/job/top.png" alt="" />
-                <img v-if="!isMore" src="@/assets/image/job/bottom.png" alt="" />
+                <img
+                  v-if="!isMore"
+                  src="@/assets/image/job/bottom.png"
+                  alt=""
+                />
               </div>
             </div>
           </div>
@@ -144,8 +153,15 @@
                 </div>
                 <Map v-if="position[0]" :position="position" />
               </div> -->
-              <div class="locationItem" v-for="(item, index) in addressList" :key="index">
-                <div :class="[mapIndex == index ? 'showMap' : '']" @click="chooseAddress(index)">
+              <div
+                class="locationItem"
+                v-for="(item, index) in addressList"
+                :key="index"
+              >
+                <div
+                  :class="[mapIndex == index ? 'showMap' : '']"
+                  @click="chooseAddress(index)"
+                >
                   <img src="@/assets/image/job/locationIcon.png" alt="" />
                   <p>{{ item.completeAddress }}</p>
                 </div>
@@ -178,7 +194,11 @@
               </div> -->
             </div>
             <div class="recommendCon">
-              <div class="recommendItem" v-for="(item, index) in recommendArr" :key="index">
+              <div
+                class="recommendItem"
+                v-for="(item, index) in recommendArr"
+                :key="index"
+              >
                 <p>{{ item.name || item.industryName || item.companyName }}</p>
               </div>
             </div>
@@ -198,13 +218,22 @@
               <div class="workTimeItem">
                 <img src="@/assets/image/job/icon4.png" alt="" />
                 <p>
-                  <span v-for="(item, index) in company.holsTypeName" :key="index">{{
-                    item + (index == company.holsTypeName.length - 1 ? '' : '、')
-                  }}</span>
+                  <span
+                    v-for="(item, index) in company.holsTypeName"
+                    :key="index"
+                    >{{
+                      item +
+                      (index == company.holsTypeName.length - 1 ? "" : "、")
+                    }}</span
+                  >
                 </p>
               </div>
               <div class="welfareBox">
-                <div class="welfareItem" v-for="(item, index) in company.benefitsName" :key="index">
+                <div
+                  class="welfareItem"
+                  v-for="(item, index) in company.benefitsName"
+                  :key="index"
+                >
                   <p>{{ item }}</p>
                 </div>
               </div>
@@ -217,7 +246,12 @@
               <h2>{{ company.companyName }}招聘Boss</h2>
             </div>
             <div class="bossCon">
-              <div class="bossItem" @click.stop="toCompany(1)" v-for="(item, index) in company.bossList" :key="index">
+              <div
+                class="bossItem"
+                @click.stop="toCompany(1)"
+                v-for="(item, index) in company.bossList"
+                :key="index"
+              >
                 <img :src="item.headImg" alt="" />
                 <div class="bossInfo">
                   <div class="">
@@ -235,7 +269,12 @@
             </div>
           </div>
           <div class="adBox">
-            <div class="adItem" v-for="(item, index) in adArr" :key="index" @click="bannerJump(item)">
+            <div
+              class="adItem"
+              v-for="(item, index) in adArr"
+              :key="index"
+              @click="bannerJump(item)"
+            >
               <img :src="item.imgUrl" alt="" />
             </div>
           </div>
@@ -256,10 +295,10 @@
   </div>
 </template>
 <script>
-import Job from '@/api/job'
-import CompanyAuth from '@/api/enterprise/auth'
-import Home from '@/api/home'
-import Map from '@/component/Job/map'
+import Job from "@/api/job";
+import CompanyAuth from "@/api/enterprise/auth";
+import Home from "@/api/home";
+import Map from "@/component/Job/map";
 export default {
   components: {
     Map,
@@ -269,36 +308,36 @@ export default {
     company: Object,
   },
   data() {
-    let self = this
+    let self = this;
     return {
       position: [],
       adArr: [],
       tabActive: 0,
       tabArr: [
         {
-          name: '热门城市',
+          name: "热门城市",
         },
         {
-          name: '热门行业',
+          name: "热门行业",
         },
         {
-          name: '热门企业',
+          name: "热门企业",
         },
       ],
       recommendArr: [],
       mapIndex: 0,
       locations: [
         {
-          name: '南京雨花台区南京天溯科技园1层',
-          map: require('@/assets/image/job/map.png'),
+          name: "南京雨花台区南京天溯科技园1层",
+          map: require("@/assets/image/job/map.png"),
         },
         {
-          name: '上海黄浦区都市总部大楼',
-          map: require('@/assets/image/job/map.png'),
+          name: "上海黄浦区都市总部大楼",
+          map: require("@/assets/image/job/map.png"),
         },
         {
-          name: '广州番禺区恒峰大厦地铁7号线员岗站(C出口)',
-          map: require('@/assets/image/job/map.png'),
+          name: "广州番禺区恒峰大厦地铁7号线员岗站(C出口)",
+          map: require("@/assets/image/job/map.png"),
         },
       ],
       // company: {},
@@ -313,66 +352,66 @@ export default {
       },
       plugin: [
         {
-          pName: 'PlaceSearch',
+          pName: "PlaceSearch",
           events: {
             init(instance) {
               // 实例化高德地图的PlaceSearch插件
-              self.searchPlugin = instance
+              self.searchPlugin = instance;
             },
           },
         },
       ],
       addressList: [],
-    }
+    };
   },
   mounted() {
     // this.queryCompanyInfoByPerson();
-    console.log(this.company)
-    this.position.push(this.company.longitude - 0)
-    this.position.push(this.company.latitude - 0)
-    this.queryCompanyPositionByComId()
-    this.getRecommend()
-    this.getBannerList()
-    this.getAddress()
+    console.log(this.company);
+    this.position.push(this.company.longitude - 0);
+    this.position.push(this.company.latitude - 0);
+    this.queryCompanyPositionByComId();
+    this.getRecommend();
+    this.getBannerList();
+    this.getAddress();
   },
   methods: {
     chooseAddress(index) {
-      this.mapIndex = index
+      this.mapIndex = index;
     },
     async getAddress() {
-      let res = await CompanyAuth.queryAddrList({ companyId: this.company.id })
-      this.addressList = res.data.list
-      this.setAddressJw()
+      let res = await CompanyAuth.queryAddrList({ companyId: this.company.id });
+      this.addressList = res.data.list;
+      this.setAddressJw();
     },
     setAddressJw() {
-      let addressList = []
-      this.addressList.forEach(item => {
-        let obj = { ...item }
+      let addressList = [];
+      this.addressList.forEach((item) => {
+        let obj = { ...item };
         this.searchPlugin.search(item.completeAddress, (status, result) => {
-          if (status === 'complete' && result.info === 'OK') {
+          if (status === "complete" && result.info === "OK") {
             if (!result.poiList.pois.length) {
               // _this.$message.error('未查询到该地址，请重新选择')
             } else {
-              let lng = result.poiList.pois[0].location.lng
-              let lat = result.poiList.pois[0].location.lat
-              obj.longitude = lng
-              obj.latitude = lat
-              let position = []
-              position.push(lng - 0)
-              position.push(lat - 0)
-              obj.position = position
-              console.log('经纬度：', lng, lat)
-              addressList.push(obj)
+              let lng = result.poiList.pois[0].location.lng;
+              let lat = result.poiList.pois[0].location.lat;
+              obj.longitude = lng;
+              obj.latitude = lat;
+              let position = [];
+              position.push(lng - 0);
+              position.push(lat - 0);
+              obj.position = position;
+              console.log("经纬度：", lng, lat);
+              addressList.push(obj);
             }
           } else {
             // _this.$message.error('未查询到该地址，请重新选择')
           }
-        })
-      })
-      this.addressList = addressList
+        });
+      });
+      this.addressList = addressList;
     },
     showMore() {
-      this.isMore = !this.isMore
+      this.isMore = !this.isMore;
     },
     // async queryCompanyInfoByPerson(){
     //   let params = {
@@ -385,43 +424,45 @@ export default {
     // },
     async getBannerList() {
       let params = {
-        bannerCode: 'position_info',
-      }
-      let res = await Home.getBannerList(params)
+        bannerCode: "position_info",
+      };
+      let res = await Home.getBannerList(params);
       if (res.code == 200) {
-        this.adArr = res.data
+        this.adArr = res.data;
       }
     },
     bannerJump(banner) {
-      this.$util.jumpLink(banner.type, banner.jumpUrl)
+      this.$util.jumpLink(banner.type, banner.jumpUrl);
     },
     toCompany(item) {
       if (item != 1) {
         const { href } = this.$router.resolve({
-          path: '/index/company',
+          path: "/index/company",
           query: { id: item.companyId },
-        })
-        window.open(href, '_blank')
+        });
+
+        window.open(href, "_blank");
         // this.$router.replace({ path: '/index/company', query: { id: item.companyId } })
       } else {
         const { href } = this.$router.resolve({
-          path: '/index/company',
+          path: "/index/company",
           query: { id: this.company.id },
-        })
-        window.open(href, '_blank')
+        });
+        window.open(href, "_blank");
+
         // this.$router.replace({ path: '/index/company', query: { id: this.company.id } })
       }
     },
     toCompanyAllJob() {
       // this.$router.replace({ path: '/index/company', query: { id: this.company.id, tabId: 2 } })
-      this.$emit('changeTab', 2)
+      this.$emit("changeTab", 2);
     },
     toInfo(item) {
       const { href } = this.$router.resolve({
-        path: '/index/info',
+        path: "/index/info",
         query: { id: item.id },
-      })
-      window.open(href, '_blank')
+      });
+      window.open(href, "_blank");
       // this.$router.push({ path: '/index/info', query: { id: item.id } })
     },
     async queryCompanyPositionByComId() {
@@ -429,64 +470,64 @@ export default {
         companyId: this.company.id,
         currentPage: 1,
         pageSize: 3,
-      }
-      let res = await Job.queryCompanyPositionByComId(params)
+      };
+      let res = await Job.queryCompanyPositionByComId(params);
       if (res.code == 200) {
-        this.hotJobs = res.data.list
-        this.hotJobNum = res.data.total
+        this.hotJobs = res.data.list;
+        this.hotJobNum = res.data.total;
       }
     },
     toCheckTab(index) {
       if (index == this.tabActive) {
-        return
+        return;
       }
-      this.tabActive = index
-      this.getRecommend()
+      this.tabActive = index;
+      this.getRecommend();
     },
     getRecommend() {
       switch (this.tabActive) {
         case 0:
-          this.queryHotCityList()
-          break
+          this.queryHotCityList();
+          break;
         case 1:
-          this.queryHotIndustryType()
-          break
+          this.queryHotIndustryType();
+          break;
         case 2:
-          this.queryHotCompanyList()
-          break
+          this.queryHotCompanyList();
+          break;
         default:
-          break
+          break;
       }
     },
     async queryHotCityList() {
-      let params = {}
-      let res = await Job.queryHotCityList(params)
+      let params = {};
+      let res = await Job.queryHotCityList(params);
       if (res.code == 200) {
-        this.recommendArr = res.data
+        this.recommendArr = res.data;
       }
     },
     async queryHotIndustryType() {
-      let params = {}
-      let res = await Job.queryHotIndustryType(params)
+      let params = {};
+      let res = await Job.queryHotIndustryType(params);
       if (res.code == 200) {
-        this.recommendArr = res.data
+        this.recommendArr = res.data;
       }
     },
     async queryHotCompanyList() {
       let params = {
         currentPage: 1,
         pageSize: 10,
-      }
-      let res = await Job.queryHotCompanyList(params)
+      };
+      let res = await Job.queryHotCompanyList(params);
       if (res.code == 200) {
-        this.recommendArr = res.data.list
+        this.recommendArr = res.data.list;
       }
     },
   },
-}
+};
 </script>
 <style lang="scss" scoped>
-@import url('//at.alicdn.com/t/font_631781_4v61w1yz6y74x6r.css');
+@import url("//at.alicdn.com/t/font_631781_4v61w1yz6y74x6r.css");
 
 $nx-color: #0470b8;
 $all-padding: 0;
@@ -494,7 +535,11 @@ $nx-width: 76.25rem;
 #app {
   min-width: $nx-width;
   .main {
-    background: linear-gradient(180deg, rgba(36, 70, 168, 0.25) 0%, rgba(36, 70, 168, 0) 100%);
+    background: linear-gradient(
+      180deg,
+      rgba(36, 70, 168, 0.25) 0%,
+      rgba(36, 70, 168, 0) 100%
+    );
   }
   .companyBox {
     width: 100%;
@@ -909,7 +954,7 @@ $nx-width: 76.25rem;
                     position: relative;
                   }
                   h2::after {
-                    content: '';
+                    content: "";
                     display: block;
                     width: 1px;
                     height: 12px;

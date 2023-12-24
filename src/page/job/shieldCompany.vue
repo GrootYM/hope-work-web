@@ -2,7 +2,9 @@
   <div class="main">
     <div class="shieldBox">
       <h2 class="title">屏蔽公司</h2>
-      <p>添加屏蔽公司后，你和这些公司，都不会被互相推荐，你的查看也不会告知对方</p>
+      <p>
+        添加屏蔽公司后，你和这些公司，都不会被互相推荐，你的查看也不会告知对方
+      </p>
       <div class="selBox">
         <el-select
           v-model="companyId"
@@ -13,7 +15,12 @@
           :loading="loading"
           @change="remoteChange"
         >
-          <el-option v-for="(item, index) in options" :key="index" :label="item.companyName" :value="item.id">
+          <el-option
+            v-for="(item, index) in options"
+            :key="index"
+            :label="item.companyName"
+            :value="item.id"
+          >
           </el-option>
         </el-select>
         <button @click="shieldCompany">确定</button>
@@ -36,12 +43,12 @@
   </div>
 </template>
 <script>
-import { mapActions, mapMutations, mapGetters } from 'vuex'
-import Job from '@/api/job'
+import { mapActions, mapMutations, mapGetters } from "vuex";
+import Job from "@/api/job";
 export default {
   components: {},
   computed: {
-    ...mapGetters(['userId', 'cityName']),
+    ...mapGetters(["userId", "cityName"]),
   },
   watch: {},
   data() {
@@ -49,70 +56,70 @@ export default {
       options: [],
       shieldList: [],
       loading: false,
-      companyId: '',
-    }
+      companyId: "",
+    };
   },
   mounted() {
-    this.queryShieldCompanyList()
+    this.queryShieldCompanyList();
   },
   methods: {
     async queryShieldCompanyList() {
-      let params = {}
-      let res = await Job.queryShieldCompanyList(params)
+      let params = {};
+      let res = await Job.queryShieldCompanyList(params);
       if (res.code == 200) {
-        this.shieldList = res.data
+        this.shieldList = res.data;
       }
     },
     async remoteMethod(query) {
       if (query) {
-        this.loading = true
+        this.loading = true;
         let res = await Job.queryCompanyList({
           companyName: query,
-          companyCode: '',
-          cityCode: '',
+          companyCode: "",
+          cityCode: "",
           currentPage: 1,
           pageSize: 99999,
-        })
-        this.options = res.data.list
-        this.loading = false
+        });
+        this.options = res.data.list;
+        this.loading = false;
       } else {
-        this.options = []
+        this.options = [];
       }
     },
     remoteChange(value) {
-      this.companyId = value
+      this.companyId = value;
     },
     async shieldCompany() {
       let params = {
         companyId: this.companyId,
-      }
-      let res = await Job.shieldCompany(params)
+      };
+      let res = await Job.shieldCompany(params);
       if (res.code == 200) {
         this.$message({
-          type: 'success',
-          message: '已屏蔽',
-        })
-        this.queryShieldCompanyList()
+          type: "success",
+          message: "已屏蔽",
+        });
+        this.queryShieldCompanyList();
       }
     },
     async toDelete(item) {
       let params = {
         id: item.id,
-      }
-      let res = await Job.deleteShieldCompany(params)
+      };
+      let res = await Job.deleteShieldCompany(params);
       if (res.code == 200) {
         this.$message({
-          type: 'success',
-          message: '删除成功',
-        })
-        this.queryShieldCompanyList()
+          type: "success",
+          message: "删除成功",
+        });
+        this.queryShieldCompanyList();
       }
     },
   },
-}
+};
 </script>
 <style lang="scss" scoped>
-@import url('//at.alicdn.com/t/font_631781_4v61w1yz6y74x6r.css');
+@import url("//at.alicdn.com/t/font_631781_4v61w1yz6y74x6r.css");
 
 $nx-color: #0470b8;
 $all-padding: 0;
@@ -120,7 +127,11 @@ $nx-width: 76.25rem;
 #app {
   min-width: $nx-width;
   .main {
-    background: linear-gradient(180deg, rgba(36, 70, 168, 0.25) 0%, rgba(36, 70, 168, 0) 100%);
+    background: linear-gradient(
+      180deg,
+      rgba(36, 70, 168, 0.25) 0%,
+      rgba(36, 70, 168, 0) 100%
+    );
   }
   .shieldBox {
     width: 1200px;
@@ -198,22 +209,22 @@ $nx-width: 76.25rem;
       }
     }
   }
-  .selBox /deep/ .el-select {
+  .selBox ::v-deep .el-select {
     width: 100%;
     height: 100%;
     padding: 0 4px;
   }
-  .selBox /deep/ .el-select > .el-input {
+  .selBox ::v-deep .el-select > .el-input {
     height: 100%;
   }
-  .selBox /deep/ .el-input--suffix .el-input__inner {
+  .selBox ::v-deep .el-input--suffix .el-input__inner {
     border: none;
     height: 100% !important;
     padding: 0;
     font-size: 16px;
     margin: 0;
   }
-  .selBox /deep/ .el-select__input {
+  .selBox ::v-deep .el-select__input {
     margin: 0;
   }
 }

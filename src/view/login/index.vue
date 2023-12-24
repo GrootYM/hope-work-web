@@ -10,9 +10,16 @@
 export default {
   components: {},
   data() {
-    return {}
+    return {};
   },
-}
+  metaInfo() {
+    console.log("!456");
+    console.log(this.$route);
+    return {
+      meta: [{ name: "viewport", content: this.$route.meta.keywords }],
+    };
+  },
+};
 </script>
 
 <style lang="scss" scoped>

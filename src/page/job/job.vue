@@ -977,6 +977,11 @@ export default {
       this.$router.push({ path: "/resumeMake" });
     },
   },
+  metaInfo() {
+    return {
+      meta: [{ name: "viewport", content: this.$route.meta.keywords }],
+    };
+  },
 };
 </script>
 

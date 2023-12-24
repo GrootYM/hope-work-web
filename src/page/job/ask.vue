@@ -3,7 +3,13 @@
     <div class="formBox">
       <el-button class="goBack" @click="goBack">返回</el-button>
       <img class="bjW" src="@/assets/image/job/hopeBj2.png" alt="" />
-      <el-form ref="form" :model="form" @submit.native.prevent label-width="80px" :rules="rules">
+      <el-form
+        ref="form"
+        :model="form"
+        @submit.native.prevent
+        label-width="80px"
+        :rules="rules"
+      >
         <el-form-item label="姓名：" prop="userName">
           <el-input type="text" v-model="form.userName"></el-input>
         </el-form-item>
@@ -21,7 +27,14 @@
           </el-select>
         </el-form-item>
         <el-form-item label="咨询事项：" prop="askDesc">
-          <el-input type="textarea" v-model="form.askDesc" maxlength="300" show-word-limit rows="8" resize="none">
+          <el-input
+            type="textarea"
+            v-model="form.askDesc"
+            maxlength="300"
+            show-word-limit
+            rows="8"
+            resize="none"
+          >
           </el-input>
         </el-form-item>
         <el-form-item label="简历：" v-if="isEmployer">
@@ -45,117 +58,126 @@
   </div>
 </template>
 <script>
-import { mapActions, mapMutations, mapGetters } from 'vuex'
-import Job from '@/api/job'
-import Button from '../../plugin/lin-cms-ui/view/basic/button/button.vue'
+import { mapActions, mapMutations, mapGetters } from "vuex";
+import Job from "@/api/job";
+import Button from "../../plugin/lin-cms-ui/view/basic/button/button.vue";
 export default {
   components: { Button },
   watch: {},
   computed: {
-    ...mapGetters(['userInfo', 'userId']),
+    ...mapGetters(["userInfo", "userId"]),
   },
   data() {
     var checkPhone = (rule, value, callback) => {
       //手机号码校验
-      const phoneReg = /^1[3|4|5|7|8|9][0-9]{9}$/
+      const phoneReg = /^1[3|4|5|7|8|9][0-9]{9}$/;
       if (!value) {
-        return callback(new Error('请输入正确的手机号'))
+        return callback(new Error("请输入正确的手机号"));
       }
       setTimeout(() => {
         if (!Number.isInteger(+value)) {
-          callback(new Error('请输入正确的手机号'))
+          callback(new Error("请输入正确的手机号"));
         } else {
           if (phoneReg.test(value)) {
-            callback()
+            callback();
           } else {
-            callback(new Error('请输入正确的手机号'))
+            callback(new Error("请输入正确的手机号"));
           }
         }
-      }, 100)
-    }
+      }, 100);
+    };
     return {
       form: {
-        userName: '',
-        mobile: '',
+        userName: "",
+        mobile: "",
         askType: null,
-        askDesc: '',
+        askDesc: "",
         fileId: null,
       },
       submited: true,
       fileList: [],
       fileInfo: {},
       askTypeList: [
-        { value: 1, label: '个人' },
-        { value: 2, label: '企业' },
+        { value: 1, label: "个人" },
+        { value: 2, label: "企业" },
       ],
       rules: {
-        userName: [{ required: true, message: '请输入姓名', trigger: 'blur' }],
+        userName: [{ required: true, message: "请输入姓名", trigger: "blur" }],
         mobile: [
-          { validator: checkPhone, trigger: 'blur' },
-          { required: true, message: '请输入手机号', trigger: 'blur' },
+          { validator: checkPhone, trigger: "blur" },
+          { required: true, message: "请输入手机号", trigger: "blur" },
         ],
-        askType: [{ required: true, message: '请选择咨询身份', trigger: 'blur' }],
-        askDesc: [{ required: true, message: '请输入咨询事项', trigger: 'blur' }],
+        askType: [
+          { required: true, message: "请选择咨询身份", trigger: "blur" },
+        ],
+        askDesc: [
+          { required: true, message: "请输入咨询事项", trigger: "blur" },
+        ],
       },
-    }
+    };
   },
   mounted() {},
   computed: {
     isEmployer() {
-      return this.form.askType === 1
+      return this.form.askType === 1;
     },
   },
   methods: {
     handleExceed(file, fileList) {
-      this.$message.error('请先删除已上传文件')
+      this.$message.error("请先删除已上传文件");
     },
     handleSuccess(res, file, fileList) {
-      this.fileInfo = res.data
-      this.fileList = fileList
+      this.fileInfo = res.data;
+      this.fileList = fileList;
     },
     //返回上一页
     goBack() {
-      this.routerGo(-1)
+      this.routerGo(-1);
     },
     toHome() {
       this.$router.push({
-        path: '/',
-      })
+        path: "/",
+      });
     },
     expertAdd() {
-      const _this = this
-      this.form.fileId = this.fileInfo.fileId
-      this.$refs.form.validate(async valid => {
+      const _this = this;
+      this.form.fileId = this.fileInfo.fileId;
+      this.$refs.form.validate(async (valid) => {
         if (valid) {
-          let res = await Job.askQuestion(_this.form)
+          let res = await Job.askQuestion(_this.form);
           if (res.code == 200) {
             _this.$message({
-              message: '感谢您的信任，我们的工作人员在必要时会和您联系。',
-              type: 'success',
+              message: "感谢您的信任，我们的工作人员在必要时会和您联系。",
+              type: "success",
               duration: 2000,
-              customClass: 'my-message',
-            })
+              customClass: "my-message",
+            });
             _this.form = {
-              userName: '',
-              mobile: '',
+              userName: "",
+              mobile: "",
               askType: null,
-              askDesc: '',
+              askDesc: "",
               fileId: null,
-            }
-            _this.fileInfo = {}
-            _this.fileList = []
-            _this.$refs.form.clearValidate()
+            };
+            _this.fileInfo = {};
+            _this.fileList = [];
+            _this.$refs.form.clearValidate();
           } else {
-            _this.$message.error(res.data)
+            _this.$message.error(res.data);
           }
         }
-      })
+      });
     },
   },
-}
+  metaInfo() {
+    return {
+      meta: [{ name: "viewport", content: this.$route.meta.keywords }],
+    };
+  },
+};
 </script>
 <style lang="scss" scoped>
-@import url('//at.alicdn.com/t/font_631781_4v61w1yz6y74x6r.css');
+@import url("//at.alicdn.com/t/font_631781_4v61w1yz6y74x6r.css");
 
 $nx-color: #0470b8;
 $all-padding: 0;
@@ -164,7 +186,11 @@ $nx-width: 76.25rem;
   min-width: $nx-width;
   .main {
     padding-top: 20px;
-    background: linear-gradient(180deg, rgba(36, 70, 168, 0.25) 0%, rgba(36, 70, 168, 0) 100%);
+    background: linear-gradient(
+      180deg,
+      rgba(36, 70, 168, 0.25) 0%,
+      rgba(36, 70, 168, 0) 100%
+    );
   }
   .formBox {
     width: 1200px;
@@ -244,11 +270,11 @@ $nx-width: 76.25rem;
     }
   }
 }
-.main /deep/ .el-form-item__label {
+.main ::v-deep .el-form-item__label {
   padding: 0;
   color: #666666;
 }
-.main /deep/ .el-form-item__content {
+.main ::v-deep .el-form-item__content {
   padding: 0;
   width: 483px;
   margin-left: 16px !important;

@@ -47,12 +47,20 @@
             :key="index"
           >
             <span>{{ item.pname }}</span>
-            <img v-if="specialityIndex == index" src="@/assets/image/job/right.png" alt="" />
+            <img
+              v-if="specialityIndex == index"
+              src="@/assets/image/job/right.png"
+              alt=""
+            />
           </div>
         </div>
         <div class="screenInfoBox" v-if="specialityIndex > -1">
           <div class="screenInfoCon">
-            <div class="screenInfoItem" v-for="(item, index) in specialityInfo" :key="index">
+            <div
+              class="screenInfoItem"
+              v-for="(item, index) in specialityInfo"
+              :key="index"
+            >
               <h2>{{ item.typeName }}</h2>
               <div class="subInfoBox">
                 <p
@@ -77,7 +85,11 @@
         </div>
       </div>
       <div class="screenAd screenRight">
-        <div v-for="(item, index) in ad3Arr" :key="index" @click="bannerJump(item)">
+        <div
+          v-for="(item, index) in ad3Arr"
+          :key="index"
+          @click="bannerJump(item)"
+        >
           <img :src="item.imgUrl" alt="" />
         </div>
       </div>
@@ -87,7 +99,12 @@
         <h2>热门职位</h2>
       </div>
       <div class="hopeJobCards">
-        <div class="hopeJobItem" @click.stop="toInfo(item.id)" v-for="(item, index) in jobSArr" :key="index">
+        <div
+          class="hopeJobItem"
+          @click.stop="toInfo(item.id)"
+          v-for="(item, index) in jobSArr"
+          :key="index"
+        >
           <img class="bjW" src="@/assets/image/job/hopeBj2.png" alt="" />
           <div class="hopeSJob">
             <div class="hopeSJobInfo">
@@ -140,7 +157,12 @@
             </div>
           </div>
           <div>
-            <div class="hopeSJob" @click="toInfo(item2.id)" v-for="(item2, index2) in item.jobs" :key="index2">
+            <div
+              class="hopeSJob"
+              @click="toInfo(item2.id)"
+              v-for="(item2, index2) in item.jobs"
+              :key="index2"
+            >
               <div class="hopeSJobInfo">
                 <h2>{{ item2.positionName }}</h2>
                 <p>{{ item2.lowSalary }}-{{ item2.topSalary }}k</p>
@@ -163,94 +185,94 @@
 </template>
 
 <script>
-import { mapActions, mapMutations, mapGetters } from 'vuex'
-import JobSearch from '@/component/Job/jobSearch'
-import School from '@/api/school'
-import Job from '@/api/job'
+import { mapActions, mapMutations, mapGetters } from "vuex";
+import JobSearch from "@/component/Job/jobSearch";
+import School from "@/api/school";
+import Job from "@/api/job";
 
 export default {
   components: {
     JobSearch,
   },
   computed: {
-    ...mapGetters(['cityName']),
+    ...mapGetters(["cityName"]),
   },
   props: {},
   data() {
     return {
-      searchStr: '',
+      searchStr: "",
       adImg: {},
       specialityIndex: -1,
       specialityArr: [],
       ad1: {},
       ad2: {},
       ad3Arr: [],
-      location: '',
+      location: "",
       locationArr: [
         {
-          name: '南京',
+          name: "南京",
         },
         {
-          name: '北京',
+          name: "北京",
         },
       ],
       jobSArr: [],
       hotQyArr: [],
       csArr: [],
-    }
+    };
   },
   mounted() {
     setTimeout(() => {
-      this.$bus.$emit('EVENT_SCROLL', 0)
-    }, 500)
-    this.bannerList()
-    this.bannerList1()
-    this.positionType()
-    this.queryHotPositonByIndustry()
-    this.queryHotCompanyList()
-    this.queryHotCityList()
-    this.location = this.cityName
+      this.$bus.$emit("EVENT_SCROLL", 0);
+    }, 500);
+    this.bannerList();
+    this.bannerList1();
+    this.positionType();
+    this.queryHotPositonByIndustry();
+    this.queryHotCompanyList();
+    this.queryHotCityList();
+    this.location = this.cityName;
   },
   methods: {
     changeLocation(value) {
-      this.location = value
+      this.location = value;
       // this.$store.commit('SET_NOW_CITY', value)
     },
     changeVal(value) {
-      this.searchStr = value
+      this.searchStr = value;
     },
     async queryHotCityList() {
-      let params = {}
-      let res = await Job.queryHotCityList(params)
+      let params = {};
+      let res = await Job.queryHotCityList(params);
       if (res.code == 200) {
-        this.csArr = res.data
+        this.csArr = res.data;
       }
     },
     async bannerList() {
       let params = {
-        bannerCode: 'social_banner',
-      }
-      let res = await School.bannerList(params)
+        bannerCode: "social_banner",
+      };
+      let res = await School.bannerList(params);
       if (res.code == 200) {
-        this.adImg = res.data[0] || {}
+        this.adImg = res.data[0] || {};
       }
     },
     async bannerList1() {
       let params = {
-        bannerCode: 'social',
-      }
-      let res = await School.bannerList(params)
+        bannerCode: "social",
+      };
+      let res = await School.bannerList(params);
       if (res.code == 200) {
         // this.adImg = res.data[0] || {}
-        this.ad1 = res.data[0] || {}
-        this.ad2 = res.data[1] || {}
-        res.data[2] && this.ad3Arr.push(res.data[2])
-        res.data[3] && this.ad3Arr.push(res.data[3])
-        res.data[4] && this.ad3Arr.push(res.data[4])
+        this.ad1 = res.data[0] || {};
+        this.ad2 = res.data[1] || {};
+        res.data[2] && this.ad3Arr.push(res.data[2]);
+        res.data[3] && this.ad3Arr.push(res.data[3]);
+        res.data[4] && this.ad3Arr.push(res.data[4]);
       }
     },
     bannerJump(banner) {
-      this.$util.jumpLink(banner.type, banner.jumpUrl)
+      this.$util.jumpLink(banner.type, banner.jumpUrl);
     },
     // 热门职位
     async queryHotPositonByIndustry(id) {
@@ -258,10 +280,10 @@ export default {
         recruitType: 1,
         currentPage: 1,
         pageSize: 6,
-      }
-      let res = await School.queryHotPosition(params)
+      };
+      let res = await School.queryHotPosition(params);
       if (res.code == 200) {
-        this.jobSArr = res.data.list
+        this.jobSArr = res.data.list;
       }
     },
     // 热门企业
@@ -269,86 +291,101 @@ export default {
       let params = {
         currentPage: 1,
         pageSize: 3,
-      }
-      let res = await Job.queryHotCompanyList(params)
+      };
+      let res = await Job.queryHotCompanyList(params);
       if (res.code == 200) {
         // this.hotQyArr = res.data.list;
-        let hotQyArr = []
-        res.data.list.forEach(async item => {
-          item.jobs = await this.queryCompanyPositionByComId(item.id)
-          hotQyArr.push(item)
-        })
-        this.hotQyArr = hotQyArr
-        console.log(this.hotQyArr)
+        let hotQyArr = [];
+        res.data.list.forEach(async (item) => {
+          item.jobs = await this.queryCompanyPositionByComId(item.id);
+          hotQyArr.push(item);
+        });
+        this.hotQyArr = hotQyArr;
+        console.log(this.hotQyArr);
       }
     },
     // 企业下职位
     async queryCompanyPositionByComId(id) {
-      let arr = []
+      let arr = [];
       let params = {
         companyId: id,
         currentPage: 1,
         pageSize: 3,
-      }
-      let res = await Job.queryCompanyPositionByComId(params)
+      };
+      let res = await Job.queryCompanyPositionByComId(params);
       if (res.code == 200) {
-        arr = res.data.list
+        arr = res.data.list;
       }
-      return arr
+      return arr;
     },
     async positionType() {
-      let params = {}
-      let res = await School.positionType(params)
+      let params = {};
+      let res = await School.positionType(params);
       if (res.code == 200) {
-        this.specialityArr = res.data
-        this.specialityIndex = -1
+        this.specialityArr = res.data;
+        this.specialityIndex = -1;
       }
     },
     clickMain() {
-      this.specialityIndex = -1
+      this.specialityIndex = -1;
     },
     toChooseZl(index) {
-      this.specialityIndex = index
-      this.specialityInfo = this.specialityArr[index].childLists
+      this.specialityIndex = index;
+      this.specialityInfo = this.specialityArr[index].childLists;
     },
     toInfo(id) {
       const { href } = this.$router.resolve({
-        path: '/index/info',
+        path: "/index/info",
         query: { id: id },
-      })
-      window.open(href, '_blank')
+      });
+      window.open(href, "_blank");
       // this.$router.push({ path: '/index/info', query: { id: id } })
     },
     toCompay(id) {
       const { href } = this.$router.resolve({
-        path: '/index/company',
+        path: "/index/company",
         query: { id: id },
-      })
-      window.open(href, '_blank')
+      });
+      window.open(href, "_blank");
       // this.$router.push({ path: '/index/company', query: { id: id } })
     },
     toMore(id) {
       const { href } = this.$router.resolve({
-        path: '/index/company',
+        path: "/index/company",
         query: { id: id, tabId: 2 },
-      })
-      window.open(href, '_blank')
+      });
+      window.open(href, "_blank");
       // this.$router.push({ path: '/index/company', query: { id: id, tabId: 2 } })
     },
     toJob(type, item) {
       if (type == 1) {
-        this.$router.push({ path: '/index/job', query: { cityName: this.location, keyWords: this.searchStr } })
+        this.$router.push({
+          path: "/index/job",
+          query: { cityName: this.location, keyWords: this.searchStr },
+        });
       } else {
-        this.$router.push({ path: '/index/job', query: { jobTypeId: item.subId } })
+        this.$router.push({
+          path: "/index/job",
+          query: { jobTypeId: item.subId },
+        });
       }
     },
   },
-}
+  metaInfo() {
+    return {
+      meta: [{ name: "viewport", content: this.$route.meta.keywords }],
+    };
+  },
+};
 </script>
 
 <style lang="scss" scoped>
 .main {
-  background: linear-gradient(180deg, rgba(36, 70, 168, 0.25) 0%, rgba(36, 70, 168, 0) 100%);
+  background: linear-gradient(
+    180deg,
+    rgba(36, 70, 168, 0.25) 0%,
+    rgba(36, 70, 168, 0) 100%
+  );
   box-sizing: border-box;
   position: relative;
 }
@@ -377,7 +414,7 @@ export default {
       }
     }
     .selBox::after {
-      content: '';
+      content: "";
       width: 1px;
       height: 22px;
       background: #bec4d4;

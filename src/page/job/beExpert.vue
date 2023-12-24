@@ -3,7 +3,13 @@
     <div class="formBox">
       <el-button class="goBack" @click="goBack">返回</el-button>
       <img class="bjW" src="@/assets/image/job/hopeBj2.png" alt="" />
-      <el-form ref="form" :model="form" :rules="rules" @submit.native.prevent label-width="80px">
+      <el-form
+        ref="form"
+        :model="form"
+        :rules="rules"
+        @submit.native.prevent
+        label-width="80px"
+      >
         <el-form-item label="姓名：" prop="userName">
           <el-input type="text" v-model="form.userName"></el-input>
         </el-form-item>
@@ -60,41 +66,41 @@
   </div>
 </template>
 <script>
-import { mapActions, mapMutations, mapGetters } from 'vuex'
+import { mapActions, mapMutations, mapGetters } from "vuex";
 
-import Job from '@/api/job'
-import Button from '../../plugin/lin-cms-ui/view/basic/button/button.vue'
+import Job from "@/api/job";
+import Button from "../../plugin/lin-cms-ui/view/basic/button/button.vue";
 export default {
   components: { Button },
   watch: {},
   computed: {
-    ...mapGetters(['userInfo', 'userId']),
+    ...mapGetters(["userInfo", "userId"]),
   },
   data() {
     var checkPhone = (rule, value, callback) => {
       //手机号码校验
-      const phoneReg = /^1[3|4|5|7|8|9][0-9]{9}$/
+      const phoneReg = /^1[3|4|5|7|8|9][0-9]{9}$/;
       if (!value) {
-        return callback(new Error('请输入正确的手机号'))
+        return callback(new Error("请输入正确的手机号"));
       }
       setTimeout(() => {
         if (!Number.isInteger(+value)) {
-          callback(new Error('请输入正确的手机号'))
+          callback(new Error("请输入正确的手机号"));
         } else {
           if (phoneReg.test(value)) {
-            callback()
+            callback();
           } else {
-            callback(new Error('请输入正确的手机号'))
+            callback(new Error("请输入正确的手机号"));
           }
         }
-      }, 100)
-    }
+      }, 100);
+    };
     return {
       form: {
-        userName: '',
-        mobile: '',
+        userName: "",
+        mobile: "",
         labelId: null,
-        expertDesc: '',
+        expertDesc: "",
         fileId: null,
       },
       recommendArr: [],
@@ -103,54 +109,58 @@ export default {
       fileList: [],
       fileInfo: {},
       rules: {
-        userName: [{ required: true, message: '请输入姓名', trigger: 'blur' }],
+        userName: [{ required: true, message: "请输入姓名", trigger: "blur" }],
         mobile: [
-          { validator: checkPhone, trigger: 'blur' },
-          { required: true, message: '请输入手机号', trigger: 'blur' },
+          { validator: checkPhone, trigger: "blur" },
+          { required: true, message: "请输入手机号", trigger: "blur" },
         ],
-        labelId: [{ required: true, message: '请选择行业类型', trigger: 'blur' }],
-        expertDesc: [{ required: true, message: '请输入申请描述', trigger: 'blur' }],
+        labelId: [
+          { required: true, message: "请选择行业类型", trigger: "blur" },
+        ],
+        expertDesc: [
+          { required: true, message: "请输入申请描述", trigger: "blur" },
+        ],
       },
-    }
+    };
   },
   mounted() {
     // if (!this.userId) {
     //   this.$router.push({ path: '/login/login' })
     //   return
     // }
-    this.expertLevel()
-    this.queryHotIndustryType()
+    this.expertLevel();
+    this.queryHotIndustryType();
   },
   methods: {
     handleExceed(file, fileList) {
-      this.$message.error('请先删除已上传文件')
+      this.$message.error("请先删除已上传文件");
     },
     handleSuccess(res, file, fileList) {
       // console.log(res, file, fileList)
-      this.fileInfo = res.data
-      this.fileList = fileList
+      this.fileInfo = res.data;
+      this.fileList = fileList;
     },
     //返回上一页
     goBack() {
-      this.routerGo(-1)
+      this.routerGo(-1);
     },
     toHome() {
       this.$router.push({
-        path: '/',
-      })
+        path: "/",
+      });
     },
     async expertLevel() {
-      let params = {}
-      let res = await Job.expertLevel(params)
+      let params = {};
+      let res = await Job.expertLevel(params);
       if (res.code == 200) {
-        this.levelArr = res.data
+        this.levelArr = res.data;
       }
     },
     async queryHotIndustryType() {
-      let params = {}
-      let res = await Job.expertCat(params)
+      let params = {};
+      let res = await Job.expertCat(params);
       if (res.code == 200) {
-        this.recommendArr = res.data
+        this.recommendArr = res.data;
       }
     },
     async expertAdd() {
@@ -182,40 +192,45 @@ export default {
         userName: this.form.userName,
         // level: this.form.level,
         // userId: this.userId,
-      }
-      const _this = this
-      this.form.fileId = this.fileInfo.fileId
-      this.$refs.form.validate(async valid => {
+      };
+      const _this = this;
+      this.form.fileId = this.fileInfo.fileId;
+      this.$refs.form.validate(async (valid) => {
         if (valid) {
-          let res = await Job.expertAdd(params)
+          let res = await Job.expertAdd(params);
           if (res.code == 200) {
             _this.$message({
-              message: '感谢您的信任，我们的工作人员在必要时会和您联系。',
-              type: 'success',
+              message: "感谢您的信任，我们的工作人员在必要时会和您联系。",
+              type: "success",
               duration: 2000,
-              customClass: 'my-message',
-            })
+              customClass: "my-message",
+            });
             _this.form = {
-              userName: '',
-              mobile: '',
+              userName: "",
+              mobile: "",
               labelId: null,
-              expertDesc: '',
+              expertDesc: "",
               fileId: null,
-            }
-            _this.fileInfo = {}
-            _this.fileList = []
-            _this.$refs.form.clearValidate()
+            };
+            _this.fileInfo = {};
+            _this.fileList = [];
+            _this.$refs.form.clearValidate();
           } else {
-            _this.$message.error(res.message)
+            _this.$message.error(res.message);
           }
         }
-      })
+      });
     },
   },
-}
+  metaInfo() {
+    return {
+      meta: [{ name: "viewport", content: this.$route.meta.keywords }],
+    };
+  },
+};
 </script>
 <style lang="scss" scoped>
-@import url('//at.alicdn.com/t/font_631781_4v61w1yz6y74x6r.css');
+@import url("//at.alicdn.com/t/font_631781_4v61w1yz6y74x6r.css");
 
 $nx-color: #0470b8;
 $all-padding: 0;
@@ -224,7 +239,11 @@ $nx-width: 76.25rem;
   min-width: $nx-width;
   .main {
     padding-top: 20px;
-    background: linear-gradient(180deg, rgba(36, 70, 168, 0.25) 0%, rgba(36, 70, 168, 0) 100%);
+    background: linear-gradient(
+      180deg,
+      rgba(36, 70, 168, 0.25) 0%,
+      rgba(36, 70, 168, 0) 100%
+    );
   }
   .formBox {
     width: 1200px;
@@ -304,11 +323,11 @@ $nx-width: 76.25rem;
     }
   }
 }
-.main /deep/ .el-form-item__label {
+.main ::v-deep .el-form-item__label {
   padding: 0;
   color: #666666;
 }
-.main /deep/ .el-form-item__content {
+.main ::v-deep .el-form-item__content {
   padding: 0;
   width: 483px;
   margin-left: 16px !important;

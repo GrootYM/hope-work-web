@@ -1480,7 +1480,10 @@ export default {
         const list = res.data.list;
         list.forEach((item) => {
           item.workExperienceList = item.workExperienceList.splice(0, 4);
-          item.educationExperienceList = item.educationExperienceList.splice(0, 2)
+          item.educationExperienceList = item.educationExperienceList.splice(
+            0,
+            2
+          );
         });
         this.recArr = list;
         this.total = res.data.total;
@@ -2398,25 +2401,25 @@ $nx-width: 76.25rem;
   cursor: pointer;
 }
 
-.selBox /deep/ .el-select {
+.selBox ::v-deep .el-select {
   width: 100%;
   height: 100%;
   padding: 0 4px;
 }
-.selBox /deep/ .el-select > .el-input {
+.selBox ::v-deep .el-select > .el-input {
   height: 100%;
 }
-.selBox /deep/ .el-input--suffix .el-input__inner {
+.selBox ::v-deep .el-input--suffix .el-input__inner {
   border: none;
   height: 100% !important;
   padding: 0;
   font-size: 16px;
   margin: 0;
 }
-.selBox /deep/ .el-select__input {
+.selBox ::v-deep .el-select__input {
   margin: 0;
 }
-.selBox /deep/ .el-select__tags {
+.selBox ::v-deep .el-select__tags {
   min-width: 100%;
   height: 100%;
   overflow-y: auto;
@@ -2434,11 +2437,11 @@ $nx-width: 76.25rem;
   span {
     margin: 0 5px;
   }
-  /deep/ .el-input {
+  ::v-deep .el-input {
     width: 60px;
     padding: 0;
   }
-  /deep/ .el-input__inner {
+  ::v-deep .el-input__inner {
     padding: 0 5px;
   }
 }

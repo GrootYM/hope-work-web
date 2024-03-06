@@ -555,7 +555,7 @@ export default {
     async queryHotPositonByIndustry() {
       let params = {
         currentPage: 1,
-        pageSize: 99999,
+        pageSize: 12,
         companyIndustryId: null,
       }
       let res = await Job.queryHotPositonByIndustry(params)

@@ -2,7 +2,9 @@
 <template>
   <div>
     <div class="top-banner">
-      <img src="@/assets/image/about/top-banner1.png" />
+      <img
+        src="https://hope-service.oss-cn-beijing.aliyuncs.com/images/top-banner-2024-3.jpg"
+      />
     </div>
     <Search />
     <div class="main">
@@ -212,13 +214,13 @@
                     <div class="num">{{ item.positionNum }}</div>
                     <div class="label">在招职位</div>
                   </div>
-                  <div class="interval-long"></div>
-                  <div>
-                    <div class="num">
-                      {{ item.positionChatNum }}
-                    </div>
-                    <div class="label">沟通次数</div>
-                  </div>
+                  <!--                  <div class="interval-long"></div>-->
+                  <!--                  <div>-->
+                  <!--                    <div class="num">-->
+                  <!--                      {{ item.positionChatNum }}-->
+                  <!--                    </div>-->
+                  <!--                    <div class="label">沟通次数</div>-->
+                  <!--                  </div>-->
                 </div>
               </div>
             </div>

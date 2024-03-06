@@ -1,3 +1,5 @@
+// import homeRouter from "./home-router";
+
 import homeRouter from "./home-router";
 
 const routes = [
@@ -134,7 +136,7 @@ const routes = [
         component: () => import("@/page/components/home"),
         meta: {
           keywords:
-            "希望工场招聘网站，为求职者提供2023年11月29日热门企业最新人才招聘和信息",
+            "逛嗨聘，玩转职场！嗨聘，助各路英才突破职业瓶颈，走出中年危机！嗨聘，以人才为驱动力，助力企业走出经营瓶颈！",
         },
       },
       // ws
@@ -241,7 +243,7 @@ const routes = [
         name: "flexible",
         component: () => import("@/page/job/flexible"),
         meta: {
-          keywords: "针对兼职人员提供人才招聘信息",
+          keywords: "嗨聘布局零工市场，促进灵活就业",
         },
       },
     ],

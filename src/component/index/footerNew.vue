@@ -12,20 +12,22 @@
         <el-row>
           <el-col :span="6">
             <div class="links">
-              <div class="link-title">联系我们</div>
-              <div class="link">希望工场</div>
+              <div class="link-title">联系嗨聘</div>
+              <div class="link">希望工场（苏州）网络技术有限公司</div>
               <div class="link">
                 公司地址:江苏省苏州市吴中区经济开发区城南街道东吴南路79号B-901室
               </div>
-              <div class="link">邮箱:hopeworkshop@126.com</div>
+              <div class="link">邮箱:jobmall@126.com</div>
             </div>
           </el-col>
           <el-col :span="4">
             <div class="links">
               <div class="link-title">产品与服务</div>
-              <div class="link">职位搜索</div>
-              <div class="link">人才招聘</div>
+              <!--              企业招聘、猎头服务、专家咨询、管理咨询-->
               <div class="link">企业招聘</div>
+              <div class="link">猎头服务</div>
+              <div class="link">专家咨询</div>
+              <div class="link">管理咨询</div>
             </div>
           </el-col>
           <el-col :span="4">
@@ -34,12 +36,25 @@
               <div class="link">使用帮助</div>
               <div class="link2">
                 <a
-                  href="https://hope-service.oss-cn-beijing.aliyuncs.com/uploads/adf366c1-f574-4515-8e39-d1c61ea5b79a.docx"
+                  target="_blank"
+                  href="https://hope-service.oss-cn-beijing.aliyuncs.com/files/%E9%98%B2%E9%AA%97%E6%8C%87%E5%8D%97%EF%BC%88%E5%97%A8%E8%81%98%EF%BC%89.docx"
                   >防骗指南</a
                 >
               </div>
-              <div class="link">协议与规则</div>
-              <div class="link">政策隐私</div>
+              <div class="link">
+                <a
+                  target="_blank"
+                  href="https://hope-service.oss-cn-beijing.aliyuncs.com/files/%E5%97%A8%E8%81%98%E7%94%A8%E6%88%B7%E5%8D%8F%E8%AE%AE%EF%BC%88%E5%B7%B2%E5%AE%A1%E6%A0%B8%EF%BC%89.docx"
+                  >协议与规则</a
+                >
+              </div>
+              <div class="link">
+                <a
+                  target="_blank"
+                  href="https://hope-service.oss-cn-beijing.aliyuncs.com/files/%E5%97%A8%E8%81%98%E9%9A%90%E7%A7%81%E6%94%BF%E7%AD%96%EF%BC%88%E5%B7%B2%E5%AE%A1%E6%A0%B8%EF%BC%89.docx"
+                  >政策隐私</a
+                >
+              </div>
             </div>
           </el-col>
           <el-col :span="4">
@@ -47,9 +62,15 @@
           </el-col>
           <el-col :span="5">
             <div class="right-part">
-              <img src="@/assets/image/home/bottom-logo-white.png" />
+              <img
+                src="https://hope-service.oss-cn-beijing.aliyuncs.com/images/logo-2024-2.jpg"
+                style="height: auto"
+              />
+              <!--              <img src="@/assets/image/about/logo-2024-2.jpg" style="height: auto" />-->
               <div class="qrcode">
-                <img src="@/assets/image/about/wechatcode.jpg" />
+                <img
+                  src="https://hope-service.oss-cn-beijing.aliyuncs.com/images/wechat_qrcode.jpg"
+                />
                 <div class="link">服务号</div>
               </div>
             </div>
@@ -73,8 +94,12 @@
           </div> -->
         </div>
         <div class="copy-right">
-          Copyright©2023-2023希望工场版权所有
-          <div class="single">苏ICP备2023022582号</div>
+          Copyright©2023-2024版权所有
+          <div class="single">
+            <a target="_blank" href="https://beian.miit.gov.cn"
+              >苏ICP备2024068051号</a
+            >
+          </div>
           <div class="licence" @click="toLicence">人力资源服务许可证</div>
         </div>
       </div>

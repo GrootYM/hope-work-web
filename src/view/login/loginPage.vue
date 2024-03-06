@@ -75,10 +75,10 @@
       <div class="agree">
         <el-checkbox v-model="checked"></el-checkbox>
         <div class="agree-content">
-          同意希望工场
+          同意嗨聘
           <span @click="goLink(1)">《用户协议》</span>
           <span @click="goLink(2)">《隐私政策》</span>
-          <span @click="goLink(3)">《希望工场平台协议及隐私政策》</span>
+          <span @click="goLink(3)">《嗨聘平台协议及隐私政策》</span>
         </div>
       </div>
     </div>

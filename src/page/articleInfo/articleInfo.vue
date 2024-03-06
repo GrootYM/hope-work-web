@@ -3,10 +3,12 @@
     <div class="articleBox">
       <h1>{{ articleInfo.title }}</h1>
       <div class="createInfo">
-        <img :src="articleInfo.headimg" alt="" />
+        <img :src="articleInfo.headimg" alt="" style="border-radius: 20%" />
         <div class="infoRight">
           <p class="pName">{{ articleInfo.nickname }}</p>
-          <p class="Identity" v-for="(item, index) in strArr" :key="index">{{ item }}</p>
+          <p class="Identity" v-for="(item, index) in strArr" :key="index">
+            {{ item }}
+          </p>
         </div>
       </div>
       <div class="infoContent" v-html="articleInfo.articleContent"></div>
@@ -14,32 +16,32 @@
   </div>
 </template>
 <script>
-import Article from '@/api/articleInfo/index'
+import Article from "@/api/articleInfo/index";
 export default {
   data() {
     return {
       articleInfo: {},
-      id: '',
+      id: "",
       strArr: [],
-    }
+    };
   },
   created() {
-    this.id = this.$route.query.id
-    this.getArticleInfo()
+    this.id = this.$route.query.id;
+    this.getArticleInfo();
   },
   mounted() {},
 
   methods: {
     async getArticleInfo() {
-      let data = { id: this.id }
-      let res = await Article.getArticleInfo(data)
+      let data = { id: this.id };
+      let res = await Article.getArticleInfo(data);
       if (res.code == 200) {
-        this.articleInfo = res.data
-        console.log(this.articleInfo, '我是文章详情')
-        console.log('我是文章详情的职位', this.articleInfo.job)
-        console.log('我是文章详情的职位22', res.data.job)
-        let strArr = this.articleInfo.job.split(',')
-        this.strArr = strArr
+        this.articleInfo = res.data;
+        console.log(this.articleInfo, "我是文章详情");
+        console.log("我是文章详情的职位", this.articleInfo.job);
+        console.log("我是文章详情的职位22", res.data.job);
+        let strArr = this.articleInfo.job.split(",");
+        this.strArr = strArr;
         // console.log('我是修改过后的文章详情职位', strArr);
         // let str = '原新智认知数字科技股份有限公司总裁'
         // let newArr = str.split(/[(\r\n)\r\n]+/)
@@ -48,16 +50,20 @@ export default {
     },
   },
   //   /media/article-info
-}
+};
 </script>
 <style lang="scss" scoped>
-@import url('//at.alicdn.com/t/font_631781_4v61w1yz6y74x6r.css');
+@import url("//at.alicdn.com/t/font_631781_4v61w1yz6y74x6r.css");
 $nx-color: #0470b8;
 $all-padding: 0;
 $nx-width: 76.25rem;
 
 .main {
-  background: linear-gradient(180deg, rgba(36, 70, 168, 0.25) 0%, rgba(36, 70, 168, 0) 100%);
+  background: linear-gradient(
+    180deg,
+    rgba(36, 70, 168, 0.25) 0%,
+    rgba(36, 70, 168, 0) 100%
+  );
   padding: 40px 0;
   box-sizing: border-box;
   position: relative;

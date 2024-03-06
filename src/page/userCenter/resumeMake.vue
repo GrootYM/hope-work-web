@@ -10,7 +10,11 @@
           :disabled="!isTitleEdit"
           @change="setTitle"
         ></el-input>
-        <img src="@/assets/image/userCenter/edit-input.png" class="title-input" @click="isTitleEdit = !isTitleEdit" />
+        <img
+          src="@/assets/image/userCenter/edit-input.png"
+          class="title-input"
+          @click="isTitleEdit = !isTitleEdit"
+        />
       </div>
       <div class="edit-content-out">
         <div class="model">
@@ -19,7 +23,11 @@
             <el-col :span="12">
               <div class="form-label">姓名</div>
               <div class="form-input">
-                <el-input v-model="personInfo.userName" clearable @change="savePersonInfo"></el-input>
+                <el-input
+                  v-model="personInfo.userName"
+                  clearable
+                  @change="savePersonInfo"
+                ></el-input>
               </div>
             </el-col>
             <el-col :span="12">
@@ -36,7 +44,13 @@
                   :show-file-list="false"
                 >
                   <div class="editBtn" slot="default">编辑</div>
-                  <div class="deleteBtn" slot="default" @click.stop="handleRemove">删除</div>
+                  <div
+                    class="deleteBtn"
+                    slot="default"
+                    @click.stop="handleRemove"
+                  >
+                    删除
+                  </div>
                 </el-upload>
               </div>
             </el-col>
@@ -60,8 +74,17 @@
             <el-col :span="12">
               <div class="form-label">性别</div>
               <div class="form-input">
-                <el-select style="width: 100%" v-model="personInfo.sex" @change="savePersonInfo">
-                  <el-option v-for="(item, index) in sexOptions" :key="index" :label="item.label" :value="item.label">
+                <el-select
+                  style="width: 100%"
+                  v-model="personInfo.sex"
+                  @change="savePersonInfo"
+                >
+                  <el-option
+                    v-for="(item, index) in sexOptions"
+                    :key="index"
+                    :label="item.label"
+                    :value="item.label"
+                  >
                   </el-option>
                 </el-select>
               </div>
@@ -99,13 +122,21 @@
             <el-col :span="12">
               <div class="form-label">邮箱</div>
               <div class="form-input">
-                <el-input v-model="personInfo.email" clearable @change="savePersonInfo"></el-input>
+                <el-input
+                  v-model="personInfo.email"
+                  clearable
+                  @change="savePersonInfo"
+                ></el-input>
               </div>
             </el-col>
             <el-col :span="12">
               <div class="form-label">电话</div>
               <div class="form-input">
-                <el-input v-model="personInfo.phone" clearable @change="savePersonInfo"></el-input>
+                <el-input
+                  v-model="personInfo.phone"
+                  clearable
+                  @change="savePersonInfo"
+                ></el-input>
               </div>
             </el-col>
           </el-row>
@@ -113,7 +144,11 @@
             <el-col :span="12">
               <div class="form-label">微信号</div>
               <div class="form-input">
-                <el-input v-model="personInfo.wechat" clearable @change="savePersonInfo"></el-input>
+                <el-input
+                  v-model="personInfo.wechat"
+                  clearable
+                  @change="savePersonInfo"
+                ></el-input>
               </div>
             </el-col>
             <el-col :span="12">
@@ -125,7 +160,12 @@
                   style="width: 100%"
                   @change="savePersonInfo"
                 >
-                  <el-option v-for="(city, index) in cityList" :key="city.id" :label="city.name" :value="city.name">
+                  <el-option
+                    v-for="(city, index) in cityList"
+                    :key="city.id"
+                    :label="city.name"
+                    :value="city.name"
+                  >
                   </el-option>
                 </el-select>
               </div>
@@ -135,11 +175,21 @@
             <el-col :span="12">
               <div class="form-label">薪资要求</div>
               <div class="form-input">
-                <el-input v-model="personInfo.startSalary" type="number" style="width: 45%" @change="savePersonInfo">
+                <el-input
+                  v-model="personInfo.startSalary"
+                  type="number"
+                  style="width: 45%"
+                  @change="savePersonInfo"
+                >
                   <span slot="suffix">k</span>
                 </el-input>
                 <span class="to-text">至</span>
-                <el-input v-model="personInfo.endSalary" type="number" style="width: 45%" @change="savePersonInfo">
+                <el-input
+                  v-model="personInfo.endSalary"
+                  type="number"
+                  style="width: 45%"
+                  @change="savePersonInfo"
+                >
                   <span slot="suffix">k</span>
                 </el-input>
               </div>
@@ -147,7 +197,11 @@
             <el-col :span="12">
               <div class="form-label">籍贯</div>
               <div class="form-input">
-                <el-input v-model="personInfo.hometown" clearable @change="savePersonInfo"></el-input>
+                <el-input
+                  v-model="personInfo.hometown"
+                  clearable
+                  @change="savePersonInfo"
+                ></el-input>
               </div>
             </el-col>
           </el-row>
@@ -155,7 +209,11 @@
             <el-col :span="12">
               <div class="form-label">政治面貌</div>
               <div class="form-input">
-                <el-input v-model="personInfo.politicFace" clearable @change="savePersonInfo"></el-input>
+                <el-input
+                  v-model="personInfo.politicFace"
+                  clearable
+                  @change="savePersonInfo"
+                ></el-input>
               </div>
             </el-col>
           </el-row>
@@ -179,8 +237,17 @@
         <div class="model">
           <div class="model-name">工作经历</div>
           <div class="show-model">
-            <div class="content-box" v-if="!isEdit_1" @mouseover="edit_1 = true" @mouseout="edit_1 = false">
-              <div class="edit-btn" :class="edit_1 ? 'show-edit-btn' : ''" @click="isEdit_1 = true">
+            <div
+              class="content-box"
+              v-if="!isEdit_1"
+              @mouseover="edit_1 = true"
+              @mouseout="edit_1 = false"
+            >
+              <div
+                class="edit-btn"
+                :class="edit_1 ? 'show-edit-btn' : ''"
+                @click="isEdit_1 = true"
+              >
                 <i class="el-icon-edit-outline"></i>
                 <i class="el-icon-delete" @click.stop="delExperience(1)"></i>
               </div>
@@ -188,11 +255,16 @@
                 {{ jobExperience[0].company }}
               </div>
               <div class="sub-title">
-                <div class="sub-item" :class="{ 'right-line': jobExperience[0].positionTypeName }">
+                <div
+                  class="sub-item"
+                  :class="{ 'right-line': jobExperience[0].positionTypeName }"
+                >
                   {{ jobExperience[0].positionTypeName }}
                 </div>
                 <div class="sub-item" v-if="jobExperience[0].startTime">
-                  {{ jobExperience[0].startTime }}-{{ jobExperience[0].endTime }}
+                  {{ jobExperience[0].startTime }}-{{
+                    jobExperience[0].endTime
+                  }}
                 </div>
               </div>
               <div class="desc">{{ jobExperience[0].workContent }}</div>
@@ -280,8 +352,17 @@
         <div class="model">
           <div class="model-name">项目经历</div>
           <div class="show-model">
-            <div class="content-box" v-if="!isEdit_2" @mouseover="edit_2 = true" @mouseout="edit_2 = false">
-              <div class="edit-btn" :class="edit_2 ? 'show-edit-btn' : ''" @click="isEdit_2 = true">
+            <div
+              class="content-box"
+              v-if="!isEdit_2"
+              @mouseover="edit_2 = true"
+              @mouseout="edit_2 = false"
+            >
+              <div
+                class="edit-btn"
+                :class="edit_2 ? 'show-edit-btn' : ''"
+                @click="isEdit_2 = true"
+              >
                 <i class="el-icon-edit-outline"></i>
                 <i class="el-icon-delete" @click.stop="delExperience(2)"></i>
               </div>
@@ -289,11 +370,16 @@
                 {{ proExperience[0].projectName }}
               </div>
               <div class="sub-title">
-                <div class="sub-item" :class="{ 'right-line': proExperience[0].projectRole }">
+                <div
+                  class="sub-item"
+                  :class="{ 'right-line': proExperience[0].projectRole }"
+                >
                   {{ proExperience[0].projectRole }}
                 </div>
                 <div class="sub-item" v-if="proExperience[0].startTime">
-                  {{ proExperience[0].startTime }}-{{ proExperience[0].endTime }}
+                  {{ proExperience[0].startTime }}-{{
+                    proExperience[0].endTime
+                  }}
                 </div>
               </div>
               <div class="desc">{{ proExperience[0].workDescribe }}</div>
@@ -378,8 +464,17 @@
         <div class="model">
           <div class="model-name">教育经历</div>
           <div class="show-model">
-            <div class="content-box" v-if="!isEdit_3" @mouseover="edit_3 = true" @mouseout="edit_3 = false">
-              <div class="edit-btn" :class="edit_3 ? 'show-edit-btn' : ''" @click="isEdit_3 = true">
+            <div
+              class="content-box"
+              v-if="!isEdit_3"
+              @mouseover="edit_3 = true"
+              @mouseout="edit_3 = false"
+            >
+              <div
+                class="edit-btn"
+                :class="edit_3 ? 'show-edit-btn' : ''"
+                @click="isEdit_3 = true"
+              >
                 <i class="el-icon-edit-outline"></i>
                 <i class="el-icon-delete" @click.stop="delExperience(3)"></i>
               </div>
@@ -387,14 +482,22 @@
                 {{ eduExperience[0].schoolName }}
               </div>
               <div class="sub-title">
-                <div class="sub-item" :class="{ 'right-line': eduExperience[0].education }">
+                <div
+                  class="sub-item"
+                  :class="{ 'right-line': eduExperience[0].education }"
+                >
                   {{ eduExperience[0].education }}
                 </div>
-                <div class="sub-item" :class="{ 'right-line': eduExperience[0].major }">
+                <div
+                  class="sub-item"
+                  :class="{ 'right-line': eduExperience[0].major }"
+                >
                   {{ eduExperience[0].major }}
                 </div>
                 <div class="sub-item" v-if="eduExperience[0].startTime">
-                  {{ eduExperience[0].startTime }}-{{ eduExperience[0].endTime }}
+                  {{ eduExperience[0].startTime }}-{{
+                    eduExperience[0].endTime
+                  }}
                 </div>
               </div>
               <div class="desc">{{ eduExperience[0].honor }}</div>
@@ -406,13 +509,18 @@
                   <el-col :span="12">
                     <div class="input-label">学校</div>
                     <div class="input-content">
-                      <el-input v-model="eduExperience[0].schoolName" clearable> </el-input>
+                      <el-input v-model="eduExperience[0].schoolName" clearable>
+                      </el-input>
                     </div>
                   </el-col>
                   <el-col :span="12">
                     <div class="input-label">学历</div>
                     <div class="input-content">
-                      <el-select v-model="eduExperience[0].education" placeholder="选择学历" style="width: 100%">
+                      <el-select
+                        v-model="eduExperience[0].education"
+                        placeholder="选择学历"
+                        style="width: 100%"
+                      >
                         <el-option
                           v-for="(edu, index) in educationList"
                           :value="edu.label"
@@ -427,7 +535,8 @@
                   <el-col :span="12">
                     <div class="input-label">所学专业</div>
                     <div class="input-content">
-                      <el-input v-model="eduExperience[0].major" clearable> </el-input>
+                      <el-input v-model="eduExperience[0].major" clearable>
+                      </el-input>
                     </div>
                   </el-col>
                   <el-col :span="12">
@@ -480,7 +589,7 @@
         </div>
         <div class="action-btns">
           <div class="download-btn" @click="pdfDownload">下载</div>
-          <!-- <div class="upload-btn">上传至希望工场</div> -->
+          <!-- <div class="upload-btn">上传至嗨聘</div> -->
         </div>
       </div>
       <div class="preview-content">
@@ -491,13 +600,23 @@
               <div class="user-detail">
                 <div style="display: flex; margin-bottom: 12px">
                   <div class="right-bd">{{ personInfo.sex }}</div>
-                  <div class="right-bd">年龄：{{ personInfo.birthday | ageFilter }}岁</div>
+                  <div class="right-bd">
+                    年龄：{{ personInfo.birthday | ageFilter }}岁
+                  </div>
                   <div>{{ personInfo.phone }}</div>
                 </div>
                 <div style="display: flex">
-                  <div class="right-bd">{{ personInfo.joinWorkDate | ageFilter }}年工作经验</div>
-                  <div class="right-bd">求职意向：{{ personInfo.positionTypeName }}</div>
-                  <div class="right-bd">期望薪资：{{ personInfo.startSalary }}-{{ personInfo.endSalary }}K</div>
+                  <div class="right-bd">
+                    {{ personInfo.joinWorkDate | ageFilter }}年工作经验
+                  </div>
+                  <div class="right-bd">
+                    求职意向：{{ personInfo.positionTypeName }}
+                  </div>
+                  <div class="right-bd">
+                    期望薪资：{{ personInfo.startSalary }}-{{
+                      personInfo.endSalary
+                    }}K
+                  </div>
                   <div>期望城市：{{ personInfo.cityName }}</div>
                 </div>
               </div>
@@ -518,15 +637,22 @@
                   <span class="main-text" v-if="jobExperience[0].company">
                     {{ jobExperience[0].company }}
                   </span>
-                  <span class="sub-text" v-if="jobExperience[0].positionTypeName">
+                  <span
+                    class="sub-text"
+                    v-if="jobExperience[0].positionTypeName"
+                  >
                     {{ jobExperience[0].positionTypeName }}
                   </span>
                 </div>
                 <div class="time-text" v-if="jobExperience[0].startTime">
-                  {{ jobExperience[0].startTime }}-{{ jobExperience[0].endTime }}
+                  {{ jobExperience[0].startTime }}-{{
+                    jobExperience[0].endTime
+                  }}
                 </div>
               </div>
-              <div class="desc-text" v-if="jobExperience[0].workContent">{{ jobExperience[0].workContent }}</div>
+              <div class="desc-text" v-if="jobExperience[0].workContent">
+                {{ jobExperience[0].workContent }}
+              </div>
             </div>
           </div>
           <div class="section">
@@ -542,10 +668,14 @@
                   </span>
                 </div>
                 <div class="time-text" v-if="proExperience[0].startTime">
-                  {{ proExperience[0].startTime }}-{{ proExperience[0].endTime }}
+                  {{ proExperience[0].startTime }}-{{
+                    proExperience[0].endTime
+                  }}
                 </div>
               </div>
-              <div class="desc-text" v-if="proExperience[0].workDescribe">{{ proExperience[0].workDescribe }}</div>
+              <div class="desc-text" v-if="proExperience[0].workDescribe">
+                {{ proExperience[0].workDescribe }}
+              </div>
             </div>
           </div>
           <div class="section">
@@ -564,10 +694,14 @@
                   </span>
                 </div>
                 <div class="time-text" v-if="eduExperience[0].startTime">
-                  {{ eduExperience[0].startTime }}-{{ eduExperience[0].endTime }}
+                  {{ eduExperience[0].startTime }}-{{
+                    eduExperience[0].endTime
+                  }}
                 </div>
               </div>
-              <div class="desc-text" v-if="eduExperience[0].honor">{{ eduExperience[0].honor }}</div>
+              <div class="desc-text" v-if="eduExperience[0].honor">
+                {{ eduExperience[0].honor }}
+              </div>
             </div>
           </div>
         </div>
@@ -577,17 +711,17 @@
 </template>
 
 <script>
-import Home from '@/api/home'
-import Auth from '@/api/auth'
-import { mapGetters } from 'vuex'
-import moment from 'moment'
-import html2canvas from 'html2canvas'
-import JsPDF from 'jspdf'
+import Home from "@/api/home";
+import Auth from "@/api/auth";
+import { mapGetters } from "vuex";
+import moment from "moment";
+import html2canvas from "html2canvas";
+import JsPDF from "jspdf";
 
 export default {
   filters: {
     ageFilter(value) {
-      return value ? moment().diff(value, 'years') : ''
+      return value ? moment().diff(value, "years") : "";
     },
   },
   data() {
@@ -600,287 +734,298 @@ export default {
       edit_2: false,
       edit_3: false,
       isTitleEdit: false,
-      title: '',
+      title: "",
       personInfo: {
-        userName: '',
-        headUrl: '',
-        positionTypeName: '',
-        sex: '',
-        joinWorkDate: '',
-        birthday: '',
-        advantage: '',
-        email: '',
-        phone: '',
-        wechat: '',
-        cityName: '',
-        startSalary: '',
-        endSalary: '',
-        hometown: '',
-        politicFace: '',
+        userName: "",
+        headUrl: "",
+        positionTypeName: "",
+        sex: "",
+        joinWorkDate: "",
+        birthday: "",
+        advantage: "",
+        email: "",
+        phone: "",
+        wechat: "",
+        cityName: "",
+        startSalary: "",
+        endSalary: "",
+        hometown: "",
+        politicFace: "",
       },
       jobExperience: [
         {
-          company: '',
-          positionTypeName: '',
-          startTime: '',
-          endTime: '',
-          workContent: '',
+          company: "",
+          positionTypeName: "",
+          startTime: "",
+          endTime: "",
+          workContent: "",
         },
       ],
       proExperience: [
         {
-          projectName: '',
-          startTime: '',
-          endTime: '',
-          projectRole: '',
-          workDescribe: '',
+          projectName: "",
+          startTime: "",
+          endTime: "",
+          projectRole: "",
+          workDescribe: "",
         },
       ],
       eduExperience: [
         {
-          schoolName: '',
-          startTime: '',
-          endTime: '',
-          education: '',
-          major: '',
-          honor: '',
+          schoolName: "",
+          startTime: "",
+          endTime: "",
+          education: "",
+          major: "",
+          honor: "",
         },
       ],
       positionTypeList: [],
       cityList: [],
       sexOptions: [
-        { value: '1', label: '男' },
-        { value: '2', label: '女' },
+        { value: "1", label: "男" },
+        { value: "2", label: "女" },
       ],
       positionProps: {
         emitPath: false,
-        value: 'label',
+        value: "label",
       },
       fileList: [],
       params: {
         type: 1,
       },
       educationList: [
-        { value: '0', label: '不限' },
-        { value: '1', label: '小学' },
-        { value: '2', label: '初中' },
-        { value: '3', label: '高中' },
-        { value: '4', label: '大专' },
-        { value: '5', label: '本科' },
-        { value: '6', label: '硕士' },
-        { value: '7', label: '博士' },
+        { value: "0", label: "不限" },
+        { value: "1", label: "小学" },
+        { value: "2", label: "初中" },
+        { value: "3", label: "高中" },
+        { value: "4", label: "大专" },
+        { value: "5", label: "本科" },
+        { value: "6", label: "硕士" },
+        { value: "7", label: "博士" },
       ],
-    }
+    };
   },
   computed: {
-    ...mapGetters(['userInfo']),
+    ...mapGetters(["userInfo"]),
   },
   methods: {
     goBack() {
-      this.routerGo(-1)
+      this.routerGo(-1);
     },
     setTitle() {
-      this.hasSaved = true
-      sessionStorage.setItem('resumeTitle', this.title)
+      this.hasSaved = true;
+      sessionStorage.setItem("resumeTitle", this.title);
       setTimeout(() => {
-        this.hasSaved = false
-      }, 3500)
+        this.hasSaved = false;
+      }, 3500);
     },
     savePersonInfo() {
-      this.hasSaved = true
-      sessionStorage.setItem('personInfo', JSON.stringify(this.personInfo))
+      this.hasSaved = true;
+      sessionStorage.setItem("personInfo", JSON.stringify(this.personInfo));
       setTimeout(() => {
-        this.hasSaved = false
-      }, 3500)
+        this.hasSaved = false;
+      }, 3500);
     },
     delExperience(flag) {
       switch (flag) {
         case 1:
           this.jobExperience = [
             {
-              company: '',
-              positionTypeName: '',
-              startTime: '',
-              endTime: '',
-              workContent: '',
+              company: "",
+              positionTypeName: "",
+              startTime: "",
+              endTime: "",
+              workContent: "",
             },
-          ]
-          this.confirmEdit(1)
-          break
+          ];
+          this.confirmEdit(1);
+          break;
         case 2:
           this.proExperience = [
             {
-              projectName: '',
-              startTime: '',
-              endTime: '',
-              projectRole: '',
-              workDescribe: '',
+              projectName: "",
+              startTime: "",
+              endTime: "",
+              projectRole: "",
+              workDescribe: "",
             },
-          ]
-          this.confirmEdit(2)
-          break
+          ];
+          this.confirmEdit(2);
+          break;
         case 3:
           this.eduExperience = [
             {
-              schoolName: '',
-              startTime: '',
-              endTime: '',
-              education: '',
-              major: '',
-              honor: '',
+              schoolName: "",
+              startTime: "",
+              endTime: "",
+              education: "",
+              major: "",
+              honor: "",
             },
-          ]
-          this.confirmEdit(3)
-          break
+          ];
+          this.confirmEdit(3);
+          break;
       }
     },
     cancelEdit(flag) {
       switch (flag) {
         case 1:
-          this.isEdit_1 = false
-          let tempJob = JSON.parse(sessionStorage.getItem('jobExperience'))
-          if (tempJob) this.jobExperience = Object.assign({}, tempJob)
-          break
+          this.isEdit_1 = false;
+          let tempJob = JSON.parse(sessionStorage.getItem("jobExperience"));
+          if (tempJob) this.jobExperience = Object.assign({}, tempJob);
+          break;
         case 2:
-          this.isEdit_2 = false
-          let tempPro = JSON.parse(sessionStorage.getItem('proExperience'))
-          if (tempPro) this.proExperience = Object.assign({}, tempPro)
-          break
+          this.isEdit_2 = false;
+          let tempPro = JSON.parse(sessionStorage.getItem("proExperience"));
+          if (tempPro) this.proExperience = Object.assign({}, tempPro);
+          break;
         case 3:
-          this.isEdit_3 = false
-          let tempEdu = JSON.parse(sessionStorage.getItem('eduExperience'))
-          if (tempEdu) this.eduExperience = Object.assign({}, tempEdu)
-          break
+          this.isEdit_3 = false;
+          let tempEdu = JSON.parse(sessionStorage.getItem("eduExperience"));
+          if (tempEdu) this.eduExperience = Object.assign({}, tempEdu);
+          break;
       }
     },
     confirmEdit(flag) {
       switch (flag) {
         case 1:
-          this.isEdit_1 = false
-          sessionStorage.setItem('jobExperience', JSON.stringify(this.jobExperience))
-          break
+          this.isEdit_1 = false;
+          sessionStorage.setItem(
+            "jobExperience",
+            JSON.stringify(this.jobExperience)
+          );
+          break;
         case 2:
-          this.isEdit_2 = false
-          sessionStorage.setItem('proExperience', JSON.stringify(this.proExperience))
-          break
+          this.isEdit_2 = false;
+          sessionStorage.setItem(
+            "proExperience",
+            JSON.stringify(this.proExperience)
+          );
+          break;
         case 3:
-          this.isEdit_3 = false
-          sessionStorage.setItem('eduExperience', JSON.stringify(this.eduExperience))
-          break
+          this.isEdit_3 = false;
+          sessionStorage.setItem(
+            "eduExperience",
+            JSON.stringify(this.eduExperience)
+          );
+          break;
       }
-      this.hasSaved = true
+      this.hasSaved = true;
       setTimeout(() => {
-        this.hasSaved = false
-      }, 3500)
+        this.hasSaved = false;
+      }, 3500);
     },
     handleRemove(file) {
-      this.fileList = []
-      this.personInfo.headUrl = ''
-      this.$refs.avatar.clearFiles()
+      this.fileList = [];
+      this.personInfo.headUrl = "";
+      this.$refs.avatar.clearFiles();
     },
     handleSuccess(response, file, fileList) {
-      this.personInfo.headUrl = response.data.url
+      this.personInfo.headUrl = response.data.url;
     },
     async getPositonType() {
-      let res = await Home.positionType({})
+      let res = await Home.positionType({});
       if (res.code == 200) {
-        let positionTypeList = res.data
-        positionTypeList.forEach(p => {
-          p.value = p.pid
-          p.label = p.pname
+        let positionTypeList = res.data;
+        positionTypeList.forEach((p) => {
+          p.value = p.pid;
+          p.label = p.pname;
           if (p.childLists && p.childLists.length) {
-            p.children = p.childLists
-            p.children.forEach(c => {
-              c.value = c.id
-              c.label = c.typeName
+            p.children = p.childLists;
+            p.children.forEach((c) => {
+              c.value = c.id;
+              c.label = c.typeName;
               if (c.subChildLists && c.subChildLists.length) {
-                c.children = c.subChildLists
-                c.children.forEach(s => {
-                  s.value = s.subId
-                  s.label = s.subTypeName
-                })
+                c.children = c.subChildLists;
+                c.children.forEach((s) => {
+                  s.value = s.subId;
+                  s.label = s.subTypeName;
+                });
               }
-            })
+            });
           }
-        })
-        this.positionTypeList = positionTypeList
+        });
+        this.positionTypeList = positionTypeList;
       }
     },
     async getCityOptions() {
-      let res = await Auth.queryHotCityList({})
-      this.cityList = res.data
+      let res = await Auth.queryHotCityList({});
+      this.cityList = res.data;
     },
     init() {
       // 先查看用户是否暂存了简历信息
-      let title = sessionStorage.getItem('resumeTitle')
-      let tempPersonInfo = JSON.parse(sessionStorage.getItem('personInfo'))
-      let tempJob = JSON.parse(sessionStorage.getItem('jobExperience'))
-      let tempPro = JSON.parse(sessionStorage.getItem('proExperience'))
-      let tempEdu = JSON.parse(sessionStorage.getItem('eduExperience'))
-      if (title) this.title = title
-      if (tempPersonInfo) this.personInfo = Object.assign({}, tempPersonInfo)
-      if (tempJob) this.jobExperience = Object.assign({}, tempJob)
-      if (tempPro) this.proExperience = Object.assign({}, tempPro)
-      if (tempEdu) this.eduExperience = Object.assign({}, tempEdu)
+      let title = sessionStorage.getItem("resumeTitle");
+      let tempPersonInfo = JSON.parse(sessionStorage.getItem("personInfo"));
+      let tempJob = JSON.parse(sessionStorage.getItem("jobExperience"));
+      let tempPro = JSON.parse(sessionStorage.getItem("proExperience"));
+      let tempEdu = JSON.parse(sessionStorage.getItem("eduExperience"));
+      if (title) this.title = title;
+      if (tempPersonInfo) this.personInfo = Object.assign({}, tempPersonInfo);
+      if (tempJob) this.jobExperience = Object.assign({}, tempJob);
+      if (tempPro) this.proExperience = Object.assign({}, tempPro);
+      if (tempEdu) this.eduExperience = Object.assign({}, tempEdu);
     },
     pdfDownload() {
-      const _this = this
-      let dom = this.$refs.pdf
+      const _this = this;
+      let dom = this.$refs.pdf;
       html2canvas(dom, {
         useCORS: true, //是否尝试使用CORS从服务器加载图像
         allowTaint: true,
         dpi: 300, //解决生产图片模糊
         scale: 3, //清晰度--放大倍数
       }).then(function (canvas) {
-        let contentWidth = canvas.width
-        let contentHeight = canvas.height
-        let pageHeight = (contentWidth / 592.28) * 841.89 // 一页pdf显示html页面生成的canvas高度;
-        let leftHeight = contentHeight //未生成pdf的html页面高度
-        let position = 0 //pdf页面偏移
+        let contentWidth = canvas.width;
+        let contentHeight = canvas.height;
+        let pageHeight = (contentWidth / 592.28) * 841.89; // 一页pdf显示html页面生成的canvas高度;
+        let leftHeight = contentHeight; //未生成pdf的html页面高度
+        let position = 0; //pdf页面偏移
         //a4纸的尺寸[595.28,841.89]，html页面生成的canvas在pdf中图片的宽高
         // let imgWidth = 595.28
-        let imgWidth = 560.28 //宽度
-        let imgHeight = (592.28 / contentWidth) * contentHeight
-        let pageData = canvas.toDataURL('image/jpeg', 1.0)
-        let PDF = new JsPDF('', 'pt', 'a4')
+        let imgWidth = 560.28; //宽度
+        let imgHeight = (592.28 / contentWidth) * contentHeight;
+        let pageData = canvas.toDataURL("image/jpeg", 1.0);
+        let PDF = new JsPDF("", "pt", "a4");
 
         // 有两个高度需要区分，一个是html页面的实际高度，和生成pdf的页面高度(841.89)
         //当内容未超过pdf一页显示的范围，无需分页
         if (leftHeight < pageHeight) {
-          PDF.addImage(pageData, 'JPEG', 20, 20, imgWidth, imgHeight)
+          PDF.addImage(pageData, "JPEG", 20, 20, imgWidth, imgHeight);
         } else {
           while (leftHeight > 0) {
-            PDF.addImage(pageData, 'JPEG', 20, position, imgWidth, imgHeight)
-            leftHeight -= pageHeight
-            position -= 841.89
+            PDF.addImage(pageData, "JPEG", 20, position, imgWidth, imgHeight);
+            leftHeight -= pageHeight;
+            position -= 841.89;
             if (leftHeight > 0) {
-              PDF.addPage()
+              PDF.addPage();
             }
           }
         }
-        PDF.save(`${_this.title || _this.personInfo.userName || '个人简历'}.pdf`) //下载标题
+        PDF.save(
+          `${_this.title || _this.personInfo.userName || "个人简历"}.pdf`
+        ); //下载标题
         setTimeout(() => {
           _this.$message({
-            message: '您的简历已下载完毕',
-            type: 'success',
+            message: "您的简历已下载完毕",
+            type: "success",
             duration: 2000,
-            customClass: 'my-message',
-          })
-        }, 3000)
-      })
+            customClass: "my-message",
+          });
+        }, 3000);
+      });
     },
   },
   mounted() {
     if (!this.personInfo.headUrl) {
-      this.personInfo.headUrl = this.userInfo.headUrl
+      this.personInfo.headUrl = this.userInfo.headUrl;
     }
   },
   created() {
-    this.init()
-    this.getPositonType()
-    this.getCityOptions()
+    this.init();
+    this.getPositonType();
+    this.getCityOptions();
   },
-}
+};
 </script>
 
 <style lang="scss" scoped>

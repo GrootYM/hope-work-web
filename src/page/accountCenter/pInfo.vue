@@ -3,7 +3,9 @@
     <div class="box">
       <div class="boxTop">
         <h2>个人信息管理</h2>
-        <div>查看及管理您的个人信息，了解如何在希望工场平台访问/修改、删除、导出您的个人信息以及改变授权范围</div>
+        <div>
+          查看及管理您的个人信息，了解如何在嗨聘平台访问/修改、删除、导出您的个人信息以及改变授权范围
+        </div>
       </div>
       <div class="line"></div>
       <div class="boxBottom">
@@ -28,24 +30,24 @@ export default {
     return {
       cardList: [
         {
-          imgUrl: require('@/assets/image/accountCenter/1392.png'),
-          title: '个人信息浏览与导出',
-          hint: '查看及管理您的个人信息',
+          imgUrl: require("@/assets/image/accountCenter/1392.png"),
+          title: "个人信息浏览与导出",
+          hint: "查看及管理您的个人信息",
         },
         {
-          imgUrl: require('@/assets/image/accountCenter/1391.png'),
-          title: '个人权利行使',
-          hint: '帮您了解行使权利的路径',
+          imgUrl: require("@/assets/image/accountCenter/1391.png"),
+          title: "个人权利行使",
+          hint: "帮您了解行使权利的路径",
         },
         {
-          imgUrl: require('@/assets/image/accountCenter/13921.png'),
-          title: '家庭住址信息',
-          hint: '查看及管理您在希望工场使用的地址信息',
+          imgUrl: require("@/assets/image/accountCenter/13921.png"),
+          title: "家庭住址信息",
+          hint: "查看及管理您在嗨聘使用的地址信息",
         },
       ],
-    }
+    };
   },
-}
+};
 </script>
 <style lang="scss" scoped>
 .minMain {
@@ -63,7 +65,7 @@ export default {
       padding-left: 54px;
       border-radius: 2px 2px 2px 2px;
       box-sizing: border-box;
-      background: url('~@/assets/image/accountCenter/321home.png');
+      background: url("~@/assets/image/accountCenter/321home.png");
       h2 {
         width: 144px;
         height: 34px;

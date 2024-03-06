@@ -5,7 +5,9 @@
         <img class="logo" src="@/assets/image/login/logo-small.png" />
         <div class="title-area">
           <div class="main-title">您的基本信息</div>
-          <div class="sub-title">完善基本信息后会遇到更多对你感兴趣的招聘者</div>
+          <div class="sub-title">
+            完善基本信息后会遇到更多对你感兴趣的招聘者
+          </div>
         </div>
       </div>
       <!-- <div class="bottom">
@@ -35,7 +37,12 @@
               v-if="!info.headPath"
               @click="headUploadShow = true"
             />
-            <img class="avatar-upload" :src="info.headPath" v-else @click="headUploadShow = true" />
+            <img
+              class="avatar-upload"
+              :src="info.headPath"
+              v-else
+              @click="headUploadShow = true"
+            />
           </el-col>
         </el-row>
         <el-row>
@@ -52,8 +59,12 @@
           <el-col :span="24">
             <el-form-item label="求职身份" prop="userJobStatus">
               <el-radio-group v-model="info.userJobStatus" class="status">
-                <el-radio-button label="1"> 职场人 <span class="sub-text">有正式工作经历</span> </el-radio-button>
-                <el-radio-button label="2"> 学生 <span class="sub-text">在校/应届/往届</span> </el-radio-button>
+                <el-radio-button label="1">
+                  职场人 <span class="sub-text">有正式工作经历</span>
+                </el-radio-button>
+                <el-radio-button label="2">
+                  学生 <span class="sub-text">在校/应届/往届</span>
+                </el-radio-button>
               </el-radio-group>
             </el-form-item>
           </el-col>
@@ -70,7 +81,7 @@
               >
               </el-date-picker>
               <div class="tips">
-                根据《劳动法》《未成年人保护法》等相关法律规定，申请注册希望工场，请选择与你身份证一致的真实年龄并确保你已年满16周岁。
+                根据《劳动法》《未成年人保护法》等相关法律规定，申请注册嗨聘，请选择与你身份证一致的真实年龄并确保你已年满16周岁。
               </div>
             </el-form-item>
           </el-col>
@@ -104,7 +115,10 @@
         <el-row>
           <el-col :span="24">
             <el-form-item label="求职类型" prop="hopePositionType">
-              <el-select v-model="info.hopePositionType" style="width: 100%; margin-bottom: 7.5vh">
+              <el-select
+                v-model="info.hopePositionType"
+                style="width: 100%; margin-bottom: 7.5vh"
+              >
                 <el-option
                   v-for="(item, index) in hopePositionTypeOptions"
                   :key="index"
@@ -125,10 +139,18 @@
       </div>
       <div class="next-btn" @click="nextStep">下一步</div>
     </div>
-    <el-dialog :visible.sync="headUploadShow" :show-close="false" :close-on-click-modal="false">
+    <el-dialog
+      :visible.sync="headUploadShow"
+      :show-close="false"
+      :close-on-click-modal="false"
+    >
       <div slot="title" class="dialog-header">
         <div class="title-text">默认头像</div>
-        <img src="@/assets/image/login/close.png" class="close-btn" @click="onClose" />
+        <img
+          src="@/assets/image/login/close.png"
+          class="close-btn"
+          @click="onClose"
+        />
       </div>
       <div class="dialog-content">
         <div class="default-avatar" @mouseleave="selectedDefautIndex = null">
@@ -144,8 +166,8 @@
                 class="selected-avatar"
                 v-if="selectedDefautIndex === 0 || lastSelected === 0"
                 @mousedown="
-                  selectedDefautIndex = 0
-                  lastSelected = 0
+                  selectedDefautIndex = 0;
+                  lastSelected = 0;
                 "
               />
             </el-col>
@@ -160,8 +182,8 @@
                 class="selected-avatar"
                 v-if="selectedDefautIndex === 1 || lastSelected === 1"
                 @mousedown="
-                  selectedDefautIndex = 1
-                  lastSelected = 1
+                  selectedDefautIndex = 1;
+                  lastSelected = 1;
                 "
               />
             </el-col>
@@ -176,8 +198,8 @@
                 class="selected-avatar"
                 v-if="selectedDefautIndex === 2 || lastSelected === 2"
                 @mousedown="
-                  selectedDefautIndex = 2
-                  lastSelected = 2
+                  selectedDefautIndex = 2;
+                  lastSelected = 2;
                 "
               />
             </el-col>
@@ -192,8 +214,8 @@
                 class="selected-avatar"
                 v-if="selectedDefautIndex === 3 || lastSelected === 3"
                 @mousedown="
-                  selectedDefautIndex = 3
-                  lastSelected = 3
+                  selectedDefautIndex = 3;
+                  lastSelected = 3;
                 "
               />
             </el-col>
@@ -210,8 +232,8 @@
                 class="selected-avatar"
                 v-if="selectedDefautIndex === 4 || lastSelected === 4"
                 @mousedown="
-                  selectedDefautIndex = 4
-                  lastSelected = 4
+                  selectedDefautIndex = 4;
+                  lastSelected = 4;
                 "
               />
             </el-col>
@@ -226,8 +248,8 @@
                 class="selected-avatar"
                 v-if="selectedDefautIndex === 5 || lastSelected === 5"
                 @mousedown="
-                  selectedDefautIndex = 5
-                  lastSelected = 5
+                  selectedDefautIndex = 5;
+                  lastSelected = 5;
                 "
               />
             </el-col>
@@ -242,8 +264,8 @@
                 class="selected-avatar"
                 v-if="selectedDefautIndex === 6 || lastSelected === 6"
                 @mousedown="
-                  selectedDefautIndex = 6
-                  lastSelected = 6
+                  selectedDefautIndex = 6;
+                  lastSelected = 6;
                 "
               />
             </el-col>
@@ -258,8 +280,8 @@
                 class="selected-avatar"
                 v-if="selectedDefautIndex === 7 || lastSelected === 7"
                 @mousedown="
-                  selectedDefautIndex = 7
-                  lastSelected = 7
+                  selectedDefautIndex = 7;
+                  lastSelected = 7;
                 "
               />
             </el-col>
@@ -277,8 +299,12 @@
           :data="params"
           accept="image/*"
         >
-          <div class="upload-btn-in"><img src="@/assets/image/login/upload-btn.png" />上传头像</div>
-          <div slot="tip" class="el-upload__tip">支持jpg、png、jpeg、bmp格式，小于10M</div>
+          <div class="upload-btn-in">
+            <img src="@/assets/image/login/upload-btn.png" />上传头像
+          </div>
+          <div slot="tip" class="el-upload__tip">
+            支持jpg、png、jpeg、bmp格式，小于10M
+          </div>
         </el-upload>
         <div class="confirm-btn" @click="onConfirmHeadUrl">确定</div>
       </div>
@@ -287,41 +313,51 @@
 </template>
 
 <script>
-import Auth from '@/api/auth'
-import { mapGetters } from 'vuex'
+import Auth from "@/api/auth";
+import { mapGetters } from "vuex";
 
 const defaultImgs = [
-  'https://hope-service.oss-cn-beijing.aliyuncs.com/uploads/696b369d-859e-42cd-814c-64cbab6955f5.png',
-  'https://hope-service.oss-cn-beijing.aliyuncs.com/uploads/ebd5ef8d-9633-48af-b67c-25cb53e897c1.png',
-  'https://hope-service.oss-cn-beijing.aliyuncs.com/uploads/4e66e54f-2b0c-47f3-a646-3f8b5fe938ec.png',
-  'https://hope-service.oss-cn-beijing.aliyuncs.com/uploads/3eee183f-a10c-408c-acef-ca6dd7af1abb.png',
-  'https://hope-service.oss-cn-beijing.aliyuncs.com/uploads/242bc3de-fed9-4f30-b51f-f571400cdcf0.png',
-  'https://hope-service.oss-cn-beijing.aliyuncs.com/uploads/329fa85a-5723-4795-9b40-9864b237c8f2.png',
-  'https://hope-service.oss-cn-beijing.aliyuncs.com/uploads/b7ac962f-219a-4ee9-ae8e-e92bb0fd6eac.png',
-  'https://hope-service.oss-cn-beijing.aliyuncs.com/uploads/fa4c64d1-19a0-46c4-b012-7c65b4207c56.png',
-]
+  "https://hope-service.oss-cn-beijing.aliyuncs.com/uploads/696b369d-859e-42cd-814c-64cbab6955f5.png",
+  "https://hope-service.oss-cn-beijing.aliyuncs.com/uploads/ebd5ef8d-9633-48af-b67c-25cb53e897c1.png",
+  "https://hope-service.oss-cn-beijing.aliyuncs.com/uploads/4e66e54f-2b0c-47f3-a646-3f8b5fe938ec.png",
+  "https://hope-service.oss-cn-beijing.aliyuncs.com/uploads/3eee183f-a10c-408c-acef-ca6dd7af1abb.png",
+  "https://hope-service.oss-cn-beijing.aliyuncs.com/uploads/242bc3de-fed9-4f30-b51f-f571400cdcf0.png",
+  "https://hope-service.oss-cn-beijing.aliyuncs.com/uploads/329fa85a-5723-4795-9b40-9864b237c8f2.png",
+  "https://hope-service.oss-cn-beijing.aliyuncs.com/uploads/b7ac962f-219a-4ee9-ae8e-e92bb0fd6eac.png",
+  "https://hope-service.oss-cn-beijing.aliyuncs.com/uploads/fa4c64d1-19a0-46c4-b012-7c65b4207c56.png",
+];
 
 export default {
   data() {
     return {
       info: {
         userId: 0,
-        userName: '',
+        userName: "",
         sex: null,
         userJobStatus: null,
         lookWorkStatus: null,
-        birthday: '',
-        joinWorkDate: '',
-        headPath: '',
+        birthday: "",
+        joinWorkDate: "",
+        headPath: "",
       },
       rules: {
-        userName: [{ required: true, message: '请输入姓名', trigger: 'blur' }],
-        sex: [{ required: true, message: '请选择性别', trigger: 'blur' }],
-        userJobStatus: [{ required: true, message: '请选择身份', trigger: 'blur' }],
-        birthday: [{ required: true, message: '请选择出生年月', trigger: 'blur' }],
-        joinWorkDate: [{ required: true, message: '请选择参加工作时间', trigger: 'blur' }],
-        lookWorkStatus: [{ required: true, message: '请选择求职状态', trigger: 'blur' }],
-        hopePositionType: [{ required: true, message: '请选择求职类型', trigger: 'blur' }],
+        userName: [{ required: true, message: "请输入姓名", trigger: "blur" }],
+        sex: [{ required: true, message: "请选择性别", trigger: "blur" }],
+        userJobStatus: [
+          { required: true, message: "请选择身份", trigger: "blur" },
+        ],
+        birthday: [
+          { required: true, message: "请选择出生年月", trigger: "blur" },
+        ],
+        joinWorkDate: [
+          { required: true, message: "请选择参加工作时间", trigger: "blur" },
+        ],
+        lookWorkStatus: [
+          { required: true, message: "请选择求职状态", trigger: "blur" },
+        ],
+        hopePositionType: [
+          { required: true, message: "请选择求职类型", trigger: "blur" },
+        ],
       },
       headUploadShow: false,
       selectedDefautIndex: null,
@@ -330,41 +366,41 @@ export default {
       params: {
         type: 1,
       },
-      tempHeadUrl: '',
+      tempHeadUrl: "",
       hopePositionTypeOptions: [
-        { value: '1', label: '全职' },
-        { value: '2', label: '兼职' },
-        { value: '3', label: '灵活就业' },
-        { value: '4', label: '实习' },
+        { value: "1", label: "全职" },
+        { value: "2", label: "兼职" },
+        { value: "3", label: "灵活就业" },
+        { value: "4", label: "实习" },
       ],
-    }
+    };
   },
   computed: {
-    ...mapGetters(['userId', 'userBasicInfo']),
+    ...mapGetters(["userId", "userBasicInfo"]),
   },
   methods: {
     onClose() {
-      this.headUploadShow = false
-      this.tempHeadUrl = ''
+      this.headUploadShow = false;
+      this.tempHeadUrl = "";
     },
     handleSuccess(response, file, fileList) {
-      this.lastSelected = null
-      this.selectedDefautIndex = null
-      this.tempHeadUrl = response.data.url
+      this.lastSelected = null;
+      this.selectedDefautIndex = null;
+      this.tempHeadUrl = response.data.url;
     },
     handleRemove() {},
     handlePreview() {},
     nextStep() {
       if (!this.info.headPath) {
-        this.$message.warning('请选择头像')
-        return
+        this.$message.warning("请选择头像");
+        return;
       }
-      this.info.userId = this.userId
-      const that = this
-      this.$refs.baseForm.validate(async valid => {
+      this.info.userId = this.userId;
+      const that = this;
+      this.$refs.baseForm.validate(async (valid) => {
         if (valid) {
-          this.$store.commit('REGISTER_BASIC', that.info)
-          that.$emit('changeStep', 1)
+          this.$store.commit("REGISTER_BASIC", that.info);
+          that.$emit("changeStep", 1);
           // let res = await await Auth.userDetailEdit(that.info)
           // if (res.code == 200) {
           //   that.$emit('changeStep', 1)
@@ -372,32 +408,32 @@ export default {
           //   that.$message.error(`${res.message}`)
           // }
         } else {
-          return false
+          return false;
         }
-      })
+      });
     },
     confirmHeadImg() {
-      this.tempHeadUrl = defaultImgs[this.lastSelected]
+      this.tempHeadUrl = defaultImgs[this.lastSelected];
     },
     onConfirmHeadUrl() {
       if (!this.tempHeadUrl) {
         if (this.lastSelected || this.lastSelected === 0) {
-          this.confirmHeadImg()
+          this.confirmHeadImg();
         }
       }
-      this.$set(this.info, 'headPath', this.tempHeadUrl)
-      this.onClose()
+      this.$set(this.info, "headPath", this.tempHeadUrl);
+      this.onClose();
     },
     uploadResume() {
-      this.$emit('openFileDialog')
+      this.$emit("openFileDialog");
     },
   },
   created() {
     if (this.userBasicInfo && this.userBasicInfo !== {}) {
-      this.info = Object.assign({}, this.userBasicInfo)
+      this.info = Object.assign({}, this.userBasicInfo);
     }
   },
-}
+};
 </script>
 
 <style lang="scss" scoped>
@@ -410,7 +446,11 @@ export default {
 
   .header {
     height: 12.78vh;
-    background: linear-gradient(180deg, rgba(36, 70, 168, 0.1) 0%, rgba(36, 70, 168, 0) 10%);
+    background: linear-gradient(
+      180deg,
+      rgba(36, 70, 168, 0.1) 0%,
+      rgba(36, 70, 168, 0) 10%
+    );
     padding: 1.64vh 0;
     box-sizing: border-box;
 
@@ -498,7 +538,11 @@ export default {
     bottom: 0;
     height: 68px;
     width: 408px;
-    background: linear-gradient(180deg, rgba(36, 70, 168, 0.1) 0%, rgba(36, 70, 168, 0) 10%);
+    background: linear-gradient(
+      180deg,
+      rgba(36, 70, 168, 0.1) 0%,
+      rgba(36, 70, 168, 0) 10%
+    );
     background-color: #ffffff;
     display: flex;
     align-items: center;
@@ -705,7 +749,10 @@ export default {
   height: 30px;
 }
 
-::v-deep .el-upload-list--picture .el-upload-list__item.is-success .el-upload-list__item-name {
+::v-deep
+  .el-upload-list--picture
+  .el-upload-list__item.is-success
+  .el-upload-list__item-name {
   line-height: 1;
 }
 

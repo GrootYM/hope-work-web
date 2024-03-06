@@ -1,8 +1,8 @@
+import Auth from "@/api/auth";
+import Oxman from "@/api/oxman";
 import WebIM from "@/lin/util/WebIM";
 import moment from "moment";
-import Oxman from "@/api/oxman";
-import { mapActions, mapMutations, mapGetters } from "vuex";
-import Auth from "@/api/auth";
+import { mapGetters } from "vuex";
 
 export default {
   data() {
@@ -34,6 +34,7 @@ export default {
       warnShow: false, // 举报信息是否显示完整
       unreadSum: 0,
       timeKey: new Date().getTime(),
+      metaContent: "",
     };
   },
   computed: {
@@ -63,7 +64,9 @@ export default {
   watch: {
     $route: {
       handler(v, from) {
+        console.log("aaaa");
         console.log(v, from, this.userId);
+        // console.log(v.meta.keywords)
         if (sessionStorage.getItem("userInfo")) {
           this.userInfo = JSON.parse(sessionStorage.getItem("userInfo"));
         }
@@ -86,7 +89,6 @@ export default {
             }
           }
         }
-        console.log(33333333, this.unreadSum);
         this.$forceUpdate();
       },
       deep: true,

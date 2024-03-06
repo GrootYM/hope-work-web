@@ -4,7 +4,7 @@
       <div class="boxTop">
         <h2>登录设备管理</h2>
         <div>
-          以下是最近登录过您账号的设备情况，若您发现非本人操作，请及时前往希望工场APP“我的-设置-账号与安全中心-登录设备管理”进行删除，以确保您的账号安全。
+          以下是最近登录过您账号的设备情况，若您发现非本人操作，请及时前往嗨聘APP“我的-设置-账号与安全中心-登录设备管理”进行删除，以确保您的账号安全。
         </div>
       </div>
       <div class="line"></div>
@@ -30,14 +30,14 @@ export default {
     return {
       cardList: [
         {
-          imgUrl: require('@/assets/image/accountCenter/computer.png'),
-          title: 'iPhone',
-          hint: '最近登录时间： 2023-05-26 22:26:23',
+          imgUrl: require("@/assets/image/accountCenter/computer.png"),
+          title: "iPhone",
+          hint: "最近登录时间： 2023-05-26 22:26:23",
         },
       ],
-    }
+    };
   },
-}
+};
 </script>
 <style lang="scss" scoped>
 .minMain {
@@ -55,7 +55,7 @@ export default {
       padding-left: 54px;
       border-radius: 2px 2px 2px 2px;
       box-sizing: border-box;
-      background: url('~@/assets/image/accountCenter/321home.png');
+      background: url("~@/assets/image/accountCenter/321home.png");
       h2 {
         width: 144px;
         height: 34px;

@@ -8,7 +8,9 @@
       <div class="line"></div>
       <div class="boxPhone">
         <h3>绑定手机</h3>
-        <div class="dPhone">修改手机号请前往希望工场APP端“我的-设置-账号与安全中心-账号管理”进行修改</div>
+        <div class="dPhone">
+          修改手机号请前往嗨聘APP端“我的-设置-账号与安全中心-账号管理”进行修改
+        </div>
         <div class="bPhone">
           <p>手机号</p>
           <div class="nPhone">
@@ -20,16 +22,20 @@
       <div class="boxChatNumber">
         <h3>绑定微信号</h3>
         <div class="dChat">
-          考虑您的账号安全，微信绑定请前往希望工场APP端“我的-设置-账号与安全中心-账号管理-微信绑定”
+          考虑您的账号安全，微信绑定请前往嗨聘APP端“我的-设置-账号与安全中心-账号管理-微信绑定”
         </div>
         <div class="chatNumber">
-          <img src="@/assets/image/accountCenter/weixin.png" alt="" /><span>{{ bindingState }}</span>
+          <img src="@/assets/image/accountCenter/weixin.png" alt="" /><span>{{
+            bindingState
+          }}</span>
         </div>
       </div>
       <div class="line2"></div>
       <div class="boxBottom">
         <h2>注销账号</h2>
-        <div>注销，请前往希望工场APP端“我的-设置-账号与安全中心-账号管理”进行注销</div>
+        <div>
+          注销，请前往嗨聘APP端“我的-设置-账号与安全中心-账号管理”进行注销
+        </div>
       </div>
     </div>
   </div>
@@ -39,11 +45,11 @@ export default {
   data() {
     return {
       cardList: [],
-      phone: '189****5678',
-      bindingState: '未绑定',
-    }
+      phone: "189****5678",
+      bindingState: "未绑定",
+    };
   },
-}
+};
 </script>
 <style lang="scss" scoped>
 .minMain {
@@ -61,7 +67,7 @@ export default {
       padding-left: 54px;
       border-radius: 2px 2px 2px 2px;
       box-sizing: border-box;
-      background: url('~@/assets/image/accountCenter/321home.png');
+      background: url("~@/assets/image/accountCenter/321home.png");
       h2 {
         width: 96px;
         height: 34px;

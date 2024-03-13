@@ -231,9 +231,10 @@
                 </h2>
                 <div class="cardLabel">
                   <p v-if="item.lowSalary || item.topSalary || item.cityName">
-                    <span v-if="item.lowSalary && item.topSalary"
+                    <span v-if="item.lowSalary > 0 && item.topSalary > 0"
                       >{{ item.lowSalary }}-{{ item.topSalary }}k</span
                     >
+                    <span v-else>面议</span>
                     {{ item.cityName }}
                   </p>
                   <p>{{ item.experience }}</p>

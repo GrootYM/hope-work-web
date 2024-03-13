@@ -7,22 +7,43 @@
         <p class="status">{{ jobInfo.status }}</p>
         <div class="jobInfo">
           <h2>
-            {{ jobInfo.positionName }}<span>{{ jobInfo.lowSalary }}-{{ jobInfo.topSalary }}k</span>
+            {{ jobInfo.positionName
+            }}<span>{{ jobInfo.lowSalary }}-{{ jobInfo.topSalary }}k</span>
           </h2>
           <div class="jobLabel">
-            <p v-for="(item, index) in company.benefitsName" :key="index">{{ item }}</p>
+            <p v-for="(item, index) in company.benefitsName" :key="index">
+              {{ item }}
+            </p>
           </div>
         </div>
         <div class="jobDesc">
-          <p><img src="@/assets/image/job/dw.png" alt="" />{{ jobInfo.cityName }}</p>
-          <p><img src="@/assets/image/job/gzjy.png" alt="" />{{ jobInfo.experience }}</p>
-          <p><img src="@/assets/image/job/xl.png" alt="" />{{ jobInfo.education }}</p>
+          <p>
+            <img src="@/assets/image/job/dw.png" alt="" />{{ jobInfo.cityName }}
+          </p>
+          <p>
+            <img src="@/assets/image/job/gzjy.png" alt="" />{{
+              jobInfo.experience
+            }}
+          </p>
+          <p>
+            <img src="@/assets/image/job/xl.png" alt="" />{{
+              jobInfo.education
+            }}
+          </p>
         </div>
         <div class="jobAbout">
           <div @click="toInter">
-            <img v-if="!jobInfo.collect" src="@/assets/image/job/likeIcon.png" alt="" />
-            <img v-if="jobInfo.collect" src="@/assets/image/job/likedIcon.png" alt="" />
-            <p>{{ jobInfo.collect ? '取消感兴趣' : '感兴趣' }}</p>
+            <img
+              v-if="!jobInfo.collect"
+              src="@/assets/image/job/likeIcon.png"
+              alt=""
+            />
+            <img
+              v-if="jobInfo.collect"
+              src="@/assets/image/job/likedIcon.png"
+              alt=""
+            />
+            <p>{{ jobInfo.collect ? "取消感兴趣" : "感兴趣" }}</p>
           </div>
           <div @click="toImmediately">
             <p>立即沟通</p>
@@ -57,12 +78,17 @@
             </div> -->
           </div>
           <div class="jobLabel">
-            <p v-for="(item, index) in jobInfo.zws" :key="index">{{ item.name }}</p>
+            <p v-for="(item, index) in jobInfo.zws" :key="index">
+              {{ item.name }}
+            </p>
           </div>
           <div class="jobSecBox">
             <!-- <h2>岗位职责：</h2> -->
             <div>
-              <p v-html="jobInfo.responsibility" style="white-space: pre-wrap"></p>
+              <p
+                v-html="jobInfo.responsibility"
+                style="white-space: pre-wrap"
+              ></p>
               <!-- <p>{{ jobInfo.responsibility }}</p> -->
             </div>
           </div>
@@ -126,7 +152,9 @@
                 </div>
                 <div>
                   <h2>注册资金</h2>
-                  <p>{{ company.registeredCapital }}万</p>
+                  <p v-if="company.registeredCapital > 0">
+                    {{ company.registeredCapital }}万
+                  </p>
                 </div>
               </div>
               <div class="moreBox" @click="toCompany">
@@ -169,13 +197,24 @@
             </div>
           </div>
           <div class="lookCon">
-            <div class="lookItem" @click.stop="toInfo(item)" v-for="(item, index) in lookArr" :key="index">
+            <div
+              class="lookItem"
+              @click.stop="toInfo(item)"
+              v-for="(item, index) in lookArr"
+              :key="index"
+            >
               <div class="lookLeft">
                 <h2 class="one-text">{{ item.positionName }}</h2>
-                <p class="one-text" @click.stop="toCompany(1, item)">{{ item.companyName }}</p>
+                <p class="one-text" @click.stop="toCompany(1, item)">
+                  {{ item.companyName }}
+                </p>
               </div>
               <div class="lookRight">
-                <h2>{{ item.lowSalary }}-{{ item.topSalary }}k·{{ item.yearSalary }}薪</h2>
+                <h2>
+                  {{ item.lowSalary }}-{{ item.topSalary }}k·{{
+                    item.yearSalary
+                  }}薪
+                </h2>
                 <p>{{ item.cityName }}</p>
               </div>
             </div>
@@ -185,16 +224,31 @@
           <div class="titleBox">
             <h2>精选职位</h2>
           </div>
-          <el-carousel indicator-position="outside" arrow="never" :interval="30000">
+          <el-carousel
+            indicator-position="outside"
+            arrow="never"
+            :interval="30000"
+          >
             <el-carousel-item v-for="(item, index) in careArr" :key="index">
               <div class="lookCon">
-                <div class="lookItem" @click.stop="toInfo(item1)" v-for="(item1, index1) in item" :key="index1">
+                <div
+                  class="lookItem"
+                  @click.stop="toInfo(item1)"
+                  v-for="(item1, index1) in item"
+                  :key="index1"
+                >
                   <div class="lookLeft">
                     <h2 class="one-text">{{ item1.positionName }}</h2>
-                    <p class="one-text" @click.stop="toCompany(1, item1)">{{ item1.companyName }}</p>
+                    <p class="one-text" @click.stop="toCompany(1, item1)">
+                      {{ item1.companyName }}
+                    </p>
                   </div>
                   <div class="lookRight">
-                    <h2>{{ item1.lowSalary }}-{{ item1.topSalary }}k·{{ item1.yearSalary }}薪</h2>
+                    <h2>
+                      {{ item1.lowSalary }}-{{ item1.topSalary }}k·{{
+                        item1.yearSalary
+                      }}薪
+                    </h2>
                     <p>{{ item1.cityName }}</p>
                   </div>
                 </div>
@@ -237,7 +291,11 @@
             </div>
           </div>
           <div class="recommendCon">
-            <div class="recommendItem" v-for="(item, index) in recommendArr" :key="index">
+            <div
+              class="recommendItem"
+              v-for="(item, index) in recommendArr"
+              :key="index"
+            >
               <p>{{ item.name || item.industryName || item.companyName }}</p>
             </div>
           </div>
@@ -278,13 +336,19 @@
           </div>
           <div class="bossCon">
             <div class="lookCon">
-              <div class="lookItem" v-for="(item, index) in similarArr" :key="index">
+              <div
+                class="lookItem"
+                v-for="(item, index) in similarArr"
+                :key="index"
+              >
                 <div class="lookLeft">
                   <h2 class="one-text">{{ item.positionName }}</h2>
                   <p class="one-text">{{ item.companyName }}</p>
                 </div>
                 <div class="lookRight">
-                  <h2 v-if="item.lowSalary && item.topSalary">{{ item.lowSalary }}-{{ item.topSalary }}k</h2>
+                  <h2 v-if="item.lowSalary && item.topSalary">
+                    {{ item.lowSalary }}-{{ item.topSalary }}k
+                  </h2>
                   <p>{{ item.cityName }}·{{ item.areaName }}</p>
                 </div>
               </div>
@@ -295,17 +359,30 @@
           </div>
         </div>
         <div class="adBox">
-          <div class="adItem" v-for="(item, index) in adArr" :key="index" @click="bannerJump(item)">
+          <div
+            class="adItem"
+            v-for="(item, index) in adArr"
+            :key="index"
+            @click="bannerJump(item)"
+          >
             <img :src="item.imgUrl" alt="" />
           </div>
         </div>
       </div>
     </div>
 
-    <el-dialog :visible.sync="fileShow" :show-close="false" :close-on-click-modal="false">
+    <el-dialog
+      :visible.sync="fileShow"
+      :show-close="false"
+      :close-on-click-modal="false"
+    >
       <div slot="title" class="dialog-header">
         <div></div>
-        <img src="@/assets/image/login/close.png" class="close-btn" @click="closeDialog" />
+        <img
+          src="@/assets/image/login/close.png"
+          class="close-btn"
+          @click="closeDialog"
+        />
       </div>
       <div class="dialog-content">
         <el-upload
@@ -322,7 +399,9 @@
         >
           <img src="@/assets/image/login/upload-doc.png" class="myicon" />
           <div class="tip-text">点击或将文件拖拽到这里上传</div>
-          <div class="accept-text">简历建议使用 PDF 文件，也支持DOC、DOCX、JPG、PNG 格式</div>
+          <div class="accept-text">
+            简历建议使用 PDF 文件，也支持DOC、DOCX、JPG、PNG 格式
+          </div>
           <div class="size-text">文件大小不超过20M</div>
           <div class="upload-button">上传附件简历</div>
         </el-upload>
@@ -332,12 +411,12 @@
 </template>
 
 <script>
-import { mapActions, mapMutations, mapGetters } from 'vuex'
-import Home from '@/api/home'
-import Job from '@/api/job'
-import Auth from '@/api/auth'
-import Map from '@/component/Job/map'
-import JobSearch from '@/component/Job/jobSearch'
+import { mapActions, mapMutations, mapGetters } from "vuex";
+import Home from "@/api/home";
+import Job from "@/api/job";
+import Auth from "@/api/auth";
+import Map from "@/component/Job/map";
+import JobSearch from "@/component/Job/jobSearch";
 
 export default {
   components: {
@@ -345,7 +424,7 @@ export default {
     JobSearch,
   },
   computed: {
-    ...mapGetters(['userId', 'cityName']),
+    ...mapGetters(["userId", "cityName"]),
   },
   data() {
     return {
@@ -357,177 +436,180 @@ export default {
       vitaeId: null,
       // position: [121.5273285, 31.21515044],
       position: [],
-      id: '',
+      id: "",
       adArr: [],
       recommendArr: [],
       tabActive: 0,
       tabArr: [
         {
-          name: '热门城市',
+          name: "热门城市",
         },
         {
-          name: '热门行业',
+          name: "热门行业",
         },
         {
-          name: '热门企业',
+          name: "热门企业",
         },
       ],
-      location: '',
-      searchStr: '',
+      location: "",
+      searchStr: "",
       anquan:
-        '严禁用人单位和招聘者用户做出任何损害求职者合法权益的违法违规行为，包括但不限于扣押求职者证件、收取求职者财物、向求职者集资、让求职者入股、诱导求职者异地入职、异地参加培训、违法违规使用求职者简历等，您一旦发现此类行为，',
+        "严禁用人单位和招聘者用户做出任何损害求职者合法权益的违法违规行为，包括但不限于扣押求职者证件、收取求职者财物、向求职者集资、让求职者入股、诱导求职者异地入职、异地参加培训、违法违规使用求职者简历等，您一旦发现此类行为，",
       jobInfo: {},
       bossInfo: {},
       mapIndex: 0,
       locations: [
         {
-          name: '南京雨花台区南京天溯科技园1层',
-          map: require('@/assets/image/job/map.png'),
+          name: "南京雨花台区南京天溯科技园1层",
+          map: require("@/assets/image/job/map.png"),
         },
         {
-          name: '上海黄浦区都市总部大楼',
-          map: require('@/assets/image/job/map.png'),
+          name: "上海黄浦区都市总部大楼",
+          map: require("@/assets/image/job/map.png"),
         },
         {
-          name: '广州番禺区恒峰大厦地铁7号线员岗站(C出口)',
-          map: require('@/assets/image/job/map.png'),
+          name: "广州番禺区恒峰大厦地铁7号线员岗站(C出口)",
+          map: require("@/assets/image/job/map.png"),
         },
       ],
       company: {},
       similarArr: [],
       careArr: [],
       lookArr: [],
-    }
+    };
   },
   mounted() {
     setTimeout(() => {
-      this.$bus.$emit('EVENT_SCROLL', 0)
-    }, 500)
-    this.id = this.$route.query.id
-    this.queryPositionInfoByPerson()
-    this.getLookArr()
-    this.queryHotPositonByIndustry()
-    this.getRecommend()
+      this.$bus.$emit("EVENT_SCROLL", 0);
+    }, 500);
+    this.id = this.$route.query.id;
+    this.queryPositionInfoByPerson();
+    this.getLookArr();
+    this.queryHotPositonByIndustry();
+    this.getRecommend();
     // this.getBannerList();
-    this.location = this.cityName
+    this.location = this.cityName;
   },
   methods: {
     changeLocation(value) {
-      this.location = value
+      this.location = value;
       // this.$store.commit('SET_NOW_CITY', value)
     },
     changeVal(value) {
-      this.searchStr = value
+      this.searchStr = value;
     },
     toJob() {
-      this.$router.push({ path: '/index/job', query: { cityName: this.location, keyWords: this.searchStr } })
+      this.$router.push({
+        path: "/index/job",
+        query: { cityName: this.location, keyWords: this.searchStr },
+      });
     },
     handlePreview() {},
     handleRemove() {
-      if (!this.vitaeId) return
-      Auth.deleteResumeById({ vitaeId: this.vitaeId }).then(res => {})
+      if (!this.vitaeId) return;
+      Auth.deleteResumeById({ vitaeId: this.vitaeId }).then((res) => {});
     },
     handleSuccess(res, file, fileList) {
       const params = {
         userId: this.userId,
         fileId: res.data.fileId,
-      }
-      const _this = this
-      Auth.userDetailEdit(params).then(res => {
-        _this.getResumeList()
-      })
-      _this.fileShow = false
+      };
+      const _this = this;
+      Auth.userDetailEdit(params).then((res) => {
+        _this.getResumeList();
+      });
+      _this.fileShow = false;
     },
     async getResumeList() {
-      let res = await Auth.queryResumeByUserId({ userId: this.userId })
-      this.vitaeId = res.data[0].vitaeId
+      let res = await Auth.queryResumeByUserId({ userId: this.userId });
+      this.vitaeId = res.data[0].vitaeId;
     },
     closeDialog() {
-      this.fileShow = false
+      this.fileShow = false;
     },
     async getBannerList() {
       let params = {
-        bannerCode: 'position_info',
-      }
-      let res = await Home.getBannerList(params)
+        bannerCode: "position_info",
+      };
+      let res = await Home.getBannerList(params);
       if (res.code == 200) {
-        this.adArr = res.data
+        this.adArr = res.data;
       }
     },
     bannerJump(banner) {
-      this.$util.jumpLink(banner.type, banner.jumpUrl)
+      this.$util.jumpLink(banner.type, banner.jumpUrl);
     },
     toJianli() {
       if (!this.userId) {
-        this.$router.push({ path: '/login' })
-        return
+        this.$router.push({ path: "/login" });
+        return;
       }
-      this.fileShow = true
+      this.fileShow = true;
     },
     toMuBan() {
-      this.$router.push({ path: '/resumeMake' })
+      this.$router.push({ path: "/resumeMake" });
     },
     toCompany(type, item) {
       if (type == 1) {
         const { href } = this.$router.resolve({
-          path: '/index/company',
+          path: "/index/company",
           query: { id: item.companyId },
-        })
-        window.open(href, '_blank')
+        });
+        window.open(href, "_blank");
         // this.$router.push({ path: '/index/company', query: { id: item.companyId } })
       } else {
         const { href } = this.$router.resolve({
-          path: '/index/company',
+          path: "/index/company",
           query: { id: this.company.id },
-        })
-        window.open(href, '_blank')
+        });
+        window.open(href, "_blank");
         // this.$router.push({ path: '/index/company', query: { id: this.company.id } })
       }
     },
     toCompanyAllJob() {
       const { href } = this.$router.resolve({
-        path: '/index/company',
+        path: "/index/company",
         query: { id: this.company.id, tabId: 2 },
-      })
-      window.open(href, '_blank')
+      });
+      window.open(href, "_blank");
       // this.$router.push({ path: '/index/company', query: { id: this.company.id, tabId: 2 } })
     },
     toAllJob() {
-      this.$router.push({ path: '/index/job' })
+      this.$router.push({ path: "/index/job" });
     },
     toInfo(item) {
       const { href } = this.$router.resolve({
-        path: '/index/info',
+        path: "/index/info",
         query: { id: item.id },
-      })
-      window.open(href, '_blank')
+      });
+      window.open(href, "_blank");
       // this.$router.push({ path: '/index/info', query: { id: item.id } })
     },
     // 立即沟通
     toImmediately() {
-      sessionStorage.setItem('jobInfo', JSON.stringify(this.jobInfo))
+      sessionStorage.setItem("jobInfo", JSON.stringify(this.jobInfo));
       const { href } = this.$router.resolve({
-        path: '/index/immediately',
+        path: "/index/immediately",
         query: {},
-      })
-      window.open(href, '_blank')
+      });
+      window.open(href, "_blank");
       // this.$router.push({
       //   path: '/index/immediately',
       // })
     },
     async queryPositionInfoByPerson() {
       let params = {
-        id: this.id || '',
-        personId: this.userId || '',
-      }
-      let res = await Job.queryPositionInfoByPerson(params)
+        id: this.id || "",
+        personId: this.userId || "",
+      };
+      let res = await Job.queryPositionInfoByPerson(params);
       if (res.code == 200) {
-        this.jobInfo = res.data
-        this.bossInfo = res.data.userInfo || {}
-        this.company = res.data.companyInfo || {}
-        this.position.push(res.data.longitude - 0)
-        this.position.push(res.data.latitude - 0)
-        this.queryPositonByKeyWords()
+        this.jobInfo = res.data;
+        this.bossInfo = res.data.userInfo || {};
+        this.company = res.data.companyInfo || {};
+        this.position.push(res.data.longitude - 0);
+        this.position.push(res.data.latitude - 0);
+        this.queryPositonByKeyWords();
       }
     },
     async queryPositonByKeyWords() {
@@ -535,10 +617,10 @@ export default {
         currentPage: 1,
         pageSize: 8,
         keyWords: this.jobInfo.positionName,
-      }
-      let res = await Job.queryPositonByKeyWords(params)
+      };
+      let res = await Job.queryPositonByKeyWords(params);
       if (res.code == 200) {
-        this.similarArr = res.data.list
+        this.similarArr = res.data.list;
       }
     },
     async getLookArr() {
@@ -546,10 +628,10 @@ export default {
         currentPage: 1,
         pageSize: 6,
         companyIndustryId: null,
-      }
-      let res = await Job.queryHotPositonByIndustry(params)
+      };
+      let res = await Job.queryHotPositonByIndustry(params);
       if (res.code == 200) {
-        this.lookArr = res.data.list
+        this.lookArr = res.data.list;
       }
     },
     async queryHotPositonByIndustry() {
@@ -557,106 +639,110 @@ export default {
         currentPage: 1,
         pageSize: 12,
         companyIndustryId: null,
-      }
-      let res = await Job.queryHotPositonByIndustry(params)
+      };
+      let res = await Job.queryHotPositonByIndustry(params);
       if (res.code == 200) {
-        let arr = []
+        let arr = [];
         if (res.data.list.length < 6) {
-          this.careArr.push(res.data.list)
+          this.careArr.push(res.data.list);
         } else {
-          res.data.list.forEach(item => {
+          res.data.list.forEach((item) => {
             if (arr.length < 6) {
-              arr.push(item)
+              arr.push(item);
             } else {
-              this.careArr.push(arr)
-              arr = []
+              this.careArr.push(arr);
+              arr = [];
             }
-          })
+          });
           if (arr.length < 6) {
-            this.careArr.push(arr)
-            arr = []
+            this.careArr.push(arr);
+            arr = [];
           }
         }
       }
     },
     toCheckTab(index) {
       if (index == this.tabActive) {
-        return
+        return;
       }
-      this.tabActive = index
-      this.getRecommend()
+      this.tabActive = index;
+      this.getRecommend();
     },
     getRecommend() {
       switch (this.tabActive) {
         case 0:
-          this.queryHotCityList()
-          break
+          this.queryHotCityList();
+          break;
         case 1:
-          this.queryHotIndustryType()
-          break
+          this.queryHotIndustryType();
+          break;
         case 2:
-          this.queryHotCompanyList()
-          break
+          this.queryHotCompanyList();
+          break;
         default:
-          break
+          break;
       }
     },
     async queryHotCityList() {
-      let params = {}
-      let res = await Job.queryHotCityList(params)
+      let params = {};
+      let res = await Job.queryHotCityList(params);
       if (res.code == 200) {
-        this.recommendArr = res.data
+        this.recommendArr = res.data;
       }
     },
     async queryHotIndustryType() {
-      let params = {}
-      let res = await Job.queryHotIndustryType(params)
+      let params = {};
+      let res = await Job.queryHotIndustryType(params);
       if (res.code == 200) {
-        this.recommendArr = res.data
+        this.recommendArr = res.data;
       }
     },
     async queryHotCompanyList() {
       let params = {
         currentPage: 1,
         pageSize: 10,
-      }
-      let res = await Job.queryHotCompanyList(params)
+      };
+      let res = await Job.queryHotCompanyList(params);
       if (res.code == 200) {
-        this.recommendArr = res.data.list
+        this.recommendArr = res.data.list;
       }
     },
     async toInter() {
       if (!this.userId) {
-        this.$router.push({ path: '/login' })
+        this.$router.push({ path: "/login" });
       } else {
         let params = {
           id: this.jobInfo.id,
           personId: this.userId,
-        }
-        let res
+        };
+        let res;
         if (this.jobInfo.collect) {
-          res = await Job.deleteUserCollectPosition(params)
+          res = await Job.deleteUserCollectPosition(params);
         } else {
-          res = await Job.addUserCollectPosition(params)
+          res = await Job.addUserCollectPosition(params);
         }
         if (res.code == 200) {
-          this.queryPositionInfoByPerson()
+          this.queryPositionInfoByPerson();
         }
       }
     },
   },
-}
+};
 </script>
 
 <style lang="scss" scoped>
-@import url('//at.alicdn.com/t/font_631781_4v61w1yz6y74x6r.css');
+@import url("//at.alicdn.com/t/font_631781_4v61w1yz6y74x6r.css");
 $nx-color: #0470b8;
 $all-padding: 0;
 $nx-width: 76.25rem;
 #app {
   min-width: $nx-width;
   .main {
-    background: linear-gradient(180deg, rgba(36, 70, 168, 0.25) 0%, rgba(36, 70, 168, 0) 100%);
+    background: linear-gradient(
+      180deg,
+      rgba(36, 70, 168, 0.25) 0%,
+      rgba(36, 70, 168, 0) 100%
+    );
     padding: 20px 0;
     box-sizing: border-box;
     position: relative;
@@ -1096,7 +1182,7 @@ $nx-width: 76.25rem;
             }
           }
           .selBox::after {
-            content: '';
+            content: "";
             width: 1px;
             height: 22px;
             background: #bec4d4;

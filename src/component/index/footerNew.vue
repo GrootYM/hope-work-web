@@ -24,7 +24,7 @@
             <div class="links">
               <div class="link-title">产品与服务</div>
               <!--              企业招聘、猎头服务、专家咨询、管理咨询-->
-              <div class="link">企业招聘</div>
+              <div class="link">线上招聘</div>
               <div class="link">猎头服务</div>
               <div class="link">专家咨询</div>
               <div class="link">管理咨询</div>

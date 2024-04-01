@@ -196,11 +196,11 @@ _axios.interceptors.response.use(
   },
   error => {
     if (!error.response) {
-      Vue.prototype.$notify({
-        title: 'Network Error',
-        dangerouslyUseHTMLString: true,
-        message: '<strong class="my-notify">请检查 API 是否异常</strong>',
-      })
+      // Vue.prototype.$notify({
+      //   title: 'Network Error',
+      //   dangerouslyUseHTMLString: true,
+      //   message: '<strong class="my-notify">请检查 API 是否异常</strong>',
+      // })
       console.log('error', error)
     }
 

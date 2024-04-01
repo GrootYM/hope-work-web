@@ -14,7 +14,7 @@
     "plugin:new": "node script/plugin-new.js",
     "plugin:reconfig": "node script/plugin-get-config.js",
     "test:unit": "vue-cli-service test:unit",
-    "postbuild": "cp -r baidu_verify_codeva-w5sU7oucCM.html baidu_verify_codeva-zLNl9awv8c.html 2bcc17c526494bf8dacb144836a24859.txt  BingSiteAuth.xml robots.txt  sitemap.txt  sogousiteverification.txt  dist/"
+    "postbuild": "cp -r baidu_verify_codeva-w5sU7oucCM.html baidu_verify_codeva-zLNl9awv8c.html 2bcc17c526494bf8dacb144836a24859.txt  BingSiteAuth.xml robots.txt  sitemap.txt  sogousiteverification.txt robots.xml sitemap.xml  dist/"
   },
   "dependencies": {
     "@antv/g2plot": "^0.11.35",

@@ -132,12 +132,12 @@
         <h2>热门校招</h2>
         <div class="hopeJobTab">
           <!-- <p class="active">全职</p> -->
-          <p :class="[recruitType == 2 ? 'active' : '']" @click="toQie(2)">
-            校招
-          </p>
-          <p :class="[recruitType == 4 ? 'active' : '']" @click="toQie(4)">
-            兼职
-          </p>
+<!--          <p :class="[recruitType == 2 ? 'active' : '']" @click="toQie(2)">-->
+<!--            校招-->
+<!--          </p>-->
+<!--          <p :class="[recruitType == 4 ? 'active' : '']" @click="toQie(4)">-->
+<!--            兼职-->
+<!--          </p>-->
         </div>
       </div>
       <div class="hopeJobCards">

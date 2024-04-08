@@ -509,7 +509,7 @@ $nx-width: 76.25rem;
   box-sizing: border-box;
   background-image: url(~@/assets/image/home/bg.png);
   background-repeat: no-repeat;
-  background-size: 100% 100%;
+  background-size: 100% 120%;
   padding-bottom: 1px;
   padding-top: 72px;
 

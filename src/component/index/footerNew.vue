@@ -52,7 +52,7 @@
                 <a
                   target="_blank"
                   href="https://hope-service.oss-cn-beijing.aliyuncs.com/files/%E5%97%A8%E8%81%98%E9%9A%90%E7%A7%81%E6%94%BF%E7%AD%96%EF%BC%88%E5%B7%B2%E5%AE%A1%E6%A0%B8%EF%BC%89.docx"
-                  >政策隐私</a
+                  >隐私政策</a
                 >
               </div>
             </div>

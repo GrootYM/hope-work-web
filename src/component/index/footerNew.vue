@@ -93,8 +93,8 @@
           <div class="single"><img src="@/assets/image/home/beian.png" /><a href="https://beian.mps.gov.cn/#/query/webSearch?code=32050602012537" rel="noreferrer" target="_blank">苏公网安备32050602012537</a></div>
 <!--          <div class="single"><img src="@/assets/image/home/business-license.jpg" /><a target="_blank" href="https://hope-service.oss-cn-beijing.aliyuncs.com/images/business-license-1.jpg-->
 <!--">电子营业执照</a></div>-->
-          <!-- <div class="single">ICP经营许可证编号</div>
-          <div class="single">苏ICP备2023022582号</div> -->
+          <div class="single">ICP经营许可证编号</div>
+          <div class="single">苏B2-20241058</div>
           <!-- <div class="single">京公网安备xxxxxxxxxx号</div>
           <div class="single">京公网安备xxxxxxxxxx号</div>
           <div class="single">京公网安备xxxxxxxxxx号</div>

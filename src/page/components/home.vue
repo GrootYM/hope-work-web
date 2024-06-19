@@ -2,9 +2,10 @@
 <template>
   <div>
     <div class="top-banner">
-      <img
-        src="https://hope-service.oss-cn-beijing.aliyuncs.com/images/top-banner-2024-3.jpg"
-      />
+<!--      <img-->
+<!--        src="https://hope-service.oss-cn-beijing.aliyuncs.com/images/top-banner-2024-3.jpg"-->
+<!--      />-->
+      <img src="@/assets/image/about/top-banner1.png" />
     </div>
     <Search />
     <div class="main">

@@ -85,7 +85,7 @@ const routes = [
         name: "returneePage",
         component: () => import("@/page/components/returnee"),
         meta: {
-          keywords: "针对海归背景提供人才招聘信息",
+          keywords: "留学归国人员招聘，留学归国人员找工作，逛嗨聘，就对了！",
         },
       },
       {
@@ -181,7 +181,7 @@ const routes = [
         component: () => import("@/page/job/schoolRec"),
         children: [],
         meta: {
-          keywords: "针对实习生、在校生提供人才招聘信息",
+          keywords: "校园招聘，毕业生找工作，校外实习，校外兼职，逛嗨聘，一网搞定！",
         },
       },
       {
@@ -190,7 +190,7 @@ const routes = [
         component: () => import("@/page/job/socialRec"),
         children: [],
         meta: {
-          keywords: "针对职业类别提供人才招聘信息",
+          keywords: "遭遇职业瓶颈，找工作，突破职场危机，玩转职场，逛嗨聘，全搞定！",
         },
       },
       {
@@ -243,7 +243,7 @@ const routes = [
         name: "flexible",
         component: () => import("@/page/job/flexible"),
         meta: {
-          keywords: "嗨聘布局零工市场，促进灵活就业",
+          keywords: "布局数字零工市场，促进灵活就业。业余兼职、钟点工、、派遣工、季节工和自由接单服务，逛嗨聘，全搞定！",
         },
       },
     ],

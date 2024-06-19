@@ -12,7 +12,8 @@
         <el-row>
           <el-col :span="6">
             <div class="links">
-              <div class="link-title">联系嗨聘</div>
+              <div class="link-title">联系我们</div>
+<!--              <div class="link-title">联系嗨聘</div>-->
               <div class="link">希望工场（苏州）网络技术有限公司</div>
               <div class="link">
                 公司地址:江苏省苏州市吴中区经济开发区城南街道东吴南路79号B-901室
@@ -33,7 +34,13 @@
           <el-col :span="4">
             <div class="links">
               <div class="link-title">使用与帮助</div>
-              <div class="link">使用帮助</div>
+              <div class="link">
+                <a
+                    target="_blank"
+                    href="https://hope-service.oss-cn-beijing.aliyuncs.com/files/%E4%BD%BF%E7%94%A8%E5%B8%AE%E5%8A%A9.docx">
+                  使用与帮助
+                </a>
+              </div>
               <div class="link2">
                 <a
                   target="_blank"
@@ -62,11 +69,12 @@
           </el-col>
           <el-col :span="5">
             <div class="right-part">
-              <img
-                src="https://hope-service.oss-cn-beijing.aliyuncs.com/images/logo-2024-2.jpg"
-                style="height: auto"
-              />
-              <!--              <img src="@/assets/image/about/logo-2024-2.jpg" style="height: auto" />-->
+<!--              <img-->
+<!--                src="https://hope-service.oss-cn-beijing.aliyuncs.com/images/logo-2024-2.jpg"-->
+<!--                style="height: auto"-->
+<!--              />-->
+<!--                            <img src="@/assets/image/about/logo-2024-2.jpg" style="height: auto" />-->
+              <img src="@/assets/image/home/bottom-logo.png" style="height: auto" />
               <div class="qrcode">
                 <img
                   src="https://hope-service.oss-cn-beijing.aliyuncs.com/images/wechat_qrcode.jpg"
@@ -79,6 +87,12 @@
       </div>
       <div class="bottom-part">
         <div class="filings">
+          <div class="single">苏州人社局热线电话:0512-12333</div>
+          <div class="single"><a target="_blank" href="https://www.12377.cn/">网上有害信息举报专区</a></div>
+          <div class="single"><a target="_blank" href="http://gonganju.suzhou.gov.cn/">苏州网警</a></div>
+          <div class="single"><img src="@/assets/image/home/beian.png" /><a href="https://beian.mps.gov.cn/#/query/webSearch?code=32050602012537" rel="noreferrer" target="_blank">苏公网安备32050602012537</a></div>
+<!--          <div class="single"><img src="@/assets/image/home/business-license.jpg" /><a target="_blank" href="https://hope-service.oss-cn-beijing.aliyuncs.com/images/business-license-1.jpg-->
+<!--">电子营业执照</a></div>-->
           <!-- <div class="single">ICP经营许可证编号</div>
           <div class="single">苏ICP备2023022582号</div> -->
           <!-- <div class="single">京公网安备xxxxxxxxxx号</div>
@@ -100,7 +114,9 @@
               >苏ICP备2024068051号</a
             >
           </div>
-          <div class="licence" @click="toLicence">人力资源服务许可证</div>
+          <div class="licence" @click="toLicence"><img style="width: 24px; height: 24px; margin-right: 8px; vertical-align: middle; display: inline-block;" src="@/assets/image/home/business-license.jpg" />电子营业执照</div>
+<!--          <div class="licence" @click="toLicence">人力资源服务许可证</div>-->
+          <div class="licence" >人力资源服务许可证</div>
         </div>
       </div>
     </div>

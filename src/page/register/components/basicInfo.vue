@@ -2,7 +2,7 @@
   <div class="basic-info-form">
     <div class="header">
       <div class="logo-title">
-        <img class="logo" src="@/assets/image/login/logo-small.png" />
+        <img class="logo" src="@/assets/image/home/home-logo-2024-1-2.png" />
         <div class="title-area">
           <div class="main-title">您的基本信息</div>
           <div class="sub-title">

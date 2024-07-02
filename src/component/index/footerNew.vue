@@ -16,16 +16,17 @@
 <!--              <div class="link-title">联系嗨聘</div>-->
               <div class="link">希望工场（苏州）网络技术有限公司</div>
               <div class="link">
-                公司地址:江苏省苏州市吴中区经济开发区城南街道东吴南路79号B-901室
+                公司地址: 江苏省苏州市东吴南路79号B-901室
               </div>
-              <div class="link">邮箱:jobmall@126.com</div>
+              <div class="link">联系电话: 400-1788-556</div>
+              <div class="link">电子邮箱: jobmall@126.com</div>
             </div>
           </el-col>
           <el-col :span="4">
             <div class="links">
               <div class="link-title">产品与服务</div>
               <!--              企业招聘、猎头服务、专家咨询、管理咨询-->
-              <div class="link">在线招聘</div>
+              <div class="link"><a href="/login/login">在线招聘</a></div>
               <div class="link">猎头服务</div>
               <div class="link">专家咨询</div>
               <div class="link">管理咨询</div>
@@ -93,8 +94,8 @@
           <div class="single"><img src="@/assets/image/home/beian.png" /><a href="https://beian.mps.gov.cn/#/query/webSearch?code=32050602012537" rel="noreferrer" target="_blank">苏公网安备32050602012537</a></div>
 <!--          <div class="single"><img src="@/assets/image/home/business-license.jpg" /><a target="_blank" href="https://hope-service.oss-cn-beijing.aliyuncs.com/images/business-license-1.jpg-->
 <!--">电子营业执照</a></div>-->
-          <div class="single">ICP经营许可证编号</div>
-          <div class="single">苏B2-20241058</div>
+<!--          <div class="single">联系电话：400-1788-556</div>-->
+          <div class="single">ICP经营许可证：苏B2-20241058</div>
           <!-- <div class="single">京公网安备xxxxxxxxxx号</div>
           <div class="single">京公网安备xxxxxxxxxx号</div>
           <div class="single">京公网安备xxxxxxxxxx号</div>

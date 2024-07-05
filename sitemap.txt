@@ -5,3 +5,10 @@ http://www.jobmall.com.cn/index/schoolRec
 http://www.jobmall.com.cn/index/socialRec
 http://www.jobmall.com.cn/index/returnee
 http://www.jobmall.com.cn/index/flexible
+https://www.jobmall.com.cn/index/home
+https://www.jobmall.com.cn
+https://www.jobmall.com.cn/index/job
+https://www.jobmall.com.cn/index/schoolRec
+https://www.jobmall.com.cn/index/socialRec
+https://www.jobmall.com.cn/index/returnee
+https://www.jobmall.com.cn/index/flexible

@@ -1,10 +1,10 @@
 <template>
   <div class="appBox">
     <div class="top-banner">
-<!--      <img-->
-<!--        src="https://hope-service.oss-cn-beijing.aliyuncs.com/images/top-banner-2024-3.jpg"-->
-<!--      />-->
-      <img src="@/assets/image/about/top-banner1.png" />
+      <img
+        src="https://hope-service.oss-cn-beijing.aliyuncs.com/images/top-banner-2024-3.jpg"
+      />
+<!--      <img src="@/assets/image/about/top-banner1.png" />-->
     </div>
     <div class="jobBox">
       <!-- 搜索框 -->

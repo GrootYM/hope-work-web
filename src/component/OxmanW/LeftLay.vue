@@ -1,8 +1,8 @@
 <template>
   <div class="box">
     <div class="logoBox">
-      <img src="https://hope-service.oss-cn-beijing.aliyuncs.com/images/logo-2024-2.jpg" alt />
-<!--      <img src="@/assets/image/oxman/logo.png" alt />-->
+<!--      <img src="https://hope-service.oss-cn-beijing.aliyuncs.com/images/logo-2024-2.jpg" alt />-->
+      <img src="@/assets/image/oxman/logo.png" alt />
     </div>
     <div class="mainTab" :key="timeKey">
       <div

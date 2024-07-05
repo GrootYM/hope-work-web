@@ -70,12 +70,12 @@
           </el-col>
           <el-col :span="5">
             <div class="right-part">
-<!--              <img-->
-<!--                src="https://hope-service.oss-cn-beijing.aliyuncs.com/images/logo-2024-2.jpg"-->
-<!--                style="height: auto"-->
-<!--              />-->
+              <img
+                src="https://hope-service.oss-cn-beijing.aliyuncs.com/images/logo-2024-2.jpg"
+                style="height: auto"
+              />
 <!--                            <img src="@/assets/image/about/logo-2024-2.jpg" style="height: auto" />-->
-              <img src="@/assets/image/home/bottom-logo.png" style="height: auto" />
+<!--              <img src="@/assets/image/home/bottom-logo.png" style="height: auto" />-->
               <div class="qrcode">
                 <img
                   src="https://hope-service.oss-cn-beijing.aliyuncs.com/images/wechat_qrcode.jpg"

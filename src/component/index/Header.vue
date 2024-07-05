@@ -218,9 +218,9 @@
     <div id="headTop">
       <div class="contains">
         <div class="left">
-          <img src="@/assets/image/home/logo.png" class="home-icon" />
-          <!--                    <img src="@/assets/image/about/home-logo.png" class="home-icon" />-->
-<!--          <img src="https://hope-service.oss-cn-beijing.aliyuncs.com/images/logo-2024-2.jpg" class="home-icon"/>-->
+<!--          <img src="@/assets/image/home/logo.png" class="home-icon" />-->
+<!--                              <img src="@/assets/image/about/home-logo.png" class="home-icon" />-->
+          <img src="https://hope-service.oss-cn-beijing.aliyuncs.com/images/logo-2024-2.jpg" class="home-icon"/>
           <div
             class="location"
             @click="citySelect"

@@ -1,7 +1,7 @@
 <template>
   <div class="main">
     <div class="licenceBox">
-      <img src="@/assets/image/home/business-license-1.jpg" alt="" />
+      <img src="@/assets/image/home/business-license-new.jpg" alt="" />
     </div>
   </div>
 </template>

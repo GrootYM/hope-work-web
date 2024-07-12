@@ -1,6 +1,8 @@
 <template>
   <div class="main">
-    <div class="guideBox">这是防骗指南</div>
+    <div class="guideBox">
+      <img src="@/assets/image/home/rlzyxkz.jpg" alt="" />
+    </div>
   </div>
 </template>
 <script>
@@ -23,12 +25,14 @@ export default {
   display: flex;
   justify-content: center;
   .guideBox {
-    width: 1200px;
-    height: 800px;
     background-color: #ffffff;
     padding: 80px 20px;
     box-sizing: border-box;
     border-radius: 4px;
+    img {
+      width: 1200px;
+      height: 800px;
+    }
   }
 }
 </style>

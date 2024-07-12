@@ -85,7 +85,8 @@ const routes = [
         name: "returneePage",
         component: () => import("@/page/components/returnee"),
         meta: {
-          keywords: "留学归国人员招聘，留学归国人员找工作，逛嗨聘，就对了！",
+          // keywords: "留学归国人员招聘，留学归国人员找工作，逛嗨聘，就对了！",
+          keywords: "出国务工，招海外人才，就逛嗨聘。嗨聘，助力中国企业出海！",
         },
       },
       {
@@ -205,8 +206,8 @@ const routes = [
         component: () => import("@/page/job/beExpert"),
         children: [],
         meta: {
-          keywords:
-            "求职者上传简历，筛选后可进入行业专家库，优先精准匹配高薪职位和名企",
+          keywords: "卷不动的职场人就来逛嗨聘！管理咨询，商业咨询，专家访谈，专家咨询，尽在嗨聘！",
+          // keywords: "求职者上传简历，筛选后可进入行业专家库，优先精准匹配高薪职位和名企",
         },
       },
       {

@@ -116,8 +116,8 @@
             >
           </div>
           <div class="licence" @click="toLicence"><img style="width: 24px; height: 24px; margin-right: 8px; vertical-align: middle; display: inline-block;" src="@/assets/image/home/business-license.jpg" />电子营业执照</div>
-<!--          <div class="licence" @click="toLicence">人力资源服务许可证</div>-->
-          <div class="licence" >人力资源服务许可证</div>
+          <div class="licence" @click="toGuide">人力资源服务许可证</div>
+<!--          <div class="licence" >人力资源服务许可证</div>-->
         </div>
       </div>
     </div>
@@ -142,10 +142,12 @@ export default {
   },
   methods: {
     toLicence() {
-      this.$router.push({ name: "licence" });
+      // this.$router.push({ name: "licence" });
+      window.open('/index/licence', '_blank')
     },
     toGuide() {
-      this.$router.push({ name: "guide" });
+      window.open('/index/guide', '_blank');
+      // this.$router.push({ name: "guide" });
     },
   },
 };

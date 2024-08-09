@@ -238,11 +238,11 @@
               <li :class="{ now: this.activeRouter === 1 }" @click="num = '2'">
                 <router-link to="/index/job">职位</router-link>
               </li>
-              <li :class="{ now: this.activeRouter === 2 }" @click="num = '3'">
-                <router-link to="/index/schoolRec">校招</router-link>
-              </li>
               <li :class="{ now: this.activeRouter === 3 }" @click="num = '4'">
                 <router-link to="/index/socialRec">社招</router-link>
+              </li>
+              <li :class="{ now: this.activeRouter === 2 }" @click="num = '3'">
+                <router-link to="/index/schoolRec">校招</router-link>
               </li>
               <li :class="{ now: this.activeRouter === 4 }" @click="num = '5'">
                 <router-link to="/index/returnee">海归</router-link>

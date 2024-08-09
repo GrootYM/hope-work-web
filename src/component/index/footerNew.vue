@@ -76,11 +76,19 @@
               />
 <!--                            <img src="@/assets/image/about/logo-2024-2.jpg" style="height: auto" />-->
 <!--              <img src="@/assets/image/home/bottom-logo.png" style="height: auto" />-->
-              <div class="qrcode">
-                <img
-                  src="https://hope-service.oss-cn-beijing.aliyuncs.com/images/wechat_qrcode.jpg"
-                />
-                <div class="link">服务号</div>
+              <div class="qrcode-container">
+                <div class="qrcode">
+                  <img
+                      src="https://hope-service.oss-cn-beijing.aliyuncs.com/images/wechat_qrcode.jpg"
+                  />
+                  <div class="link">服务号</div>
+                </div>
+                <div class="qrcode">
+                  <img
+                      src="https://hope-service.oss-cn-beijing.aliyuncs.com/images/gh_cc92cb4f43c6_258.jpg"
+                  />
+                  <div class="link">小程序(个人端)</div>
+                </div>
               </div>
             </div>
           </el-col>
@@ -295,6 +303,12 @@ $nx-color4: #0f46a0;
         color: #222222;
       }
     }
+  }
+
+  .qrcode-container {
+    display: flex; /* Makes the qrcode elements display side by side */
+    justify-content: space-between; /* Adds some spacing between the qr codes */
+    align-items: center; /* Centers the qr codes vertically */
   }
 }
 </style>

@@ -85,8 +85,7 @@ const routes = [
         name: "returneePage",
         component: () => import("@/page/components/returnee"),
         meta: {
-          // keywords: "留学归国人员招聘，留学归国人员找工作，逛嗨聘，就对了！",
-          keywords: "出国务工，招海外人才，就逛嗨聘。嗨聘，助力中国企业出海！",
+          fetchMeta: { endpoint: '/api-recruit/api-common/seo-config/info?code=index', params: { code: 'returnee' } }
         },
       },
       {
@@ -136,8 +135,7 @@ const routes = [
         name: "homePage",
         component: () => import("@/page/components/home"),
         meta: {
-          keywords:
-            "逛嗨聘，找工作，玩转职场！在线招聘，猎头服务，专家咨询，管理咨询，一站搞定！国内求职，出国务工，应届生找工作，灵活就业。",
+          fetchMeta: { endpoint: '/api-recruit/api-common/seo-config/info?code=index', params: { code: 'index' } }
         },
       },
       // ws
@@ -147,8 +145,7 @@ const routes = [
         component: () => import("@/page/job/job"),
         children: [],
         meta: {
-          keywords:
-            "针对薪资要求、经验、行业、职业类型、求职类型、学历要求、公司规模、融资阶段等提供热门职位信息",
+          fetchMeta: { endpoint: '/api-recruit/api-common/seo-config/info?code=index', params: { code: 'position' } }
         },
       },
       {
@@ -182,7 +179,7 @@ const routes = [
         component: () => import("@/page/job/schoolRec"),
         children: [],
         meta: {
-          keywords: "校园招聘，毕业生找工作，校外实习，校外兼职，逛嗨聘，一网搞定！",
+          fetchMeta: { endpoint: '/api-recruit/api-common/seo-config/info?code=index', params: { code: 'school' } }
         },
       },
       {
@@ -191,7 +188,7 @@ const routes = [
         component: () => import("@/page/job/socialRec"),
         children: [],
         meta: {
-          keywords: "遭遇职业瓶颈，找工作，突破职场危机，玩转职场，逛嗨聘，全搞定！",
+          fetchMeta: { endpoint: '/api-recruit/api-common/seo-config/info?code=index', params: { code: 'social' } }
         },
       },
       {
@@ -206,8 +203,7 @@ const routes = [
         component: () => import("@/page/job/beExpert"),
         children: [],
         meta: {
-          keywords: "卷不动的职场人就来逛嗨聘！管理咨询，商业咨询，专家访谈，专家咨询，尽在嗨聘！",
-          // keywords: "求职者上传简历，筛选后可进入行业专家库，优先精准匹配高薪职位和名企",
+          fetchMeta: { endpoint: '/api-recruit/api-common/seo-config/info?code=index', params: { code: 'expert' } }
         },
       },
       {
@@ -236,7 +232,7 @@ const routes = [
         name: "ask",
         component: () => import("@/page/job/ask"),
         meta: {
-          keywords: "接收用户后台反馈",
+          fetchMeta: { endpoint: '/api-recruit/api-common/seo-config/info?code=index', params: { code: 'ask' } }
         },
       },
       {
@@ -244,7 +240,7 @@ const routes = [
         name: "flexible",
         component: () => import("@/page/job/flexible"),
         meta: {
-          keywords: "布局数字零工市场，促进灵活就业。业余兼职、钟点工、、派遣工、季节工和自由接单服务，逛嗨聘，全搞定！",
+          fetchMeta: { endpoint: '/api-recruit/api-common/seo-config/info?code=index', params: { code: 'flexible' } }
         },
       },
     ],

@@ -45,6 +45,17 @@ const router = new Router({
 });
 
 router.beforeEach((to, from, next) => {
+
+  if (to.meta && to.meta.fetchMeta) {
+    fetchMetaData(to.meta.fetchMeta.endpoint, to.meta.fetchMeta.params).then(metaData => {
+      updateDocumentHead(metaData);
+      next();
+    }).catch(error => {
+      console.error('Failed to fetch meta data:', error);
+      next();
+    });
+  }
+
   // 登录验证
   if (isLoginRequired(to.name) && !store.state.logined) {
     next({ path: "/index" });
@@ -92,4 +103,31 @@ router.push = function push(location) {
 router.replace = function replace(location) {
   return originalReplace.call(this, location).catch((err) => err);
 };
+
+function fetchMetaData(endpoint, params) {
+  let url = new URL(endpoint, window.location.origin);
+  url.search = new URLSearchParams(params).toString();
+
+  return fetch(url)
+      .then(response => response.json())
+      .then(data => data);
+}
+
+function updateDocumentHead(metaData) {
+  const head = document.head;
+  // 清除旧的<meta>标签
+  Array.from(head.querySelectorAll('meta[name="keywords"], meta[name="description"]')).forEach(tag => tag.remove());
+  if (metaData.data.description) {
+    const metaTag = document.createElement('meta');
+    metaTag.setAttribute('name', "description");
+    metaTag.setAttribute('content', metaData.data.description);
+    head.appendChild(metaTag);
+  }
+  if (metaData.data.keyword) {
+    const metaTag = document.createElement('meta');
+    metaTag.setAttribute('name', "keywords");
+    metaTag.setAttribute('content', metaData.data.keyword);
+    head.appendChild(metaTag);
+  }
+}
 export default router;

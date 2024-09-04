@@ -155,6 +155,7 @@
               </div>
             </div>
           </div>
+          <button class="handleHello" @click="handleHello">打招呼</button>
         </div>
       </div>
     </div>
@@ -265,6 +266,12 @@ export default {
   methods: {
     goBack() {
       this.routerGo(-1)
+    },
+    handleHello(){
+      this.$router.push({
+        path: '/oxHome/communicate',
+      })
+      this.$store.dispatch('setOxTitle', '沟通')
     },
     updateScrollTop() {
       const scrollTop = window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop // 兼容多个浏览器
@@ -576,4 +583,17 @@ export default {
   display: block;
   line-height: 40px;
 }
+
+.handleHello {
+    width: 93px;
+    font-size: 13px;
+    display: inline-block;
+    margin-left: 70%;
+    font-size: 14px;
+    background: #2446A8;
+    color: #ffffff;
+    margin-bottom: 10px;
+    padding: 15px;
+    border-radius: 4px 4px 4px 4px;
+  }
 </style>

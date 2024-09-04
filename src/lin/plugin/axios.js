@@ -215,10 +215,11 @@ _axios.interceptors.response.use(
       error.code === "ECONNABORTED" &&
       error.message.indexOf("timeout") !== -1
     ) {
-      Vue.prototype.$message({
-        type: "warning",
-        message: "请求超时",
-      });
+      // fix: 去掉弹框超时提醒
+      // Vue.prototype.$message({
+      //   type: "warning",
+      //   message: "请求超时",
+      // });
     }
     return Promise.reject(error);
   }

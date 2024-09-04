@@ -1195,6 +1195,9 @@ export default {
       this.positionCheckAllArr = positionCheckAllArr;
     },
     toPerson(item) {
+      item.positionId = this.positionType.positionTypeId
+      item.positionName = this.positionType.positionName
+      sessionStorage.setItem('perInfo', JSON.stringify(item))
       this.$router.push({
         path: "/oxHome/personalInfo",
         query: { userId: item.userId },

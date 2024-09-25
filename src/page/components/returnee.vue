@@ -400,6 +400,7 @@ import returnees from "@/api/returnees";
 import Home from "@/api/home";
 import Job from "@/api/job";
 import Util from "@/util/index";
+import Seo from "../../api/seo";
 export default {
   components: {
     Search,
@@ -424,12 +425,15 @@ export default {
       practiceJop: [],
       i1: 0,
       i2: 0,
+      dynamicKeywords: '',
+      dynamicDescription : ''
     };
   },
   computed: {
     ...mapGetters(["cityName"]),
   },
   created() {
+    this.fetchMetaData();
     this.queryHotCityList();
     this.getQueryHotCompanyList();
     this.getBannerList();
@@ -442,6 +446,12 @@ export default {
     this.location = this.cityName;
   },
   methods: {
+    async fetchMetaData() {
+      let { endpoint, params } = this.$route.meta.fetchMetaData;
+      let response = await Seo.getSeoInfo(params)
+      this.dynamicKeywords = response.data.keyword;
+      this.dynamicDescription = response.data.description;
+    },
     // 跳转视频列表
     toVideo() {
       if (this.poster.type == 3) {
@@ -672,7 +682,7 @@ export default {
   },
   metaInfo() {
     return {
-      meta: [{ name: "viewport", content: this.$route.meta.keywords }],
+      meta: [{ name: "keywords", content: this.dynamicKeywords }, {name: "description", content: this.dynamicDescription}],
     };
   },
 };

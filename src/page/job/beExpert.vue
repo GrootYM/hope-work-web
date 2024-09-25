@@ -67,6 +67,8 @@
 </template>
 <script>
 import { mapActions, mapMutations, mapGetters } from "vuex";
+import Seo from "../../api/seo";
+
 
 import Job from "@/api/job";
 import Button from "../../plugin/lin-cms-ui/view/basic/button/button.vue";
@@ -121,6 +123,8 @@ export default {
           { required: true, message: "请输入申请描述", trigger: "blur" },
         ],
       },
+      dynamicKeywords: '',
+      dynamicDescription : ''
     };
   },
   mounted() {
@@ -131,7 +135,16 @@ export default {
     this.expertLevel();
     this.queryHotIndustryType();
   },
+  created() {
+    this.fetchMetaData();
+  },
   methods: {
+    async fetchMetaData() {
+      let { endpoint, params } = this.$route.meta.fetchMetaData;
+      let response = await Seo.getSeoInfo(params)
+      this.dynamicKeywords = response.data.keyword;
+      this.dynamicDescription = response.data.description;
+    },
     handleExceed(file, fileList) {
       this.$message.error("请先删除已上传文件");
     },
@@ -224,7 +237,7 @@ export default {
   },
   metaInfo() {
     return {
-      meta: [{ name: "viewport", content: this.$route.meta.keywords }],
+      meta: [{ name: "keywords", content: this.dynamicKeywords }, {name: "description", content: this.dynamicDescription}],
     };
   },
 };

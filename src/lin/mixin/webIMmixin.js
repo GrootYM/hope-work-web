@@ -804,11 +804,11 @@ export default {
                 reject();
                 return _this.$message.success("用户名超过64个字节！");
               }
-              _this.$message.success("用户名不合法！");
+              console.log("用户名不合法！");
             } else if (JSON.parse(err.data).error == "unauthorized") {
-              _this.$message.success("注册失败，无权限！");
+              console.log("注册失败，无权限！");
             } else if (JSON.parse(err.data).error == "resource_limited") {
-              _this.$message.success("您的App用户注册数量已达上限");
+              console.log("您的App用户注册数量已达上限");
             }
             reject();
           },

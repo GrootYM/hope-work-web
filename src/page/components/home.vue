@@ -299,6 +299,7 @@
 import Search from "@/component/index/Search";
 import BlockTitle from "@/page/common/blockTitle";
 import Home from "@/api/home";
+import Seo from "../../api/seo";
 
 export default {
   inject: ["eventBus"],
@@ -321,6 +322,8 @@ export default {
       notifyVisible: false,
       notifyContent: "",
       midBanners: [],
+      dynamicKeywords: '',
+      dynamicDescription : ''
     };
   },
   created() {
@@ -330,6 +333,7 @@ export default {
     this.getHotIndustryType();
     this.getHotCompanyList();
     this.getHotCompanyPositionList();
+    this.fetchMetaData();
   },
   watch: {
     jobIndex(val) {
@@ -337,6 +341,12 @@ export default {
     },
   },
   methods: {
+    async fetchMetaData() {
+      let { endpoint, params } = this.$route.meta.fetchMetaData;
+      let response = await Seo.getSeoInfo(params)
+      this.dynamicKeywords = response.data.keyword;
+      this.dynamicDescription = response.data.description;
+    },
     gotoCompany(id) {
       const { href } = this.$router.resolve({
         path: "/index/company",
@@ -449,9 +459,8 @@ export default {
     },
   },
   metaInfo() {
-    console.log(this.$route.meta, "1231");
     return {
-      meta: [{ name: "viewport", content: this.$route.meta.keywords }],
+      meta: [{ name: "keywords", content: this.dynamicKeywords }, {name: "description", content: this.dynamicDescription}],
     };
   },
 };

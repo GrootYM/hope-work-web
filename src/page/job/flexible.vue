@@ -187,7 +187,7 @@ import { mapActions, mapMutations, mapGetters } from "vuex";
 import School from "@/api/school";
 import Job from "@/api/job";
 import JobSearch from "@/component/Job/jobSearch";
-
+import Seo from "../../api/seo";
 export default {
   components: {
     JobSearch,
@@ -236,6 +236,8 @@ export default {
       pageSize: 9,
       recruitType: 5, //2校招，4兼职， 5灵活就业
       csArr: [],
+      dynamicKeywords: '',
+      dynamicDescription : ''
     };
   },
   mounted() {
@@ -249,7 +251,16 @@ export default {
     this.queryHotCityList();
     this.location = this.cityName;
   },
+  created() {
+    this.fetchMetaData();
+  },
   methods: {
+    async fetchMetaData() {
+      let { endpoint, params } = this.$route.meta.fetchMetaData;
+      let response = await Seo.getSeoInfo(params)
+      this.dynamicKeywords = response.data.keyword;
+      this.dynamicDescription = response.data.description;
+    },
     toMore() {
       this.$router.push({ path: "/index/job" });
     },
@@ -356,7 +367,7 @@ export default {
   },
   metaInfo() {
     return {
-      meta: [{ name: "viewport", content: this.$route.meta.keywords }],
+      meta: [{ name: "keywords", content: this.dynamicKeywords }, {name: "description", content: this.dynamicDescription}],
     };
   },
 };

@@ -189,7 +189,7 @@ import { mapActions, mapMutations, mapGetters } from "vuex";
 import JobSearch from "@/component/Job/jobSearch";
 import School from "@/api/school";
 import Job from "@/api/job";
-
+import Seo from "../../api/seo";
 export default {
   components: {
     JobSearch,
@@ -219,6 +219,8 @@ export default {
       jobSArr: [],
       hotQyArr: [],
       csArr: [],
+      dynamicKeywords: '',
+      dynamicDescription : ''
     };
   },
   mounted() {
@@ -233,7 +235,16 @@ export default {
     this.queryHotCityList();
     this.location = this.cityName;
   },
+  created() {
+    this.fetchMetaData();
+  },
   methods: {
+    async fetchMetaData() {
+      let { endpoint, params } = this.$route.meta.fetchMetaData;
+      let response = await Seo.getSeoInfo(params)
+      this.dynamicKeywords = response.data.keyword;
+      this.dynamicDescription = response.data.description;
+    },
     changeLocation(value) {
       this.location = value;
       // this.$store.commit('SET_NOW_CITY', value)
@@ -373,7 +384,7 @@ export default {
   },
   metaInfo() {
     return {
-      meta: [{ name: "viewport", content: this.$route.meta.keywords }],
+      meta: [{ name: "keywords", content: this.dynamicKeywords }, {name: "description", content: this.dynamicDescription}],
     };
   },
 };

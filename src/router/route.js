@@ -85,7 +85,8 @@ const routes = [
         name: "returneePage",
         component: () => import("@/page/components/returnee"),
         meta: {
-          fetchMeta: { endpoint: '/api-recruit/api-common/seo-config/info?code=index', params: { code: 'returnee' } }
+          // keywords: "留学归国人员求职与招聘，出国务工，招海外...",
+          fetchMetaData: { endpoint: '/api-recruit/api-common/seo-config/info', params: { code: 'returnee' } }
         },
       },
       {
@@ -135,7 +136,8 @@ const routes = [
         name: "homePage",
         component: () => import("@/page/components/home"),
         meta: {
-          fetchMeta: { endpoint: '/api-recruit/api-common/seo-config/info?code=index', params: { code: 'index' } }
+          // keywords: "逛嗨聘，找工作，玩转职场！在线招聘，猎头服务，专家咨询，管理咨询，一站搞定！国内求职，出国务工，应届生找工作，灵活就业。",
+          fetchMetaData: { endpoint: '/api-recruit/api-common/seo-config/info', params: { code: 'index' } }
         },
       },
       // ws
@@ -145,7 +147,9 @@ const routes = [
         component: () => import("@/page/job/job"),
         children: [],
         meta: {
-          fetchMeta: { endpoint: '/api-recruit/api-common/seo-config/info?code=index', params: { code: 'position' } }
+          // description: "",
+          // keywords: "针对薪资要求、经验、行业、职业类型、求职类型、学历要求、公司规模、融资阶段等提供热门职位信息",
+          fetchMetaData: { endpoint: '/api-recruit/api-common/seo-config/info', params: { code: 'position' } }
         },
       },
       {
@@ -179,7 +183,8 @@ const routes = [
         component: () => import("@/page/job/schoolRec"),
         children: [],
         meta: {
-          fetchMeta: { endpoint: '/api-recruit/api-common/seo-config/info?code=index', params: { code: 'school' } }
+          // keywords: "校园招聘，毕业生找工作，校外实习，校外兼职，逛嗨聘，一网搞定！",
+          fetchMetaData: { endpoint: '/api-recruit/api-common/seo-config/info', params: { code: 'school' } }
         },
       },
       {
@@ -188,7 +193,8 @@ const routes = [
         component: () => import("@/page/job/socialRec"),
         children: [],
         meta: {
-          fetchMeta: { endpoint: '/api-recruit/api-common/seo-config/info?code=index', params: { code: 'social' } }
+          // keywords: "遭遇职业瓶颈，找工作，突破职场危机，玩转职场，逛嗨聘，全搞定！",
+          fetchMetaData: { endpoint: '/api-recruit/api-common/seo-config/info', params: { code: 'social' } }
         },
       },
       {
@@ -203,7 +209,8 @@ const routes = [
         component: () => import("@/page/job/beExpert"),
         children: [],
         meta: {
-          fetchMeta: { endpoint: '/api-recruit/api-common/seo-config/info?code=index', params: { code: 'expert' } }
+          // keywords: "卷不动的职场人就来逛嗨聘！管理咨询，商业咨询，专家访谈，专家咨询，尽在嗨聘！",
+          fetchMetaData: { endpoint: '/api-recruit/api-common/seo-config/info', params: { code: 'expert' } }
         },
       },
       {
@@ -232,7 +239,8 @@ const routes = [
         name: "ask",
         component: () => import("@/page/job/ask"),
         meta: {
-          fetchMeta: { endpoint: '/api-recruit/api-common/seo-config/info?code=index', params: { code: 'ask' } }
+          // keywords: "接收用户后台反馈",
+          fetchMetaData: { endpoint: '/api-recruit/api-common/seo-config/info', params: { code: 'ask' } }
         },
       },
       {
@@ -240,7 +248,8 @@ const routes = [
         name: "flexible",
         component: () => import("@/page/job/flexible"),
         meta: {
-          fetchMeta: { endpoint: '/api-recruit/api-common/seo-config/info?code=index', params: { code: 'flexible' } }
+          // keywords: "布局数字零工市场，促进灵活就业。业余兼职、钟点工、、派遣工、季节工和自由接单服务，逛嗨聘，全搞定！",
+          fetchMetaData: { endpoint: '/api-recruit/api-common/seo-config/info', params: { code: 'flexible' } }
         },
       },
     ],

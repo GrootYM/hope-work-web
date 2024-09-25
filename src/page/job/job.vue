@@ -414,6 +414,7 @@ import Home from "@/api/home";
 import Job from "@/api/job";
 import Auth from "@/api/auth";
 import User from "@/api/userCenter";
+import Seo from "../../api/seo";
 
 import JobSearch from "@/component/Job/jobSearch";
 
@@ -550,6 +551,8 @@ export default {
       adArr: [],
       lookDataList: [],
       tabsName: "first",
+      dynamicKeywords: '',
+      dynamicDescription : ''
     };
   },
   mounted() {
@@ -577,6 +580,12 @@ export default {
   },
 
   methods: {
+    async fetchMetaData() {
+      let { endpoint, params } = this.$route.meta.fetchMetaData;
+      let response = await Seo.getSeoInfo(params)
+      this.dynamicKeywords = response.data.keyword;
+      this.dynamicDescription = response.data.description;
+    },
     async getUserInfo() {
       let params = { userId: this.userId };
       let res = await User.getUserInfo(params);
@@ -978,9 +987,12 @@ export default {
       this.$router.push({ path: "/resumeMake" });
     },
   },
+  created() {
+    this.fetchMetaData()
+  },
   metaInfo() {
     return {
-      meta: [{ name: "viewport", content: this.$route.meta.keywords }],
+      meta: [{ name: "keywords", content: this.dynamicKeywords }, {name: "description", content: this.dynamicDescription}],
     };
   },
 };

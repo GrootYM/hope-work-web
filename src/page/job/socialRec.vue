@@ -240,6 +240,9 @@ export default {
   },
   methods: {
     async fetchMetaData() {
+      const head = document.head;
+      // 清除旧的<meta>标签
+      Array.from(head.querySelectorAll('meta[name="keywords"], meta[name="description"]')).forEach(tag => tag.remove());
       let { endpoint, params } = this.$route.meta.fetchMetaData;
       let response = await Seo.getSeoInfo(params)
       this.dynamicKeywords = response.data.keyword;

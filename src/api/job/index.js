@@ -41,6 +41,21 @@ export default class Job {
     })
   }
   /**
+   * 海外城市下拉
+   *
+   */
+  static queryOverseasCityList(level, pid) {
+    return _axios({
+      method: 'post',
+      url: '/system/city/foreign/city-list',
+      data:{
+		  level,
+		  pid
+	  },
+      handleError: true,
+    })
+  }
+  /**
    * 行业下拉
    *
    */

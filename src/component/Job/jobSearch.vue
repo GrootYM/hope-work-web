@@ -34,19 +34,42 @@
           </div>
         </div>
         <div class="tabCon tabConC" v-if="tabActive == 2">
-          <div class="hot-city-list">选择省份</div>
-          <div class="city-list">
-            <el-select v-model="province" placeholder="请选择" @change="changeProvince">
-              <el-option v-for="item in provinceArr" :key="item.id" :label="item.name" :value="item.id"> </el-option>
-            </el-select>
+			<div class="tabsCity">
+			    <ul class="navlist">
+			      <li :class="{ active: isDomestic }" @click="switchDemesticTab(true)">国内</li>
+			      <li :class="{ active: !isDomestic }" @click="switchDemesticTab(false)" style="margin-right: auto;">国外</li>
+			    </ul>
+			  </div>
+          <div v-if="isOverseasCity === 0">
+          	<div class="hot-city-list">选择省份</div>
+          	<div class="city-list">
+          	  <el-select v-model="province" placeholder="请选择" @change="changeProvince">
+          	    <el-option v-for="item in provinceArr" :key="item.id" :label="item.name" :value="item.id"> </el-option>
+          	  </el-select>
+          	</div>
+          	<!-- <div class="hot-city-list">热门城市</div> -->
+          	<div class="hot-city-list">选择城市</div>
+          	<div class="city-list">
+          	  <a v-for="city in cities" :key="city.id" class="city-btn" href="javascript:void(0)" @click="locate(city)">
+          	    {{ city.name == '市辖区' ? provinceInfo.name : city.name }}
+          	  </a>
+          	</div>
           </div>
-          <!-- <div class="hot-city-list">热门城市</div> -->
-          <div class="hot-city-list">选择城市</div>
-          <div class="city-list">
-            <a v-for="city in cities" :key="city.id" class="city-btn" href="javascript:void(0)" @click="locate(city)">
-              {{ city.name == '市辖区' ? provinceInfo.name : city.name }}
-            </a>
-          </div>
+		  <div v-if="isOverseasCity === 1">
+		  		<div class="hot-city-list">选择国家</div>
+		  		<div class="city-list">
+		  		  <el-select v-model="province" placeholder="请选择" @change="changeProvince">
+		  		    <el-option v-for="item in provinceArr" :key="item.id" :label="item.name" :value="item.id"> </el-option>
+		  		  </el-select>
+		  		</div>
+		  		<!-- <div class="hot-city-list">热门城市</div> -->
+		  		<div class="hot-city-list">选择城市</div>
+		  		<div class="city-list">
+		  		  <a v-for="city in cities" :key="city.id" class="city-btn" href="javascript:void(0)" @click="locate(city)">
+		  		    {{ city.name == '市辖区' ? provinceInfo.name : city.name }}
+		  		  </a>
+		  		</div>  
+		  </div>
         </div>
       </div>
     </JobModal>
@@ -99,6 +122,8 @@ export default {
       cities: [],
       provinceInfo: {},
       province: '',
+	  isOverseasCity: 0,
+	  isDomestic: true,
     }
   },
   mounted() {
@@ -106,6 +131,9 @@ export default {
     this.queryCityList()
   },
   methods: {
+	  switchTab1(isDomestic) {
+	    this.isDomestic = isDomestic;
+	  },
     toSearch() {
       this.$emit('search')
     },
@@ -127,22 +155,40 @@ export default {
         regionLevel: 1,
         id: '',
       }
-      let res = await Job.queryCityList(params)
-      if (res.code == 200) {
-        this.provinceArr = res.data
-        console.log(this.provinceArr)
-      }
+	  if(this.isDomestic){
+		  let res = await Job.queryCityList(params)
+		  if (res.code == 200) {
+		    this.provinceArr = res.data
+		    console.log(this.provinceArr)
+		  }
+	  }else{
+		  let res = await Job.queryOverseasCityList(params.regionLevel,params.id)
+		  if (res.code == 200) {
+		    this.provinceArr = res.data
+		    // console.log("海外",this.provinceArr)
+		  }
+	  }
+     
     },
     async queryCityList1() {
       let params = {
         regionLevel: 2,
         id: this.province,
-      }
-      let res = await Job.queryCityList(params)
-      if (res.code == 200) {
-        this.cities = res.data
-        // console.log(this.cities)
-      }
+      }  
+	  if(this.isDomestic){
+		let res = await Job.queryCityList(params)
+		if (res.code == 200) {
+		  this.cities = res.data
+		  // console.log(this.cities)
+		}  
+	  }else{
+		 let res = 		   await Job.queryOverseasCityList(params.regionLevel, params.id)
+		 if (res.code == 200) {
+		   this.cities = res.data
+		   // console.log(this.cities)
+		 } 
+	  }
+     
     },
     changeProvince(val) {
       this.province = val
@@ -153,6 +199,11 @@ export default {
       })
       this.queryCityList1()
     },
+	switchDemesticTab(isDomestic){
+		this.isDomestic = isDomestic;
+		this.queryCityList()
+		// console.log(isDomestic)
+	},
     locate(city) {
       if (city.name == '市辖区') {
         city.name = this.provinceInfo.name
